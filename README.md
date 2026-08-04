@@ -1,198 +1,162 @@
-# Purple Ultra AI
+# Purple Ultra AI v2.0.0
 
-**Advanced Offline Voice Assistant** - Combining the best of Purple AI and Purple-Plus AI into one unified, cross-platform, fully offline voice assistant.
+**Advanced Offline Voice Assistant** - Self-aware, self-learning, self-healing AI with 79 features, neural networks, and military-grade encryption.
 
-## Features
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-purple.svg)]()
 
-### Voice System
-- **Offline STT**: Faster-Whisper local speech-to-text
-- **Multi-backend TTS**: Piper neural TTS, macOS `say`, pyttsx3 (cross-platform fallback)
-- **18 mood-based voice profiles**: Each mood has unique rate, pitch, and volume
-- **Voice effects**: Breathing, yawning, sneezing, and more
-- **Speaker recognition**: Voiceprint-based identification
-
-### Intelligence
-- **Multi-LLM support**: Ollama (local), OpenAI API, LM Studio
-- **Chain-of-Thought reasoning**: Multi-step reasoning with hypothesis evaluation
-- **Emotion detection**: Context-aware emotion analysis from text
-- **Metacognition**: Self-awareness and strategy selection
-- **Knowledge graph**: Structured relationships with causal reasoning
-
-### Memory
-- **Episodic memory**: Specific events with emotional context
-- **Semantic memory**: Facts and concepts
-- **Procedural memory**: Skills and routines
-- **Conversation history**: JSONL append-only with rotation
-- **Auto-learning**: Private reflection extracts durable lessons
-
-### Tools (30+)
-- **System**: Open apps, screenshots, battery, network, volume, clipboard
-- **Files**: List, search, read, write, copy, move, delete
-- **Web**: Search, fetch URLs, open browser, YouTube
-- **Media**: Play, pause, next, previous, volume control
-- **Assistant**: Tasks, reminders, notes, habits
-- **Creative**: Image generation from prompts
-
-### Personality
-- **Professional mode**: Efficient, focused assistant
-- **Companion mode**: Warm, playful, affectionate persona
-- **Configurable**: Edit `personality/default.md` to customize
-
-### Training
-- **History export**: Convert conversations to training data
-- **LoRA fine-tuning**: Apple Silicon MLX-based fine-tuning
-- **Auto-learning**: Extracts lessons from every interaction
-
-## Quick Start
-
-### Prerequisites
-- Python 3.10+
-- Ollama (for local LLM) - [Install](https://ollama.ai)
-- macOS users: `brew install piper` (optional, for neural TTS)
-
-### Installation
+## Quick Start (3 steps)
 
 ```bash
-cd purple-ultra AI
+# 1. Clone
+git clone https://github.com/refat189/purple-ultra-AI.git
+cd purple-ultra-AI
+
+# 2. Install
 ./run.sh install
+
+# 3. Run
+./run.sh
 ```
 
-### Run
+**Windows:** `run.bat install` then `run.bat`
+
+## What You Get
+
+| Category | Features |
+|----------|----------|
+| **Brain** | Self-awareness, self-learning, self-modification, autonomous improvement |
+| **Neural** | 17,555 neurons, 26M params, intent classification, pattern recognition |
+| **Encryption** | AES-256, ChaCha20, RSA-2048, SHA-256, HMAC, digital signatures |
+| **Voice** | Offline STT (Whisper), multi-backend TTS, 18 mood profiles, speaker recognition |
+| **79 Modules** | Todo, notes, calendar, weather, news, crypto, stocks, fitness, recipes, image/video processing, and more |
+| **240 Commands** | Neural thinking, reasoning, planning, self-heal, code analysis, and more |
+| **Self-Heal** | Auto-detects and fixes errors, modification log, rollback support |
+
+## Commands
 
 ```bash
-# Interactive text mode
-./run.sh
-
-# Voice-first mode
-./run.sh voice
-
-# Run in background
-./run.sh background
-
-# Stop background process
-./run.sh stop
+./run.sh              # Interactive text mode (default)
+./run.sh voice        # Voice-first mode
+./run.sh background   # Run in background
+./run.sh stop         # Stop background process
+./run.sh status       # Show status
+./run.sh install      # Install/reinstall dependencies
 ```
 
-### Windows
-```cmd
-run.bat install
-run.bat
-run.bat voice
-```
+## Chat Commands
+
+Once running, try these:
+
+| Command | Description |
+|---------|-------------|
+| `help` | Show all available tools |
+| `status` | System status |
+| `time` | Current date/time |
+| `think about <topic>` | Deep thinking |
+| `reflect` | Self-reflection |
+| `self aware` | Self-awareness status |
+| `who are you` | Identity info |
+| `curiosity` | Knowledge gaps |
+| `autonomous` | Self-improvement status |
+| `self heal` | Scan and fix issues |
+| `auto repair` | Auto-repair scan |
+| `health` | Health report |
+| `codebase` | Show project structure |
+| `find code <query>` | Search code |
+| `analyze code <file>` | Code analysis |
+| `neural status` | Neural system info |
+| `embed <text>` | Store in memory |
+| `search memory <query>` | Recall memories |
+| `sentiment <text>` | Analyze sentiment |
+| `learn <fact>` | Teach something |
+| `correct <wrong> -> <right>` | Correct a mistake |
+| `todo add <task>` | Add task |
+| `notes write <text>` | Save note |
 
 ## Configuration
 
-Edit `config.toml` to customize:
+Edit `config.toml`:
 
 ```toml
 [llm]
-provider = "ollama"    # ollama, openai, lmstudio
+provider = "ollama"           # ollama, openai, lmstudio
 model = "llama3:latest"
 host = "http://127.0.0.1:11434"
+
+[tts]
+engine = "auto"               # auto, piper, say, pyttsx3
 
 [stt]
 engine = "faster-whisper"
 model = "Systran/faster-whisper-small.en"
 
-[tts]
-engine = "auto"        # auto, piper, say, pyttsx3
-
 [personality]
-mode = "professional"  # professional, companion
+mode = "professional"         # professional, companion
 name = "Purple Ultra"
 ```
+
+## Requirements
+
+- Python 3.10+
+- Optional: [Ollama](https://ollama.ai) for local LLM
+- Optional: `brew install piper` for neural TTS (macOS)
 
 ## Project Structure
 
 ```
-purple-ultra AI/
+purple-ultra-AI/
 ├── main.py                    # Entry point
 ├── config.toml                # Configuration
-├── purple_ultra/              # Core package
-│   ├── config/                # Frozen dataclass config
-│   ├── core/                  # Orchestrator, mood, brain
+├── run.sh / run.bat           # Launchers
+├── purple_ultra/
+│   ├── core/                  # Orchestrator, brain, mood
 │   ├── brain/                 # LLM, emotion, thinking, knowledge
+│   ├── neural/                # Neural networks, embeddings, reasoning
+│   ├── advanced/              # Multi-agent, RLHF, security
 │   ├── voice/                 # STT, TTS, speaker recognition
 │   ├── memory/                # Episodic, semantic, procedural
-│   ├── tools/                 # Tool registry and execution
-│   ├── personality/           # Persona management
-│   └── utils/                 # Screen, assistant, training, repair
-├── personality/               # Personality definition files
-├── memory/                    # Persistent memory (auto-created)
-├── data/                      # Knowledge graph, archives
-├── models/                    # Local ML models
-├── training/                  # Training data and output
-├── generated/                 # Generated images, screenshots
+│   ├── tools/                 # 30+ built-in tools
+│   ├── security/              # AES-256, ChaCha20, RSA encryption
+│   ├── utils/                 # 79 feature modules
+│   └── personality/           # Persona management
+├── personality/               # Personality definition
+├── memory/                    # Persistent data (auto-created)
 └── logs/                      # Application logs
 ```
 
+## Features List (79 Modules)
+
+<details>
+<summary>Click to expand full list</summary>
+
+**Core (20):** Marketplace, Scheduler, Scraper, API Builder, Database, Email, SSH, VPN, FTP, Music, Weather, News, QR, PDF, Vault, Workflow, Language, Todo, Calendar, Docker
+
+**System (20):** Monitor, File Organizer, Backup, Git, Packages, Cron, Analyzer, Text, Image, Audio, Video, Crypto, Stocks, Fitness, Budget, Recipes, Library, Habits, Password, Web Scraper
+
+**Productivity (20):** Notes, Flashcards, Pomodoro, Clipboard, Formatter, Regex, JSON Editor, UUID, Hash, Units, BMI, Loan, Tip, Dice, Colors, ASCII Art, Diagnostics, Word Counter, Crypto Tools, Network Tools
+
+**Image (10):** Input, Analyzer, Finder, Generator, Editor, Filter, Diff, Collage, Watermark, Comparator
+
+**Video (1):** Video Analyzer (metadata, frames, scenes, motion, quality)
+
+**Encryption (8):** AI Protection, File Encryption, Secure Deletion, Key Manager, Digital Signatures, Hash Functions, HMAC, Key Derivation
+
+</details>
+
 ## Architecture
 
-Purple Ultra AI uses a modular, pipeline-based architecture:
-
 ```
-User Input -> VoiceIO -> Brain (LLM) -> ToolRunner -> VoiceIO -> Response
-                  |                        |
-                  v                        v
-            MoodState              MemoryStore
-            EmotionEngine          ThinkingEngine
-            SpeakerRecognizer      KnowledgeGraph
-```
-
-Key design principles:
-- **Frozen dataclasses** for immutable configuration
-- **Plugin-based tool registry** for extensibility
-- **Pipeline orchestration** with before/after hooks
-- **Unified memory** with deduplication and rotation
-- **Cross-platform** with platform-specific optimizations
-
-## Available Tools
-
-| Tool | Description | Dangerous |
-|------|-------------|-----------|
-| `open_app` | Open an application | No |
-| `open_url` | Open URL in browser | No |
-| `browser_search` | Search the web | No |
-| `youtube_search` | Search YouTube | No |
-| `youtube_play` | Play YouTube video | No |
-| `media_control` | Control playback | No |
-| `take_screenshot` | Capture screen | No |
-| `generate_image` | Create SVG image | No |
-| `web_search` | Search internet | No |
-| `get_time` | Current date/time | No |
-| `system_info` | System information | No |
-| `get_clipboard` | Read clipboard | No |
-| `set_clipboard` | Write clipboard | No |
-| `list_dir` | List directory | No |
-| `search_files` | Find files | No |
-| `read_file` | Read text file | No |
-| `write_file` | Write text file | **Yes** |
-| `delete_file` | Delete file | **Yes** |
-| `copy_file` | Copy file | No |
-| `move_file` | Move file | No |
-| `run_shell` | Execute command | **Yes** |
-| `remember` | Store a fact | No |
-| `add_note` | Save a note | No |
-| `set_reminder` | Set reminder | No |
-| `add_task` | Add to-do | No |
-| `execute_code` | Run Python | **Yes** |
-| `volume_control` | Adjust volume | No |
-| `get_battery` | Battery status | No |
-| `get_network` | Network info | No |
-
-## Training
-
-```bash
-# Export conversation history
-python -m purple_ultra.utils.training export
-
-# Add manual examples
-python -m purple_ultra.utils.training add-example --user "Hello" --assistant "Hi there!"
-
-# Run LoRA fine-tuning (Apple Silicon)
-python -m purple_ultra.utils.training train
+User Input → VoiceIO → Brain (LLM) → ToolRunner → VoiceIO → Response
+                |                        |
+                v                        v
+          MoodState              MemoryStore
+          EmotionEngine          ThinkingEngine
+          SpeakerRecognizer      KnowledgeGraph
+          NeuralNetwork          SelfAwareness
 ```
 
 ## License
 
-MIT
+MIT - Free to use, modify, and distribute.
