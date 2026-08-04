@@ -1,0 +1,4 @@
+# Purple Ultra AI - Training Requirements
+
+# Apple Silicon LoRA Fine-tuning
+mlx-lm>=0.19.3

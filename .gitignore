@@ -1,0 +1,61 @@
+# Purple Ultra AI
+
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# Generated files
+generated/
+temp/
+logs/
+collages/
+diffs/
+edited/
+filtered/
+watermarked/
+
+# Memory and data (user-specific)
+memory/
+data/
+keys/
+security/
+encrypted/
+
+# User data
+notes/
+flashcards/
+recipes/
+habits/
+fitness/
+finance/
+library/
+crypto/
+stocks/
+
+# Models
+models/
+training/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local

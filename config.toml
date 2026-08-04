@@ -1,0 +1,208 @@
+# Purple Ultra AI v2.0 - Advanced Configuration
+
+[assistant]
+name = "Purple Ultra"
+version = "2.0.0"
+voice_mode = "always"
+text_mode = true
+
+[voice]
+name = "Samantha"
+rate = 200
+pitch = 1.0
+volume = 0.9
+language = "en"
+
+[tts]
+engine = "auto"
+piper_model = "en_US-amy-medium"
+fallback_to_say = true
+fallback_to_pyttsx3 = true
+chunk_size = 500
+
+[stt]
+engine = "faster-whisper"
+model = "Systran/faster-whisper-small.en"
+device = "cpu"
+compute_type = "int8"
+language = "en"
+listen_seconds = 6.0
+energy_threshold = 300
+
+[llm]
+provider = "ollama"
+host = "http://127.0.0.1:11434"
+model = "llama3:latest"
+api_key = ""
+temperature = 0.7
+max_tokens = 2048
+stream = false
+timeout = 5
+enabled = false
+
+[mood]
+default = "neutral"
+
+[mood.voices]
+neutral = { name = "Samantha", rate = 200, pitch = 1.0, volume = 0.9 }
+happy = { name = "Samantha", rate = 210, pitch = 1.1, volume = 0.9 }
+sad = { name = "Samantha", rate = 170, pitch = 0.9, volume = 0.8 }
+angry = { name = "Samantha", rate = 230, pitch = 0.8, volume = 1.0 }
+excited = { name = "Samantha", rate = 240, pitch = 1.2, volume = 1.0 }
+calm = { name = "Samantha", rate = 180, pitch = 1.0, volume = 0.7 }
+playful = { name = "Samantha", rate = 220, pitch = 1.15, volume = 0.9 }
+worried = { name = "Samantha", rate = 190, pitch = 0.95, volume = 0.8 }
+love = { name = "Samantha", rate = 185, pitch = 1.05, volume = 0.8 }
+sarcastic = { name = "Samantha", rate = 195, pitch = 0.85, volume = 0.7 }
+surprised = { name = "Samantha", rate = 250, pitch = 1.25, volume = 1.0 }
+proud = { name = "Samantha", rate = 205, pitch = 1.1, volume = 0.9 }
+grateful = { name = "Samantha", rate = 195, pitch = 1.05, volume = 0.8 }
+bored = { name = "Samantha", rate = 160, pitch = 0.8, volume = 0.6 }
+confused = { name = "Samantha", rate = 190, pitch = 0.95, volume = 0.8 }
+motivated = { name = "Samantha", rate = 230, pitch = 1.15, volume = 1.0 }
+tired = { name = "Samantha", rate = 150, pitch = 0.85, volume = 0.6 }
+inspired = { name = "Samantha", rate = 215, pitch = 1.1, volume = 0.9 }
+
+[speaker]
+enabled = true
+threshold = 0.9
+max_samples = 5
+profiles_file = "memory/speakers.json"
+
+[memory]
+max_history = 1000
+history_file = "memory/history.jsonl"
+profile_file = "memory/profile.md"
+notes_file = "memory/notes.md"
+learned_file = "memory/learned.md"
+episodic_file = "memory/episodic.json"
+semantic_file = "memory/semantic.json"
+procedural_file = "memory/procedural.json"
+knowledge_graph_file = "data/knowledge_graph.json"
+patterns_file = "memory/patterns.json"
+
+[tools]
+enabled = true
+allow_shell = false
+allow_internet = true
+allow_file_write = true
+allow_camera = true
+sandbox_path = ""
+max_actions_per_turn = 5
+
+[emotion]
+enabled = true
+auto_detect = true
+persistence = true
+decay_rate = 0.1
+
+[thinking]
+enabled = true
+deep_thinking = true
+metacognition = true
+hypothesis_engine = true
+autonomous_goals = true
+max_chain_depth = 10
+
+[screen]
+enabled = false
+monitor_interval = 60.0
+ocr_enabled = true
+proactive_suggestions = true
+
+[training]
+enabled = false
+base_model = "mlx-community/Qwen2.5-3B-Instruct-4bit"
+output_dir = "training/output"
+max_iterations = 200
+auto_export = true
+
+[personality]
+mode = "professional"
+name = "Purple Ultra"
+file = "personality/default.md"
+companion_mode = false
+languages = ["en"]
+
+[web]
+enabled = true
+search_engines = ["duckduckgo", "google", "bing"]
+media_platforms = ["youtube", "spotify", "netflix"]
+browser = "auto"
+
+[system]
+platform = "auto"
+debug = false
+log_level = "INFO"
+log_file = "logs/purple_ultra.log"
+data_dir = "data"
+temp_dir = "temp"
+
+[network]
+enabled = false
+websocket_port = 8765
+api_port = 8080
+api_key = ""
+cors_origins = ["*"]
+
+[scheduler]
+enabled = true
+max_concurrent = 5
+
+[plugins]
+enabled = true
+directory = "plugins"
+auto_reload = true
+auto_load = true
+
+[cache]
+enabled = true
+max_size = 1000
+default_ttl = 300
+
+[rate_limit]
+enabled = true
+max_requests = 60
+window = 60
+
+[health]
+enabled = true
+check_interval = 60
+auto_save = true
+
+[autonomous]
+enabled = true
+sandbox_path = ""
+allow_shell = false
+allow_self_modify = false
+
+[camera]
+enabled = true
+face_recognition = true
+max_faces = 10
+
+[internet_learning]
+enabled = true
+sources = ["wikipedia", "duckduckgo"]
+auto_learn = false
+
+[code_analysis]
+enabled = true
+auto_fix = false
+extensions = [".py", ".js", ".ts"]
+
+[neural]
+enabled = true
+models_dir = "models"
+embedding_model = "all-MiniLM-L6-v2"
+embedding_cache = "models/embeddings"
+text_model = "gpt2"
+voice_dir = "models/voice"
+whisper_model = "Systran/faster-whisper-small.en"
+vision_dir = "models/vision"
+faces_dir = "memory/faces"
+memory_dir = "memory"
+training_dir = "training"
+auto_load = false
+gpu_acceleration = true
+max_models_loaded = 5
