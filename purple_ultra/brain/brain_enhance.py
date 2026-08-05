@@ -706,6 +706,367 @@ EXTRA_ALIASES = {
     "persuasion": "persuasion psychology",
     "influence": "persuasion psychology",
     "negotiation tactics": "negotiation tactics",
+
+    # ── HACKING & CYBERSECURITY ALIASES ──
+    # Penetration Testing
+    "pentest": "penetration testing methodology",
+    "pen testing": "penetration testing methodology",
+    "penetration test": "penetration testing methodology",
+    "security testing": "penetration testing methodology",
+    "ethical hacking": "penetration testing methodology",
+    "ptes": "ptes",
+    "owasp testing": "owasp testing guide",
+    "black box testing": "penetration testing methodology",
+    "white box testing": "penetration testing methodology",
+    "gray box testing": "penetration testing methodology",
+
+    # OSINT
+    "osint": "osint",
+    "open source intelligence": "osint",
+    "passive recon": "passive reconnaissance",
+    "passive reconnaissance": "passive reconnaissance",
+    "active recon": "active reconnaissance",
+    "active reconnaissance": "active reconnaissance",
+    "google dorking": "google dorks",
+    "google dorks": "google dorks",
+    "subdomain enum": "subdomain enumeration",
+    "subdomain enumeration": "subdomain enumeration",
+    "dns enum": "dns enumeration",
+    "dns enumeration": "dns enumeration",
+    "whois": "whois lookup",
+    "whois lookup": "whois lookup",
+    "shodan search": "shodan",
+    "shodan": "shodan",
+    "censys search": "censys",
+    "censys": "censys",
+    "maltego": "maltego",
+    "recon": "osint",
+    "information gathering": "osint",
+
+    # Scanning
+    "nmap scan": "nmap",
+    "nmap": "nmap",
+    "port scan": "port scanning techniques",
+    "port scanning": "port scanning techniques",
+    "service enum": "service enumeration",
+    "service enumeration": "service enumeration",
+    "os fingerprint": "os fingerprinting",
+    "os detection": "os fingerprinting",
+    "vuln scan": "vulnerability scanning",
+    "vulnerability scan": "vulnerability scanning",
+    "nessus": "vulnerability scanning",
+    "openvas": "vulnerability scanning",
+    "masscan": "masscan",
+    "zmap": "masscan",
+
+    # Exploitation
+    "sqli": "sql injection",
+    "sql injection": "sql injection",
+    "xss": "cross site scripting",
+    "cross site scripting": "cross site scripting",
+    "command injection": "command injection",
+    "cmd injection": "command injection",
+    "buffer overflow": "buffer overflow",
+    "priv esc": "privilege escalation",
+    "privilege escalation": "privilege escalation",
+    "lateral movement": "lateral movement",
+    "reverse shell": "reverse shell",
+    "bind shell": "bind shell",
+    "shell": "reverse shell",
+    "exploit development": "exploit development",
+    "exploit dev": "exploit development",
+    "metasploit": "metasploit",
+    "msfconsole": "metasploit",
+    "meterpreter": "metasploit",
+    "burp suite": "burp suite",
+    "burp": "burp suite",
+    "cobalt strike": "cobalt strike",
+
+    # Network Security
+    "network security": "network security fundamentals",
+    "firewall": "firewall types",
+    "ids": "ids vs ips",
+    "ips": "ids vs ips",
+    "ids/ips": "ids vs ips",
+    "vpn": "vpn security",
+    "network segmentation": "network segmentation",
+    "zero trust": "zero trust architecture",
+    "tcp/ip": "tcp ip model",
+    "wifi security": "wireless security",
+    "wireless": "wireless security",
+    "wifi hacking": "wifi hacking",
+    "aircrack": "wifi hacking",
+    "wifi cracking": "wifi hacking",
+
+    # Web Security
+    "web security": "web application security",
+    "web app security": "web application security",
+    "owasp top 10": "owasp top 10",
+    "owasp": "owasp top 10",
+    "idor": "idor",
+    "ssrf": "ssrf",
+    "cors": "cors misconfiguration",
+    "jwt": "jwt attacks",
+    "graphql": "graphql security",
+    "api security": "api security",
+
+    # Cryptography
+    "crypto": "cryptography fundamentals",
+    "cryptography": "cryptography fundamentals",
+    "encryption": "aes encryption",
+    "aes": "aes encryption",
+    "rsa": "rsa encryption",
+    "ecc": "elliptic curve cryptography",
+    "tls": "tls 1.3",
+    "tls 1.3": "tls 1.3",
+    "hashing": "hashing algorithms",
+    "password hashing": "password hashing",
+    "pki": "pki certificates",
+    "digital signature": "digital signatures",
+
+    # Malware
+    "malware analysis": "malware analysis",
+    "malware": "malware types",
+    "reverse engineering": "reverse engineering",
+    "reversing": "reverse engineering",
+    "sandbox": "sandbox analysis",
+    "yara": "yara rules",
+    "ioc": "ioc indicators",
+    "indicators of compromise": "ioc indicators",
+
+    # Forensics
+    "forensics": "digital forensics",
+    "digital forensics": "digital forensics",
+    "memory forensics": "memory forensics",
+    "volatility": "memory forensics",
+    "disk forensics": "disk forensics",
+    "network forensics": "network forensics",
+    "log forensics": "log forensics",
+
+    # Incident Response
+    "incident response": "incident response",
+    "ir": "incident response",
+    "forensic acquisition": "forensic acquisition",
+
+    # Social Engineering
+    "social engineering": "social engineering attacks",
+    "phishing": "phishing techniques",
+    "spear phishing": "phishing techniques",
+    "vishing": "phishing techniques",
+    "smishing": "phishing techniques",
+
+    # Cloud Security
+    "cloud security": "cloud security",
+    "aws security": "aws security",
+    "azure security": "azure security",
+    "gcp security": "gcp security",
+
+    # Frameworks
+    "metasploit framework": "metasploit framework",
+    "empire": "empire framework",
+    "bloodhound": "bloodhound",
+    "mimikatz": "mimikatz",
+    "responder": "responder",
+
+    # Persistence
+    "web shell": "web shells",
+    "webshells": "web shells",
+    "persistence": "persistence techniques",
+
+    # Hardware/IoT
+    "iot security": "iot security",
+    "firmware analysis": "firmware analysis",
+
+    # Mobile
+    "mobile security": "mobile security",
+    "android security": "android security",
+    "ios security": "ios security",
+
+    # Threat Intelligence
+    "threat intel": "threat intelligence",
+    "threat intelligence": "threat intelligence",
+    "mitre attack": "mitre attack framework",
+    "att&ck": "mitre attack framework",
+    "cyber kill chain": "cyber kill chain",
+    "kill chain": "cyber kill chain",
+    "diamond model": "diamond model",
+
+    # SOC
+    "soc": "soc operations",
+    "siem": "siem systems",
+    "threat hunting": "threat hunting",
+
+    # Defensive
+    "defense in depth": "defense in depth",
+    "edr": "endpoint detection response",
+    "endpoint detection": "endpoint detection response",
+    "hardening": "security hardening",
+    "security hardening": "security hardening",
+    "patching": "patch management",
+    "patch management": "patch management",
+
+    # Red/Blue/Purple
+    "red team": "red team operations",
+    "red teaming": "red team operations",
+    "blue team": "blue team operations",
+    "blue teaming": "blue team operations",
+    "purple team": "purple team",
+
+    # Advanced
+    "kerberos attack": "kerberos attacks",
+    "kerberoasting": "kerberos attacks",
+    "golden ticket": "kerberos attacks",
+    "silver ticket": "kerberos attacks",
+    "ad attack": "active directory attacks",
+    "active directory": "active directory attacks",
+    "dns security": "dns security",
+    "email security": "email security",
+    "supply chain attack": "supply chain security",
+
+    # Bug Bounty
+    "bug bounty": "bug bounty",
+    "responsible disclosure": "responsible disclosure",
+    "vulnerability disclosure": "responsible disclosure",
+
+    # Crypto Attacks
+    "crypto attack": "crypto attacks",
+    "password cracking": "password cracking",
+    "hashcat": "hashcat",
+    "john": "john the ripper",
+    "john the ripper": "john the ripper",
+
+    # Tools
+    "netcat": "netcat",
+    "ncat": "netcat",
+    "socat": "socat",
+    "curl": "curl",
+    "wget": "wget",
+    "hashid": "hashid",
+
+    # Linux Security
+    "linux security": "linux security",
+    "linux enumeration": "linux enumeration",
+    "linux privesc": "linux privilege escalation",
+    "linux persistence": "linux persistence",
+
+    # Windows Security
+    "windows security": "windows security",
+    "windows enumeration": "windows enumeration",
+    "windows privesc": "windows privilege escalation",
+    "windows persistence": "windows persistence",
+
+    # Network Attacks
+    "arp spoofing": "arp spoofing",
+    "dns spoofing": "dns spoofing",
+    "mitm": "man in the middle",
+    "man in the middle": "man in the middle",
+    "dos": "denial of service",
+    "ddos": "denial of service",
+    "denial of service": "denial of service",
+
+    # Wireless Attacks
+    "wireless attacks": "wireless attacks",
+    "evil twin": "evil twin attack",
+    "krack": "krack attack",
+
+    # OSINT/Social
+    "social media intelligence": "social media intelligence",
+    "socmint": "social media intelligence",
+    "username enumeration": "username enumeration",
+    "sherlock": "username enumeration",
+
+    # Dark Web
+    "dark web": "dark web security",
+    "tor": "tor network",
+    "tor network": "tor network",
+
+    # Compliance
+    "pci dss": "pci dss",
+    "gdpr": "gdpr security",
+    "hipaa": "hipaa security",
+    "iso 27001": "iso 27001",
+
+    # Tools/Distros
+    "kali": "kali linux",
+    "kali linux": "kali linux",
+    "parrot": "parrot security",
+    "parrot security": "parrot security",
+    "parrot os": "parrot os",
+
+    # APT
+    "apt": "apt groups",
+    "apt groups": "apt groups",
+    "living off the land": "living off the land",
+    "lotl": "living off the land",
+
+    # Common Security Questions
+    "how to protect against phishing": "how to protect against phishing",
+    "how to secure wifi": "how to secure wifi",
+    "how to secure home network": "how to secure home network",
+    "how to create strong password": "how to create strong password",
+    "what is ethical hacking": "what is ethical hacking",
+    "how to learn cybersecurity": "how to learn cybersecurity",
+    "common vulnerabilities": "common cybersecurity vulnerabilities",
+    "what is a firewall": "what is a firewall",
+    "what is encryption": "what is encryption",
+    "what is a vpn": "what is a vpn",
+    "what is mfa": "what is multi factor authentication",
+    "what is multi factor authentication": "what is multi factor authentication",
+    "what is a zero day": "what is a zero day vulnerability",
+    "zero day": "what is a zero day vulnerability",
+    "what is ransomware": "what is ransomware",
+    "what is a botnet": "what is a botnet",
+    "what is social engineering": "what is social engineering",
+    "what is ddos": "what is ddos attack",
+    "what is ddos attack": "what is ddos attack",
+    "what is sql injection": "what is sql injection explained",
+    "how does ransomware work": "how does ransomware work",
+    "how to become a hacker": "how to become a hacker",
+    "what is osint": "what is osint",
+    "what is penetration testing": "what is penetration testing",
+    "what is vulnerability assessment": "what is vulnerability assessment",
+    "what is threat modeling": "what is threat modeling",
+    "what is security hardening": "what is security hardening",
+    "what is a dmz": "what is a dmz",
+    "what is network segmentation": "what is network segmentation",
+    "what is an ips": "what is an ips",
+    "what is a waf": "what is a waf",
+    "what is endpoint protection": "what is endpoint protection",
+    "what is a siem": "what is a siem",
+    "what is a soc": "what is a soc",
+    "what is incident response": "what is incident response",
+    "what is digital forensics": "what is digital forensics",
+    "what is memory forensics": "what is memory forensics",
+    "what is reverse engineering": "what is reverse engineering",
+    "what is malware analysis": "what is malware analysis",
+    "what is threat intelligence": "what is threat intelligence",
+    "what is red team": "what is red team",
+    "what is blue team": "what is blue team",
+    "what is purple team": "what is purple team",
+    "what is bug bounty": "what is bug bounty",
+    "what is responsible disclosure": "what is responsible disclosure",
+    "what is zero trust": "what is zero trust network",
+    "how to protect against ransomware": "how to protect against ransomware",
+    "how to secure cloud": "how to secure cloud environment",
+    "how to protect against ddos": "how to protect against ddos",
+    "what is sqli prevention": "what is sql injection prevention",
+    "what is xss prevention": "what is xss prevention",
+    "what is csrf prevention": "what is csrf prevention",
+    "what is ssrf prevention": "what is ssrf prevention",
+    "what is cors": "what is cors",
+    "what is jwt security": "what is jwt security",
+
+    # Certifications
+    "oscp": "oscp certification",
+    "oscp certification": "oscp certification",
+    "ceh": "ceh certification",
+    "ceh certification": "ceh certification",
+    "security+": "compTIA security",
+    "comptia security": "compTIA security",
+    "gpen": "gpen certification",
+    "gpen certification": "gpen certification",
+    "crtp": "crtp certification",
+    "crtp certification": "crtp certification",
 }
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1031,4 +1392,287 @@ EXTRA_KNOWLEDGE.update({
     "what is the theory of relativity": "Special relativity (1905): speed of light constant, time dilation, length contraction, E=mc². General relativity (1915): gravity as spacetime curvature. Predicted: gravitational waves, black holes, time dilation near massive objects.",
     "how do earthquakes happen": "Earthquakes occur when tectonic plates move suddenly. Stress builds at plate boundaries. When stress exceeds friction, rock slips along fault. Seismic waves radiate from focus (hypocenter). Epicenter: point on surface above focus.",
     "what is the theory of evolution": "Theory of evolution: species change over time through natural selection, genetic drift, mutation, and gene flow. Evidence: fossils, DNA sequences, comparative anatomy, biogeography, observed speciation. Unifying theory of biology.",
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    #  HACKING & CYBERSECURITY (COMPREHENSIVE)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    # ── PENETRATION TESTING METHODOLOGY ──
+    "penetration testing methodology": "Penetration testing follows structured methodology: 1) Pre-engagement (rules of care, scope, authorization), 2) Reconnaissance (passive/active information gathering), 3) Scanning (port/service enumeration), 4) Gaining Access (exploitation), 5) Maintaining Access (persistence), 6) Covering Tracks (log evasion), 7) Reporting (findings, remediation). Types: black box (no knowledge), white box (full knowledge), gray box (partial knowledge).",
+    "owasp testing guide": "OWASP Testing Guide v4: Information Gathering (DNS, IP,米粒, technology fingerprinting), Configuration Management (platform, TLS, file permissions), Authentication (mechanisms, brute force, remember me), Authorization (directory traversal, IDOR), Session Management (cookies, tokens, fixation), Input Validation (XSS, SQLi, command injection), Error Handling, Cryptography, Business Logic, Client-side Testing.",
+    "ptes": "PTES (Penetration Testing Execution Standard): 7 phases - 1) Intelligence Gathering (OSINT, DNS enumeration, Google dorks), 2) Threat Modeling (identify threats, attack vectors), 3) Vulnerability Analysis (scan for weaknesses), 4) Exploitation (prove vulnerabilities), 5) Post-Exploitation (pivot, lateral movement), 6) Reporting (executive/technical), 7) Remediation (fix recommendations).",
+    "nis2 directive": "NIS2 Directive (EU 2022/2555): enhances cybersecurity across EU. Mandates risk management, incident reporting (24h initial, 72h full), supply chain security. Applies to essential entities (energy, transport, health, digital) and important entities. Penalties: up to €10M or 2% global turnover.",
+
+    # ── RECONNAISSANCE & OSINT ──
+    "osint": "OSINT (Open Source Intelligence): collecting information from publicly available sources. Tools: Maltego (link analysis), Shodan (IoT search), Censys (internet scanning), theHarvester (email/subdomain), Recon-ng (automation), SpiderFoot (OSINT framework). Sources: social media, WHOIS, DNS records, web archives, code repositories.",
+    "passive reconnaissance": "Passive reconnaissance: gather info without direct target interaction. Techniques: WHOIS lookup, DNS enumeration, Google dorking, social media profiling, job posting analysis, code repository inspection, web archive (Wayback Machine), certificate transparency logs. Tools: OSINT Framework, SpiderFoot, Recon-ng.",
+    "active reconnaissance": "Active reconnaissance: direct interaction with target systems. Techniques: port scanning, service enumeration, OS detection, banner grabbing, vulnerability scanning. Tools: Nmap, Masscan, Zmap, Unicornscan. Risk: may trigger IDS/IPS, leave traces. Always get authorization first.",
+    "google dorks": "Google dorks: advanced search operators for finding vulnerable info. Examples: site:target.com filetype:php, inurl:admin intitle:'login', cache:target.com, link:target.com, related:target.com. Find: exposed files, login pages, error messages, directory listings, configuration files.",
+    "subdomain enumeration": "Subdomain enumeration: discover subdomains of target. Tools: Sublist3r, Amass, Subfinder, Assetfinder, crt.sh (certificate transparency). Techniques: DNS brute-forcing, certificate transparency logs, passive DNS databases, search engines, Shodan. Important for expanding attack surface.",
+    "dns enumeration": "DNS enumeration: discover DNS records and infrastructure. Record types: A (IPv4), AAAA (IPv6), MX (mail), NS (nameserver), TXT (text/SPF/DKIM), CNAME (alias), SOA (authority), SRV (services). Tools: dig, nslookup, DNSRecon, DNSenum. Reveals mail servers, subdomains, infrastructure.",
+    "whois lookup": "WHOIS lookup: query domain registration info. Shows: registrant, registrar, creation/expiry dates, name servers, contact info. Tools: whois command, who.is, lookup.icann.org. Useful for: identifying infrastructure, contact info, historical records.",
+    "shodan": "Shodan: search engine for internet-connected devices. Search by: IP, hostname, org, country, port, banner. Shows: open ports, services, banners, screenshots. Use cases: finding vulnerable IoT, exposed databases, SCADA systems. Shodan CLI, API for automation.",
+    "censys": "Censys: internet-wide scanning platform. Search certificates, hosts, websites. Shows: TLS configurations, open ports, technologies, certificates. Useful for: finding all assets, tracking certificate changes, identifying vulnerabilities across infrastructure.",
+    "maltego": "Maltego: OSINT and graphical link analysis tool. Transforms: DNS, WHOIS, social media, email, phone, company info. Visualizes relationships between entities. Community Edition (free) and Enterprise. Integrates with other tools. Great for mapping attack surfaces.",
+
+    # ── SCANNING & ENUMERATION ──
+    "nmap": "Nmap: network mapper and security scanner. Features: host discovery (-sn), port scanning (-sS, -sT, -sU), OS detection (-O), service detection (-sV), script scanning (--script). Output: normal, grepable, XML. NSE scripts for vuln detection, brute force, exploitation. Masscan for fast scanning.",
+    "port scanning techniques": "Port scanning: SYN scan (-sS, stealthy, half-open), Connect scan (-sT, full TCP), UDP scan (-sU, slow but thorough), XMAS scan (-sX, FIN/PSH/URG), NULL scan (-sN, no flags), ACK scan (-sA, firewall mapping), IDLE scan (-sI, zombie). TCP flags: SYN, ACK, FIN, RST, PSH, URG.",
+    "service enumeration": "Service enumeration: identify services running on open ports. Banner grabbing: connect and read response. Version detection: Nmap -sV, Amap. Tools: Nmap, Netcat, Masscan. Important for: identifying vulnerable versions, choosing exploits, understanding attack surface.",
+    "os fingerprinting": "OS fingerprinting: identify operating system. Passive: analyze network behavior, timing, TCP window sizes. Active: send probes and analyze responses. Tools: Nmap -O, P0f (passive), Satori. Useful for: tailoring attacks, understanding target environment.",
+    "vulnerability scanning": "Vulnerability scanning: automated detection of weaknesses. Tools: Nessus (commercial), OpenVAS (open source), Qualys, Nikto (web), Nuclei (templates). Checks: missing patches, misconfigurations, default credentials, known CVEs. Always get authorization.",
+    "masscan": "Masscan: fastest internet port scanner. Transmits 10M packets/sec. Uses custom TCP/IP stack. Asynchronous, stateless. Output: XML, binary, list. Use cases: scanning entire internet, large networks, finding all open ports quickly. Less accurate than Nmap for service detection.",
+
+    # ── EXPLOITATION TECHNIQUES ──
+    "sql injection": "SQL Injection: inserting SQL code into input fields. Types: in-band (classic, error-based), blind (boolean, time-based), out-of-band (DNS, HTTP). Impact: data extraction, authentication bypass, data modification, command execution. Prevention: parameterized queries, prepared statements, input validation, WAF.",
+    "cross site scripting": "XSS (Cross-Site Scripting): injecting malicious scripts into web pages. Types: stored (persistent), reflected (non-persistent), DOM-based. Impact: session hijacking, defacement, phishing, keylogging. Prevention: output encoding, Content Security Policy, HttpOnly cookies, input validation.",
+    "command injection": "Command Injection: executing arbitrary OS commands through vulnerable input fields. Techniques: chaining (;, &&, ||), backticks, $(), newlines. Impact: full system compromise, data theft, lateral movement. Prevention: input validation, least privilege, avoid system calls, use APIs.",
+    "buffer overflow": "Buffer Overflow: writing beyond buffer boundaries. Stack-based: overwrite return address. Heap-based: overwrite function pointers. Shellcode injection, ROP chains. Impact: arbitrary code execution, privilege escalation. Protections: ASLR, DEP/NX, stack canaries, CFG.",
+    "privilege escalation": "Privilege Escalation: gaining higher permissions. Vertical: user → admin → root. Horizontal: access other users' resources. Linux: SUID binaries, kernel exploits, sudo misconfig, cron jobs. Windows: unquoted service paths, DLL hijacking, token impersonation, kernel exploits.",
+    "lateral movement": "Lateral Movement: moving through network after initial compromise. Techniques: pass-the-hash, pass-the-ticket, PsExec, WMI, SSH, RDP. Tools: CrackMapExec, Impacket, Mimikatz. Goal: reach high-value targets (domain controllers, databases). Defense: network segmentation, monitoring.",
+    "reverse shell": "Reverse Shell: target connects back to attacker. Types: bash, Python, Netcat, PHP, PowerShell. Listeners: Netcat, Metasploit, socat. Bypasses firewalls (outbound allowed). Encrypted shells: OpenSSL, Stunnel. Web shells: PHP/ASP backdoors for persistence.",
+    "bind shell": "Bind Shell: target listens for attacker connection. Simpler but blocked by firewalls. Types: Netcat, Socat, custom. Used when inbound connections allowed. Less common than reverse shells due to firewall restrictions.",
+    "exploit development": "Exploit Development: creating code to leverage vulnerabilities. Steps: find vulnerability, determine offset, control EIP/RIP, find bad chars, generate shellcode, test exploit. Tools: Immunity Debugger, GDB, pwntools, ROPgadget, msf-nasm_shell. Modern: ROP chains, ret2libc, format string attacks.",
+    "metasploit": "Metasploit: penetration testing framework. Components: exploits, payloads, auxiliary modules, post-exploitation, encoders. Commands: search, use, show options, set, exploit, sessions. Meterpreter: advanced payload with file system, registry, screenshots, keylogging. MSFvenom: payload generation.",
+    "burp suite": "Burp Suite: web application security testing proxy. Features: intercepting proxy, spider (crawler), scanner, repeater (manual testing), intruder (automation), decoder, comparer. Extensions: BApp Store. Community (free), Professional (paid), Enterprise.",
+    "cobalt strike": "Cobalt Strike: commercial adversary simulation platform. Features: Beacon (in-memory payload), Malleable C2 (profile customization), lateral movement, privilege escalation, credential access, exfiltration. Used by red teams. Alternative: Sliver, Brute Ratel.",
+
+    # ── NETWORK SECURITY ──
+    "network security fundamentals": "Network security: protecting network infrastructure. Layers: perimeter (firewall), internal (segmentation), host (EDR), application (WAF), data (encryption). Concepts: defense in depth, least privilege, zero trust, network segmentation, monitoring.",
+    "firewall types": "Firewall types: packet filtering (stateless, ACLs), stateful inspection (track connections), application layer (proxy, deep packet inspection), next-gen (IPS, application awareness, threat intelligence). Products: pfSense, OPNsense, iptables, nftables, Palo Alto, Fortinet.",
+    "ids vs ips": "IDS (Intrusion Detection System): monitors and alerts. IPS (Intrusion Prevention System): monitors and blocks. Detection: signature-based (known patterns), anomaly-based (baseline deviation), heuristic (behavioral). Tools: Snort, Suricata, Zeek (formerly Bro).",
+    "vpn security": "VPN (Virtual Private Network): encrypted tunnel for remote access. Protocols: OpenVPN (open source), WireGuard (modern, fast), IPsec (widely supported), L2TP/IPsec, SSTP. Considerations: encryption strength, no-logs policy, kill switch, DNS leak protection.",
+    "network segmentation": "Network segmentation: dividing network into isolated zones. Benefits: contain breaches, limit lateral movement, compliance. Methods: VLANs, subnets, firewalls, microsegmentation. Zero Trust: never trust, always verify. Tools: Cisco ISE, VMware NSX.",
+    "zero trust architecture": "Zero Trust Architecture: never trust, always verify. Principles: verify explicitly, least privilege access, assume breach. Components: identity verification, device validation, microsegmentation, continuous monitoring. Products: Zscaler, Palo Alto Prisma, Microsoft Zero Trust.",
+    "tcp ip model": "TCP/IP Model: 4 layers - 1) Network Interface (Ethernet, Wi-Fi), 2) Internet (IP, ICMP), 3) Transport (TCP, UDP), 4) Application (HTTP, DNS, SMTP). TCP: reliable, connection-oriented. UDP: fast, connectionless. Understanding critical for network security.",
+    "wireless security": "Wireless Security: protecting Wi-Fi networks. Protocols: WEP (broken), WPA (TKIP, weak), WPA2 (CCMP, secure), WPA3 (SAE, most secure). Attacks: WPS brute force, evil twin, deauthentication, KRACK. Tools: Aircrack-ng, Wireshark, Wifite. Best: WPA3, strong passphrase, disable WPS.",
+    "wifi hacking": "WiFi Hacking: techniques for wireless network attacks. Steps: enable monitor mode, capture traffic, deauth clients, capture handshake, crack password. Tools: Airmon-ng (monitor mode), Airodump-ng (capture), Aireplay-ng (deauth), Aircrack-ng (crack). wordlists: rockyou.txt, SecLists.",
+
+    # ── WEB APPLICATION SECURITY ──
+    "web application security": "Web Application Security: protecting web apps from attacks. OWASP Top 10 (2021): Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable Components, Auth Failures, Data Integrity Failures, Logging Failures, SSRF.",
+    "owasp top 10": "OWASP Top 10 (2021): A01 Broken Access Control (IDOR, privilege escalation), A02 Cryptographic Failures (weak encryption), A03 Injection (SQL, NoSQL, OS, LDAP), A04 Insecure Design (missing threat modeling), A05 Security Misconfiguration (default creds, verbose errors), A06 Vulnerable Components, A07 Auth Failures, A08 Data Integrity Failures, A09 Logging Failures, A10 SSRF.",
+    "idor": "IDOR (Insecure Direct Object Reference): accessing unauthorized resources by modifying input parameters. Example: /api/user/123 → /api/user/124. Impact: data leakage, unauthorized access. Prevention: indirect object references, access control checks, session validation.",
+    "ssrf": "SSRF (Server-Side Request Forgery): making server fetch attacker-controlled URLs. Impact: internal network scanning, cloud metadata access (169.254.169.254), file read (file:///etc/passwd), port scanning. Prevention: URL validation, allowlists, block internal IPs.",
+    "cors misconfiguration": "CORS Misconfiguration: improper Cross-Origin Resource Sharing. Allows attacker's domain to make authenticated requests. Impact: data theft, account takeover. Misconfig: Access-Control-Allow-Origin: *, wildcard with credentials. Fix: validate Origin header, specific allowed origins.",
+    "jwt attacks": "JWT (JSON Web Token) Attacks: algorithm confusion (none algorithm), weak secret brute force, key injection, impersonation. Tools: jwt_tool, john the ripper. Secure: strong secrets, RS256/ES256, validate all claims, short expiry.",
+    "graphql security": "GraphQL Security: introspection disclosure, query batching attacks, field suggestion info leakage, depth limiting bypass, authorization bypass. Tools: InQL, graphql-introspection. Secure: disable introspection in production, query depth limits, rate limiting, authorization checks.",
+    "api security": "API Security: protecting REST/GraphQL APIs. Vulnerabilities: broken auth, excessive data exposure, lack of rate limiting, mass assignment, broken function level auth. Secure: OAuth 2.0, API keys, rate limiting, input validation, output filtering, logging.",
+
+    # ── CRYPTOGRAPHY ──
+    "cryptography fundamentals": "Cryptography: securing information through encoding. Symmetric: AES, ChaCha20 (same key). Asymmetric: RSA, ECC (key pairs). Hashing: SHA-256, bcrypt (one-way). Digital signatures: authenticate and verify integrity. Key management critical.",
+    "aes encryption": "AES (Advanced Encryption Standard): symmetric block cipher. Key sizes: 128, 192, 256 bits. Block size: 128 bits. Modes: ECB (insecure), CBC (IV needed), CTR (parallelizable), GCM (authenticated). Hardware acceleration: AES-NI. Used everywhere: TLS, disk encryption, VPNs.",
+    "rsa encryption": "RSA: asymmetric encryption (Rivest-Shamir-Adleman). Key size: 2048, 4076, 8192 bits. Based on factoring large primes. Slow (~1000x slower than AES). Used for: key exchange, digital signatures, small data. Often combined with AES (RSA encrypts AES key).",
+    "elliptic curve cryptography": "ECC (Elliptic Curve Cryptography): asymmetric cryptography using elliptic curves. Same security as RSA with smaller keys (256-bit ECC ≈ 3072-bit RSA). Faster, less bandwidth. Used in: TLS, Bitcoin (secp256k1), mobile. Curves: P-256, Curve25519, secp256k1.",
+    "hashing algorithms": "Hashing: fixed-size digest from variable input. Properties: deterministic, fast, irreversible, collision-resistant. SHA-256 (Bitcoin), SHA-3 (newer), bcrypt (passwords, slow), Argon2 (memory-hard, winner), scrypt. Rainbow tables: precomputed hashes. Salt: prevent rainbow tables.",
+    "digital signatures": "Digital Signatures: verify authenticity and integrity. Process: hash message, encrypt hash with private key. Verification: decrypt with public key, compare hashes. Algorithms: RSA-PSS, ECDSA, EdDSA. Use cases: code signing, certificates, blockchain, documents.",
+    "pki certificates": "PKI (Public Key Infrastructure): framework for managing digital certificates. Components: CA (Certificate Authority), RA (Registration Authority), certificates (X.509). Hierarchy: Root CA → Intermediate CA → End entity. Certificate contains: public key, identity, validity, issuer, signature.",
+    "tls 1.3": "TLS 1.3: latest Transport Layer Security protocol. Improvements: faster handshake (1-RTT), removed weak ciphers (RSA key exchange, CBC, RC4), forward secrecy mandatory, encrypted certificates. Cipher suites: AES-256-GCM, ChaCha20-Poly1305, AES-128-GCM.",
+    "password hashing": "Password Hashing: securely storing passwords. Algorithms: bcrypt (cost factor), scrypt (memory-hard), Argon2 (winner of Password Hashing Competition). Salt: random value per password. Pepper: server-side secret. Never store plaintext, MD5, or SHA-1 for passwords.",
+
+    # ── MALWARE ANALYSIS ──
+    "malware analysis": "Malware Analysis: studying malicious software. Types: static (code analysis without execution), dynamic (behavior analysis in sandbox). Tools: IDA Pro, Ghidra (reverse engineering), OllyDbg, x64dbg (debugging), Cuckoo Sandbox (dynamic analysis).",
+    "malware types": "Malware Types: virus (attaches to files), worm (self-replicating), trojan (disguised), ransomware (encrypts files), spyware (monitors), rootkit (hides), backdoor (remote access), keylogger (records keystrokes), botnet (network of infected machines).",
+    "reverse engineering": "Reverse Engineering: analyzing compiled code. Tools: IDA Pro (disassembler/debugger), Ghidra (NSA, free), Radare2 (open source), Cutter (GUI). Techniques: static analysis (code review), dynamic analysis (debugging), decompilation. x86/x64 assembly knowledge essential.",
+    "sandbox analysis": "Sandbox Analysis: executing malware in isolated environment. Tools: Cuckoo Sandbox (open source), Joe Sandbox, Any.Run, Hybrid Analysis. Monitors: network traffic, file changes, registry modifications, API calls, memory. Anti-sandbox: detect VM, timing checks.",
+    "yara rules": "YARA: pattern matching for malware identification. Rules: strings, hex patterns, regular expressions, condition logic. Use cases: malware classification, IOC matching, threat hunting. Tools: YARA command line, THOR, Loki. Examples: detect specific malware families.",
+    "ioc indicators": "IOCs (Indicators of Compromise): evidence of breach. Types: IP addresses, domains, URLs, file hashes (MD5, SHA-256), file paths, registry keys, mutexes, email addresses. Formats: STIX/TAXII, OpenIOC, MISP. Use in: threat hunting, detection rules, threat intelligence.",
+
+    # ── FORENSICS ──
+    "digital forensics": "Digital Forensics: collecting and analyzing digital evidence. Process: identification, preservation, collection, examination, analysis, reporting. Tools: FTK Imager (disk imaging), Autopsy (analysis), EnCase, Volatility (memory), Wireshark (network).",
+    "memory forensics": "Memory Forensics: analyzing RAM dumps. Captures: live memory, hibernation files, crash dumps. Tools: Volatility (framework), Rekall, LiME (Linux). Artifacts: running processes, network connections, loaded DLLs, encryption keys, passwords, malware.",
+    "disk forensics": "Disk Forensics: analyzing storage media. Imaging: dd, FTK Imager, Guymager (bit-for-bit copies). Analysis: file recovery, metadata, timestamps, file system artifacts, deleted files. File systems: NTFS, ext4, APFS. Tools: Autopsy, Sleuth Kit, X-Ways.",
+    "network forensics": "Network Forensics: analyzing network traffic. Captures: PCAP files, netflow data. Tools: Wireshark, NetworkMiner, Zeek, tcpdump. Analysis: protocol analysis, file extraction, DNS queries, HTTP requests, malware communication.",
+    "log forensics": "Log Forensics: analyzing system and application logs. Sources: Windows Event Logs, syslog, web server logs, database logs, firewall logs. Analysis: timeline construction, anomaly detection, correlation. Tools: LogParser, Splunk, ELK Stack.",
+
+    # ── INCIDENT RESPONSE ──
+    "incident response": "Incident Response: managing security incidents. NIST phases: Preparation, Detection & Analysis, Containment, Eradication, Recovery, Post-Incident Activity. Team: CSIRT/CERT. Tools: SOAR platforms, ticketing, playbooks. Communication: internal, external, regulatory.",
+    "incident response plan": "Incident Response Plan: documented procedures for handling incidents. Components: roles, communication, escalation, containment, eradication, recovery, lessons learned. Regular tabletop exercises and drills. Compliance: GDPR 72-hour reporting, HIPAA, PCI DSS.",
+    "forensic acquisition": "Forensic Acquisition: collecting evidence properly. Chain of custody: document who handled evidence when. Imaging: bit-for-bit copies, write blockers, hashing (MD5/SHA-256). Volatile data: memory, network connections, running processes. Legal admissibility.",
+
+    # ── SOCIAL ENGINEERING ──
+    "social engineering attacks": "Social Engineering: manipulating people into actions. Types: phishing (email), vishing (voice), smishing (SMS), pretexting (fake scenario), baiting (lure), tailgating (follow), quid pro quo (exchange). Defense: awareness training, verification procedures, MFA.",
+    "phishing techniques": "Phishing: fraudulent communications to steal info. Types: spear (targeted), whaling (executives), clone (copy legitimate), vishing (voice), smishing (SMS), pharming (DNS hijacking). Red flags: urgency, spelling errors, suspicious links, unusual sender.",
+    "social engineering defense": "Social Engineering Defense: training and procedures. Awareness training, simulated phishing campaigns, verification procedures (call back), MFA enforcement, email filtering (DMARC/DKIM/SPF), clear reporting procedures, least privilege access.",
+
+    # ── CLOUD SECURITY ──
+    "cloud security": "Cloud Security: protecting cloud infrastructure and data. Shared responsibility model: provider secures infrastructure, customer secures data/config. Risks: misconfiguration, data breaches, insecure APIs, account hijacking. Tools: CSPM, CWPP, CASB.",
+    "aws security": "AWS Security: securing Amazon Web Services. Key services: IAM (identity), KMS (encryption), GuardDuty (threat detection), Security Hub (centralized), CloudTrail (logging), VPC (network), WAF (web firewall). Best practices: least privilege, encryption, logging, MFA.",
+    "azure security": "Azure Security: securing Microsoft Azure. Key services: Azure AD (identity), Security Center (defender), Sentinel (SIEM), Key Vault (secrets), NSG (network). Defender for Cloud: CSPM and CWPP. Integrate with Microsoft 365 Defender.",
+    "gcp security": "GCP Security: securing Google Cloud Platform. Key services: IAM, Cloud KMS, Security Command Center, VPC Service Controls, Cloud Armor (WAF). BeyondCorp: zero trust model. Chronicle: SIEM and SOAR.",
+
+    # ── EXPLOITATION FRAMEWORKS ──
+    "metasploit framework": "Metasploit Framework: penetration testing platform. Commands: msfconsole, msfvenom, msfconsole. Modules: exploits, payloads, auxiliary, post, encoders, nops. Meterpreter: advanced payload with shell, file system, screenshots, keylogging. Resources: ~/.msf4/",
+    "empire framework": "Empire: post-exploitation framework. Features: PowerShell agents, Python agents, C# agents, modular architecture. Modules: persistence, privilege escalation, lateral movement, collection. Alternatives: Covenant, Sliver.",
+    "bloodhound": "Bloodhound: Active Directory attack path analysis. Collects: users, groups, computers, GPOs, OUs. Queries: shortest path to Domain Admin, find all Domain Admins, identify kerberoastable users. SharpHound (C#) and AzureHound (Azure AD).",
+    "mimikatz": "Mimikatz: Windows credential extraction. Features: plaintext passwords, NTLM hashes, Kerberos tickets, DCSync, SID history, golden/silver tickets. Commands: sekurlsa::logonpasswords, lsadump::dcsync, kerberos::golden. Protection: Credential Guard, LSA protection.",
+    "responder": "Responder: LLMNR/NBT-NS/MDNS poisoner. Captures: NTLMv2 hashes, credentials. Features: WPAD proxy, DHCP, DNS, HTTP/HTTPS/SMB servers. Attack: poison name resolution, capture hashes, crack with hashcat. Defense: disable LLMNR/NBT-NS.",
+
+    # ── WEB SHELLS & PERSISTENCE ──
+    "web shells": "Web Shells: backdoor web scripts. Types: PHP (b374k, WSO), ASP (China Chopper), JSP (webshell). Features: file manager, command execution, database access, lateral movement. Detection: file integrity monitoring, YARA rules, AV scans.",
+    "persistence techniques": "Persistence: maintaining access after reboot. Linux: cron jobs, systemd services, SSH keys, .bashrc, kernel modules. Windows: Registry run keys, scheduled tasks, services, DLL hijacking, WMI events, startup folder. Defense: monitoring, EDR.",
+
+    # ── HARDWARE & IOT SECURITY ──
+    "iot security": "IoT Security: protecting connected devices. Vulnerabilities: default credentials, insecure firmware, lack of encryption, weak protocols. Tools: Shodan (discovery), Firmware Analysis Toolkit, binwalk (firmware extraction). Attacks: botnet (Mirai), data theft.",
+    "firmware analysis": "Firmware Analysis: extracting and analyzing device firmware. Tools: binwalk (extract), firmware-mod-kit (modify), Ghidra (reverse). Techniques: filesystem extraction, binary analysis, credential extraction, vulnerability identification.",
+
+    # ── MOBILE SECURITY ──
+    "mobile security": "Mobile Security: protecting smartphones/tablets. Platforms: Android (open, more vulnerable), iOS (closed, more secure). Threats: malware, phishing, insecure WiFi, jailbreaking/rooting, data leakage. Tools: MobSF (static/dynamic analysis), Frida (dynamic instrumentation).",
+    "android security": "Android Security: protecting Android devices. Architecture: application sandbox, permissions, SELinux. Vulnerabilities: insecure IPC, root exploits, malware. Analysis: APK decompilation (jadx), dynamic analysis (Frida), static analysis (MobSF).",
+    "ios security": "iOS Security: Apple's mobile security. Features: Secure Enclave, code signing, app sandbox, data protection, keychain. Jailbreaking: removing restrictions. Analysis: class-dump, Frida, Cycript. Less malware but targeted attacks (Pegasus).",
+
+    # ── THREAT INTELLIGENCE ──
+    "threat intelligence": "Threat Intelligence: evidence-based knowledge about threats. Types: strategic (trends), tactical (TTPs), operational (specific campaigns), technical (IOCs). Sources: MITRE ATT&CK, threat feeds, dark web, OSINT. Platforms: MISP, OpenCTI, ThreatConnect.",
+    "mitre attack framework": "MITRE ATT&CK: knowledge base of adversary tactics and techniques. Matrix: 14 tactics, 200+ techniques, 400+ sub-techniques. Use cases: gap analysis, threat modeling, detection engineering, red team planning. Enterprise, Mobile, ICS matrices.",
+    "cyber kill chain": "Cyber Kill Chain (Lockheed Martin): 7 stages - 1) Reconnaissance, 2) Weaponization, 3) Delivery, 4) Exploitation, 5) Installation, 6) Command & Control, 7) Actions on Objectives. Defense at each stage. Overlaps with MITRE ATT&CK.",
+    "diamond model": "Diamond Model: threat intelligence framework. Four core features: adversary, capability, infrastructure, victim. Relationships between features. Enables: attribution, threat actor profiling, campaign tracking.",
+
+    # ── SECURITY OPERATIONS ──
+    "soc operations": "SOC (Security Operations Center): monitoring and responding to threats. Tier 1: alert triage. Tier 2: investigation. Tier 3: advanced analysis, threat hunting. Tools: SIEM (Splunk, ELK), SOAR (Phantom, Demisto), EDR (CrowdStrike, SentinelOne).",
+    "siem systems": "SIEM (Security Information and Event Management): centralized logging and analysis. Features: log collection, correlation, alerting, dashboards, reporting. Products: Splunk, ELK Stack (Elasticsearch, Logstash, Kibana), Microsoft Sentinel, QRadar.",
+    "threat hunting": "Proactive searching for threats in networks. Hypothesis-driven: use threat intel to guide searches. Techniques: anomaly detection, IOC sweeps, behavioral analysis, memory forensics. Tools: Velociraptor, OSQuery, Sigma rules.",
+
+    # ── DEFENSIVE SECURITY ──
+    "defense in depth": "Defense in Depth: multiple layers of security. Layers: perimeter (firewall), network (IDS/IPS), host (AV/EDR), application (WAF), data (encryption), human (training). No single point of failure. Principle: assume breach, contain damage.",
+    "endpoint detection response": "EDR (Endpoint Detection and Response): monitoring endpoint activities. Features: real-time monitoring, threat detection, investigation, automated response. Products: CrowdStrike Falcon, SentinelOne, Microsoft Defender for Endpoint, Carbon Black.",
+    "security hardening": "Security Hardening: reducing attack surface. Windows: disable unnecessary services, apply patches, configure firewall, enable audit logging. Linux: SSH hardening, firewall (iptables/nftables), SELinux, file permissions, remove unnecessary packages.",
+    "patch management": "Patch Management: keeping software updated. Process: inventory, assess, test, deploy, verify. Prioritize: critical/high vulnerabilities, internet-facing systems. Tools: WSUS, SCCM, Ansible, Puppet. Challenges: compatibility, downtime, legacy systems.",
+
+    # ── RED TEAM OPERATIONS ──
+    "red team operations": "Red Team: adversarial simulation mimicking real attackers. Objectives: test defenses, improve detection, train blue team. Scope: rules of engagement, targets, timelines. Techniques: social engineering, physical access, network exploitation, persistence.",
+    "blue team operations": "Blue Team: defensive security operations. Responsibilities: monitoring, incident response, threat hunting, hardening, detection engineering. Tools: SIEM, EDR, firewalls, IDS/IPS. Focus: prevention, detection, response.",
+    "purple team": "Purple Team: collaboration between red and blue teams. Goal: improve defenses through feedback. Process: red team attacks, blue team detects, both share knowledge, improve detection rules, update defenses. Continuous improvement loop.",
+
+    # ── ADVANCED TECHNIQUES ──
+    "kerberos attacks": "Kerberos Attacks: targeting Windows authentication. Types: AS-REP Roasting (no preauth), Kerberoasting (service tickets), Golden Ticket (forged TGT), Silver Ticket (forged service ticket), Pass-the-Ticket, Overpass-the-Hash. Tools: Impacket, Rubeus, Mimikatz.",
+    "active directory attacks": "Active Directory Attacks: targeting AD infrastructure. Techniques: Kerberoasting, AS-REP Roasting, DCSync, Golden/Silver Ticket, Pass-the-Hash, Skeleton Key, ADCS abuse. Tools: BloodHound, Impacket, Rubeus, Mimikatz, Certipy.",
+    "dns security": "DNS Security: protecting DNS infrastructure. Attacks: cache poisoning, DNS hijacking, tunneling, DDoS. Defenses: DNSSEC (signing), DNS over HTTPS (DoH), DNS over TLS (DoT), response rate limiting. Tools: DNSSEC validation, Pi-hole.",
+    "email security": "Email Security: protecting against email threats. Protocols: SPF (sender policy), DKIM (domain keys), DMARC (policy). Anti-phishing: awareness training, email filtering, sandboxing. Tools: Proofpoint, Mimecast, Microsoft Defender for Office 365.",
+    "supply chain security": "Supply Chain Security: securing software/hardware supply chain. Attacks: compromised dependencies, build system attacks, update mechanisms. Defenses: SBOM (Software Bill of Materials), code signing, dependency scanning, SLSA framework.",
+
+    # ── BUG BOUNTY ──
+    "bug bounty": "Bug Bounty: crowdsourced vulnerability testing. Platforms: HackerOne, Bugcrowd, Intigriti, YesWeHack. Process: find vulnerability, report responsibly, get rewarded. Programs: public (anyone), private (invite only). Legal: stay within scope, follow rules.",
+    "bug bounty methodology": "Bug Bounty Methodology: systematic approach. Recon: subdomain enumeration, port scanning, technology fingerprinting. Testing: OWASP Top 10, business logic, authentication, authorization. Tools: Burp Suite, ffuf, nuclei, httpx, subfinder.",
+    "responsible disclosure": "Responsible Disclosure: reporting vulnerabilities ethically. Steps: discover, document, contact vendor (secure channel), allow time for fix, publish after fix. Coordinated Disclosure: work with vendor. CERT/CC can help mediate.",
+
+    # ── CRYPTOGRAPHY ATTACKS ──
+    "crypto attacks": "Cryptographic Attacks: breaking encryption. Types: padding oracle, timing attacks, side-channel, brute force, rainbow tables, meet-in-the-middle. Weak ciphers: DES (56-bit), RC4, MD5 (broken), SHA-1 (deprecated). Defense: strong algorithms, key management.",
+    "password cracking": "Password Cracking: recovering passwords. Methods: brute force (all combinations), dictionary (wordlist), rules (mutations), hybrid (dictionary + rules), rainbow tables (precomputed). Tools: Hashcat (GPU), John the Ripper (CPU). Speed: billions/sec with GPU.",
+    "hashcat": "Hashcat: advanced password recovery. Supports: 300+ hash types. Modes: dictionary, brute force, combination, rule-based. GPU acceleration: NVIDIA (CUDA), AMD (OpenCL). Commands: hashcat -m <type> -a <mode> hash wordlist. Rules: custom mutations.",
+
+    # ── COMMON TOOLS ──
+    "netcat": "Netcat: TCP/UDP network utility ('Swiss army knife'). Features: port scanning, file transfer, chat, reverse shells, bind shells. Commands: nc -lvp 4444 (listen), nc -e /bin/bash (reverse shell), nc -lvp 4444 > file (receive). Variants: ncat (Nmap), socat (advanced).",
+    "socat": "socat: advanced Netcat alternative. Features: TLS/SSL, IPv6, UDP, port forwarding, relays. Use cases: encrypted reverse shells, port forwarding, file transfer. Commands: socat TCP-LISTEN:4444,reuseaddr,fork EXEC:/bin/sh (bind shell).",
+    "curl": "curl: command-line HTTP client. Features: download, upload, authentication, cookies, proxies, SSL. Use cases: API testing, web scraping, file transfer, debugging. Commands: curl -v (verbose), -X POST (method), -d (data), -H (headers).",
+    "wget": "wget: command-line download utility. Features: recursive download, background, resume, authentication. Use cases: mirroring websites, downloading files, batch downloads. Commands: wget -r (recursive), -c (continue), -b (background).",
+    "john the ripper": "John the Ripper: password cracking tool. Features: automatic detection, wordlist mode, incremental mode, rules. Formats: many hash types. Commands: john --wordlist=rockyou.txt hash.txt, john --show hash.txt. JtR rules: custom password mutations.",
+    "hashid": "HashID: identify hash types. Analyzes hash format, length, character set. Commands: hashid <hash>. Useful for: determining correct cracking tool and mode. Alternatives: name-that-hash, hash-identifier.",
+
+    # ── LINUX SECURITY ──
+    "linux security": "Linux Security: securing Linux systems. Hardening: SSH (key-based auth, disable root), firewall (iptables/nftables/ufw), SELinux/AppArmor, file permissions, user management, logging (auditd). Tools: Lynis (audit), ClamAV (AV), rkhunter (rootkit detection).",
+    "linux enumeration": "Linux Enumeration: gathering system information. Commands: uname -a (kernel), id (users), cat /etc/passwd (users), sudo -l (permissions), find / -perm -4000 (SUID), netstat -tlnp (ports), ps aux (processes), cat /etc/crontab (scheduled). Tools: LinPEAS, LinEnum.",
+    "linux privilege escalation": "Linux Privilege Escalation: gaining root access. Techniques: SUID binaries, sudo misconfig, kernel exploits, cron jobs, writable /etc/passwd, capabilities, docker group, lxd group. Tools: LinPEAS, GTFOBins (SUID binaries), Linux Exploit Suggester.",
+    "linux persistence": "Linux Persistence: maintaining access. Techniques: SSH keys, cron jobs, systemd services, .bashrc/.profile, kernel modules, at jobs, PAM modules. Detection: audit logs, file integrity, process monitoring.",
+
+    # ── WINDOWS SECURITY ──
+    "windows security": "Windows Security: securing Windows systems. Features: Windows Defender, Firewall, UAC, BitLocker, Windows Hello. Hardening: disable SMBv1, enable LSA protection, configure AppLocker, enable Credential Guard. Tools: Sysmon (monitoring), Autoruns (startup).",
+    "windows enumeration": "Windows Enumeration: gathering system information. Commands: systeminfo (OS), ipconfig /all (network), net user (users), net localgroup administrators (admins), netstat -ano (ports), tasklist (processes). Tools: WinPEAS, SharpUp, Seatbelt.",
+    "windows privilege escalation": "Windows Privilege Escalation: gaining higher privileges. Techniques: unquoted service paths, DLL hijacking, token impersonation, kernel exploits, always install elevated, service misconfig, registry autoruns. Tools: WinPEAS, PowerUp, Sherlock.",
+    "windows persistence": "Windows Persistence: maintaining access. Techniques: Registry run keys, scheduled tasks, services, DLL hijacking, WMI events, startup folder, COM objects, BITS jobs. Tools: Autoruns, SharPersistence. Detection: Sysmon, event logs.",
+
+    # ── NETWORK ATTACKS ──
+    "arp spoofing": "ARP Spoofing: poisoning ARP cache to intercept traffic. Tools: arpspoof (dsniff), Ettercap, Bettercap. Impact: man-in-the-middle, credential theft, session hijacking. Detection: ARP inspection, static ARP entries, IDS. Defense: Dynamic ARP Inspection (DAI).",
+    "dns spoofing": "DNS Spoofing: corrupting DNS cache. Techniques: cache poisoning (Kaminsky attack), DNS hijacking, man-in-the-middle. Tools: Ettercap, Bettercap, DNSChef. Impact: redirect users to malicious sites. Defense: DNSSEC, DNS over HTTPS.",
+    "man in the middle": "Man-in-the-Middle (MITM): intercepting communications. Techniques: ARP spoofing, DNS spoofing, SSL stripping, rogue access points. Tools: Bettercap, Ettercap, mitmproxy. Defense: HTTPS, HSTS, certificate pinning, VPN.",
+    "denial of service": "DoS/DDoS: disrupting services. Types: volumetric (UDP flood), protocol (SYN flood), application (HTTP flood). Tools: hping3, LOIC, HOIC, Slowloris. Defense: rate limiting, CDNs (Cloudflare), scrubbing centers, anti-DDoS services.",
+
+    # ── WIRELESS ATTACKS ──
+    "wireless attacks": "Wireless Network Attacks: targeting Wi-Fi. Types: deauthentication, evil twin, WPS brute force, KRACK, Dragonblood. Tools: Aircrack-ng suite, Wifite, Fluxion, EAPHopper. Defense: WPA3, 802.1X, wireless IDS, client isolation.",
+    "evil twin attack": "Evil Twin: rogue access point mimicking legitimate. Creates fake AP with same SSID. Captures: credentials, traffic, cookies. Tools: Fluxion, hostapd-mana, Wifiphisher. Detection: certificate warnings, signal strength anomalies, channel changes.",
+    "krack attack": "KRACK (Key Reinstallation Attack): exploiting WPA2 4-way handshake. Forces nonce reuse, allows decryption. Affects all WPA2 devices. Patch: WPA3 or patched WPA2. Detection: monitor for abnormal retransmissions.",
+
+    # ── SOCIAL MEDIA INTELLIGENCE ──
+    "social media intelligence": "SOCMINT (Social Media Intelligence): gathering info from social platforms. Sources: Facebook, Twitter, LinkedIn, Instagram, TikTok. Techniques: profile analysis, geolocation, metadata extraction, network mapping. Tools: Twint, Sherlock, LinkedInt.",
+    "username enumeration": "Username Enumeration: finding user accounts. Tools: Sherlock (name checking across 300+ sites), WhatsMyName, Namechk. Techniques: check username availability across platforms, social media profiles, breach databases. Useful for OSINT and password resets.",
+
+    # ── DARK WEB ──
+    "dark web security": "Dark Web: encrypted networks (Tor, I2P). Access: Tor Browser. Services: .onion sites. Threats: marketplaces, forums, data sales. Security: Tor, VPN, Tails OS. Intelligence: monitoring for leaked data, threat actors, vulnerabilities.",
+    "tor network": "Tor (The Onion Router): anonymizing network. Routes traffic through 3+ relays. Encryption layers: onion routing. Exit nodes: vulnerable to monitoring. Security: don't torrent, don't enable plugins, use HTTPS. Hidden services: .onion addresses.",
+
+    # ── COMPLIANCE & STANDARDS ──
+    "pci dss": "PCI DSS: Payment Card Industry Data Security Standard. 12 requirements: firewall, secure configs, protect stored data, encrypt transmission, AV, secure systems, restrict access, unique IDs, physical access, logging, testing, policy. Applies to all card handlers.",
+    "gdpr security": "GDPR Security: protecting EU personal data. Requirements: data protection by design, encryption, pseudonymization, breach notification (72h), DPO, DPIA. Penalties: up to €20M or 4% turnover. Data subject rights: access, rectification, erasure.",
+    "hipaa security": "HIPAA Security Rule: protecting health information (PHI). Safeguards: administrative, physical, technical. Requirements: risk assessment, access controls, audit controls, integrity, transmission security. Penalties: $100-$50,000 per violation.",
+    "iso 27001": "ISO 27001: information security management system (ISMS) standard. Framework: Plan-Do-Check-Act. 114 controls in 14 domains. Certification: independent audit. Benefits: risk management, compliance, customer trust.",
+
+    # ── PENETRATION TESTING TOOLS ──
+    "kali linux": "Kali Linux: penetration testing distribution. Based on Debian. Tools: 600+ pre-installed. Categories: information gathering, vulnerability analysis, wireless attacks, exploitation, forensics, web apps, passwords. Alternatives: Parrot OS, BlackArch.",
+    "parrot security": "Parrot Security OS: security-focused distribution. Based on Debian. Features: pentesting, privacy, development. Tools: similar to Kali but lighter. Includes: AnonSurf (anonymous browsing), Sandboxed browser.",
+    "parrot os": "Parrot OS: security and development distribution. Features: pentesting, privacy, anonymity. Tools: 500+ pre-installed. Lightweight alternative to Kali. Includes AnonSurf, Firejail (sandboxing).",
+    "burp suite pro": "Burp Suite Professional: advanced web security testing. Features: automated scanner, manual testing tools, extensions, Collaborator (out-of-band). Price: ~$449/year. Essential for web application penetration testing.",
+
+    # ── ADVANCED PERSISTENT THREATS ──
+    "apt groups": "APT (Advanced Persistent Threat) Groups: sophisticated, state-sponsored attackers. Examples: APT28 (Fancy Bear, Russia), APT29 (Cozy Bear, Russia), APT41 (China), Lazarus Group (North Korea), Equation Group (USA). TTPs: supply chain, zero-days, living off the land.",
+    "living off the land": "Living off the Land (LotL): using legitimate tools for malicious purposes. Tools: PowerShell, WMI, Certutil, MSBuild, Regsvr32. Blends with normal activity. Evasion: bypasses signature-based detection. Defense: behavioral analysis, command logging.",
+
+    # ── ADDITIONAL COMMON SECURITY QUESTIONS ──
+    "how to protect against phishing": "Anti-phishing measures: 1) Verify sender addresses carefully, 2) Hover over links before clicking, 3) Don't download unexpected attachments, 4) Use MFA everywhere, 5) Report suspicious emails, 6) Use email filtering (DMARC/DKIM/SPF), 7) Regular security awareness training.",
+    "how to secure wifi": "WiFi Security: 1) Use WPA3 (or WPA2 if WPA3 unavailable), 2) Strong passphrase (20+ chars), 3) Change default router credentials, 4) Disable WPS, 5) Enable firewall, 6) Update firmware regularly, 7) Use separate guest network, 8) Consider MAC filtering (limited security).",
+    "how to secure home network": "Home Network Security: 1) Change default router password, 2) Update firmware, 3) Use WPA3/WPA2, 4) Enable firewall, 5) Disable remote management, 6) Use DNS over HTTPS, 7) Segment IoT devices, 8) Use VPN for sensitive activities, 9) Monitor connected devices.",
+    "how to create strong password": "Strong Password: 12+ characters, mix of upper/lower/numbers/symbols. Use passphrases: 'Purple$unrise#Coffee2024'. Avoid: personal info, dictionary words, patterns. Use password manager (Bitwarden, 1Password). Enable MFA everywhere. Unique password per account.",
+    "what is ethical hacking": "Ethical Hacking: authorized security testing. Professionals: penetration testers, red teamers, bug bounty hunters. Legal: written authorization, scope definition, responsible disclosure. Certifications: OSCP, CEH, GPEN, CREST. Difference: permission and intent.",
+    "how to learn cybersecurity": "Learning Cybersecurity: 1) Foundations: networking (CompTIA Network+), Linux, 2) Security basics (CompTIA Security+), 3) Hands-on: HackTheBox, TryHackMe, OverTheWire, 4) Specialize: web, network, cloud, forensics, 5) Certifications: OSCP, CEH, 6) Stay updated: security blogs, podcasts.",
+    "common cybersecurity vulnerabilities": "Common Vulnerabilities: 1) SQL Injection, 2) Cross-Site Scripting (XSS), 3) Broken Authentication, 4) Sensitive Data Exposure, 5) XML External Entities (XXE), 6) Broken Access Control, 7) Security Misconfiguration, 8) Vulnerable Components, 9) Insufficient Logging.",
+    "what is a firewall": "Firewall: network security device monitoring traffic. Types: packet filtering, stateful inspection, application layer, next-gen (NGFW). Rules: allow/block by IP, port, protocol. Zones: trusted (internal), DMZ, untrusted (internet). Products: pfSense, Palo Alto, Fortinet.",
+    "what is encryption": "Encryption: converting plaintext to ciphertext. Types: symmetric (AES, same key), asymmetric (RSA, key pairs). Use cases: data at rest (disk encryption), data in transit (TLS), data in use (homomorphic). Key management: HSMs, KMS, secure key storage.",
+    "what is a vpn": "VPN (Virtual Private Network): encrypted tunnel for internet traffic. Protocols: OpenVPN, WireGuard, IPsec. Use cases: remote access, privacy, bypass geo-restrictions. Considerations: no-logs policy, kill switch, speed, server locations. Not complete anonymity.",
+    "what is multi factor authentication": "MFA (Multi-Factor Authentication): requiring multiple verification methods. Factors: something you know (password), have (phone/token), are (biometric). Types: SMS, authenticator app (TOTP), hardware key (YubiKey), biometric. Significantly reduces account compromise.",
+    "what is a zero day vulnerability": "Zero-Day: vulnerability unknown to vendor. No patch available. Value: $10K-$1M+ on exploit markets. Used by: APT groups, government agencies, criminals. Defense: behavior-based detection, defense in depth, virtual patching, threat intelligence.",
+    "what is ransomware": "Ransomware: malware encrypting files for ransom. Types: crypto (encrypts files), locker (locks system), doxware (threatens to leak data). Examples: WannaCry, Ryuk, REvil, Conti. Prevention: backups, patching, training, EDR. Response: isolate, don't pay, report.",
+    "what is a botnet": "Botnet: network of infected devices controlled by attacker. Uses: DDoS, spam, cryptomining, credential stuffing. Infections: malware, phishing, exploits. Detection: unusual network traffic, slow performance. Takedowns: sinkholing, legal action.",
+    "what is social engineering": "Social Engineering: manipulating people into actions. Techniques: phishing, pretexting, baiting, tailgating, vishing, quid pro quo. Psychology: urgency, authority, scarcity, social proof, reciprocity. Defense: verification, training, policies, MFA.",
+    "what is ddos attack": "DDoS (Distributed Denial of Service): overwhelming target with traffic. Types: volumetric (UDP flood), protocol (SYN flood), application (HTTP flood). Botnets: millions of devices. Defense: CDNs (Cloudflare), rate limiting, scrubbing centers, anti-DDoS services.",
+    "what is sql injection explained": "SQL Injection: inserting malicious SQL into input fields. Example: ' OR '1'='1' -- . Impact: data theft, authentication bypass, data modification, server compromise. Prevention: parameterized queries, prepared statements, input validation, WAF, least privilege.",
+    "how does ransomware work": "Ransomware Workflow: 1) Initial access (phishing, exploit), 2) Lateral movement, 3) Privilege escalation, 4) Data exfiltration (double extortion), 5) Encryption (AES + RSA), 6) Ransom note. Recovery: backups, decryption tools (No More Ransom), incident response.",
+    "how to become a hacker": "Becoming a Hacker: 1) Learn networking (TCP/IP, DNS, HTTP), 2) Learn Linux (command line, permissions), 3) Learn programming (Python, Bash, JavaScript), 4) Study security (OWASP, MITRE ATT&CK), 5) Practice (HackTheBox, TryHackMe), 6) Get certified (CEH, OSCP), 7) Specialize (web, network, cloud), 8) Stay ethical and legal.",
+    "what is osint": "OSINT (Open Source Intelligence): gathering intelligence from public sources. Sources: social media, WHOIS, DNS records, web archives, code repositories, job postings, breach databases. Tools: Maltego, Shodan, theHarvester, Recon-ng, OSINT Framework.",
+    "what is penetration testing": "Penetration Testing: authorized simulated attack to find vulnerabilities. Phases: reconnaissance, scanning, exploitation, post-exploitation, reporting. Types: black box, white box, gray box. Scope: network, web application, mobile, social engineering.",
+    "what is vulnerability assessment": "Vulnerability Assessment: identifying and quantifying weaknesses. Process: asset discovery, vulnerability scanning, risk assessment, remediation. Tools: Nessus, OpenVAS, Qualys, Nexpose. Output: report with findings, severity, remediation steps.",
+    "what is threat modeling": "Threat Modeling: identifying and mitigating security threats. Process: define scope, identify assets, enumerate threats, assess risk, mitigate. Frameworks: STRIDE, PASTA, DREAD, VAST. Output: threat model document, risk register.",
+    "what is security hardening": "Security Hardening: reducing attack surface. Windows: disable services, patches, firewall, audit logging. Linux: SSH hardening, firewall, SELinux, permissions. Network: segmentation, ACLs, VPN. Application: secure config, disable debug, input validation.",
+    "what is a dmz": "DMZ (Demilitarized Zone): network segment between trusted and untrusted networks. Contains: public-facing servers (web, mail, DNS). Isolation: separate from internal network. Access: controlled by firewall rules. Purpose: protect internal network if public server compromised.",
+    "what is network segmentation": "Network Segmentation: dividing network into isolated zones. Benefits: contain breaches, limit lateral movement, compliance. Methods: VLANs, subnets, firewalls, microsegmentation. Zero Trust: verify every connection. Critical for: PCI DSS, HIPAA compliance.",
+    "what is an ips": "IPS (Intrusion Prevention System): monitoring and blocking malicious traffic. Detection: signature-based, anomaly-based, heuristic. Actions: alert, block, reset connection. Deployment: inline (blocking), passive (monitoring). Products: Snort, Suricata, Cisco IPS.",
+    "what is a waf": "WAF (Web Application Firewall): filtering HTTP traffic. Protects against: XSS, SQLi, CSRF, file inclusion. Modes: positive (whitelist), negative (blacklist). Products: ModSecurity, Cloudflare WAF, AWS WAF, Imperva. Deployment: reverse proxy, cloud-based.",
+    "what is endpoint protection": "Endpoint Protection: securing end-user devices. Components: antivirus, EDR, host firewall, disk encryption, application control. Products: CrowdStrike Falcon, SentinelOne, Microsoft Defender for Endpoint, Carbon Black. Features: real-time monitoring, threat detection.",
+    "what is a siem": "SIEM (Security Information and Event Management): centralized security monitoring. Features: log collection, correlation, alerting, dashboards, compliance reporting. Products: Splunk, ELK Stack, Microsoft Sentinel, IBM QRadar. Use cases: SOC operations, incident response.",
+    "what is a soc": "SOC (Security Operations Center): team monitoring security. Tiers: Tier 1 (triage), Tier 2 (investigation), Tier 3 (advanced analysis). Tools: SIEM, SOAR, EDR, threat intelligence. Operations: 24/7 monitoring, incident response, threat hunting.",
+    "what is incident response": "Incident Response: managing security incidents. NIST phases: Preparation, Detection & Analysis, Containment, Eradication, Recovery, Post-Incident. Team: CSIRT/CERT. Communication: internal, external, regulatory. Documentation: lessons learned.",
+    "what is digital forensics": "Digital Forensics: collecting and analyzing digital evidence. Process: identification, preservation, collection, examination, analysis, reporting. Tools: FTK Imager, Autopsy, Volatility, Wireshark. Chain of custody: legal admissibility.",
+    "what is memory forensics": "Memory Forensics: analyzing RAM dumps. Captures: live memory, hibernation, crash dumps. Artifacts: processes, network connections, encryption keys, malware. Tools: Volatility, Rekall, LiME. Critical for: detecting fileless malware, extracting keys.",
+    "what is reverse engineering": "Reverse Engineering: analyzing compiled software. Tools: IDA Pro, Ghidra, Radare2, x64dbg. Techniques: disassembly, decompilation, debugging. Use cases: malware analysis, vulnerability research, interoperability. Skills: assembly language, OS internals.",
+    "what is malware analysis": "Malware Analysis: studying malicious software. Static: code review without execution. Dynamic: behavior analysis in sandbox. Tools: IDA Pro, Ghidra (static), Cuckoo Sandbox (dynamic). Output: IOCs, behavior report, indicators.",
+    "what is threat intelligence": "Threat Intelligence: knowledge about threats. Types: strategic (trends), tactical (TTPs), operational (campaigns), technical (IOCs). Sources: MITRE ATT&CK, threat feeds, OSINT. Platforms: MISP, OpenCTI, ThreatConnect. Use: detection, prevention, response.",
+    "what is red team": "Red Team: adversarial simulation. Objective: test defenses like real attacker. Scope: social engineering, physical, network, cloud. Rules of engagement: authorized, safe, ethical. Output: findings, recommendations, improved defenses.",
+    "what is blue team": "Blue Team: defensive security. Responsibilities: monitoring, detection, response, hardening. Tools: SIEM, EDR, firewalls, IDS/IPS. Focus: prevention, detection, response. Continuous improvement through purple teaming.",
+    "what is purple team": "Purple Team: collaboration between red and blue teams. Goal: improve defenses through feedback. Process: red attacks, blue detects, both share knowledge. Output: improved detection rules, updated defenses, training.",
+    "what is bug bounty": "Bug Bounty: crowdsourced vulnerability testing. Platforms: HackerOne, Bugcrowd, Intigriti. Programs: public, private. Rules: stay in scope, responsible disclosure. Rewards: money, swag, recognition. Legal: written authorization required.",
+    "what is responsible disclosure": "Responsible Disclosure: reporting vulnerabilities ethically. Steps: discover, document, contact vendor, allow fix time, publish. Coordinated: work with vendor. CERT/CC: mediation. Timeline: typically 90 days. Legal: stay within scope.",
+    "what is a zero trust network": "Zero Trust Network: never trust, always verify. Principles: verify explicitly, least privilege, assume breach. Components: identity verification, device validation, microsegmentation, encryption. Products: Zscaler, BeyondCorp, Illumio.",
+    "how to protect against ransomware": "Ransomware Protection: 1) Regular offline backups (3-2-1 rule), 2) Patch systems promptly, 3) Employee training, 4) Email filtering, 5) Endpoint detection (EDR), 6) Network segmentation, 7) Least privilege, 8) Disable macros, 9) Incident response plan.",
+    "how to secure cloud environment": "Cloud Security: 1) IAM: least privilege, MFA, no root keys, 2) Encryption: at rest and in transit, 3) Logging: CloudTrail/Activity Log, 4) Network: VPC, security groups, 5) Monitoring: CSPM tools, 6) Compliance: CIS benchmarks, 7) Backup: cross-region.",
+    "how to protect against ddos": "DDoS Protection: 1) Use CDN/Proxy (Cloudflare), 2) Rate limiting, 3) Geo-blocking, 4) Anycast network, 5) Over-provisioning, 6) DDoS mitigation service, 7) Incident response plan, 8) ISP coordination.",
+    "what is sql injection prevention": "SQL Injection Prevention: 1) Parameterized queries/prepared statements (best), 2) Stored procedures, 3) Input validation (whitelist), 4) Escape special characters, 5) Least privilege DB user, 6) WAF, 7) Error handling (no details), 8) Regular security testing.",
+    "what is xss prevention": "XSS Prevention: 1) Output encoding (HTML, JS, URL, CSS), 2) Content Security Policy (CSP), 3) HttpOnly cookies, 4) Input validation, 5) Sanitize HTML (DOMPurify), 6) Use frameworks with auto-escaping, 7) Escape untrusted data, 8) Regular testing.",
+    "what is csrf prevention": "CSRF Prevention: 1) CSRF tokens (synchronizer token pattern), 2) SameSite cookies, 3) Custom request headers, 4) Origin/Referer header validation, 5) Double submit cookie, 6) Requires user interaction for state changes.",
+    "what is ssrf prevention": "SSRF Prevention: 1) URL validation (allowlist), 2) Block internal IPs (127.0.0.1, 169.254.169.254, 10.x, 172.x, 192.168.x), 3) Disable unused URL schemes, 4) Use metadata endpoint protections, 5) Network segmentation, 6) Response validation.",
+    "what is cors": "CORS (Cross-Origin Resource Sharing): browser security mechanism. Controls: which origins can access resources. Headers: Access-Control-Allow-Origin, Access-Control-Allow-Methods. Misconfig: wildcard (*) with credentials allows any origin. Secure: specific origins.",
+    "what is jwt security": "JWT Security: JSON Web Token vulnerabilities. Attacks: algorithm confusion (none), weak secret, key injection, impersonation. Secure: RS256/ES256, strong secrets, validate all claims, short expiry, refresh tokens, token revocation.",
+
+    # ── CERTIFICATIONS ──
+    "oscp certification": "OSCP (Offensive Security Certified Professional): hands-on penetration testing cert. Exam: 24-hour practical, 5 machines, 70 points to pass. Course: PEN-200. Covers: information gathering, enumeration, web attacks, buffer overflows, privilege escalation, lateral movement.",
+    "ceh certification": "CEH (Certified Ethical Hacker): EC-Council certification. Covers: 20 domains including OSINT, scanning, enumeration, system hacking, malware, sniffing, social engineering, DOS, session hijacking, web server, SQL injection, wireless, mobile, IoT, cloud, cryptography.",
+    "compTIA security": "CompTIA Security+: entry-level security certification. Covers: threats, architecture, implementation, operations, governance. Prerequisites: none recommended. Vendor-neutral. Renewal: CEUs. Popular as first security certification.",
+    "gpen certification": "GPEN (GIAC Penetration Tester): SANS certification. Covers: penetration testing methodology, exploitation, post-exploitation, password attacks, Windows/Linux attacks. Practical, hands-on. Requires SANS training or challenge.",
+    "crtp certification": "CRTP (Certified Red Team Professional): Pentester Academy certification. Focus: Active Directory attacks, lateral movement, persistence, defense evasion. Hands-on with AD environment. Prerequisites: basic Windows/Linux.",
+    "cieh certification": "CIEH (Certified Information Ethics Hacker): entry-level ethical hacking certification. Covers: introduction to ethical hacking, scanning networks, enumeration, system hacking, malware, sniffing, social engineering, DoS, session hijacking, web server, SQL injection, wireless, mobile, IoT, cloud, cryptography.",
 })
