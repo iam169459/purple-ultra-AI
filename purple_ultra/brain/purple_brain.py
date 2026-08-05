@@ -589,7 +589,7 @@ class PurpleBrain:
     
     def _save_json(self, filename: str, data):
         try:
-            (self.base_dir / filename).write_text(json.dumps(data, indent=2, default=str))
+            (self.base_dir / filename).write_text(json.dumps(data, separators=(',', ':'), default=str))
         except Exception:
             pass
     
@@ -1158,14 +1158,15 @@ class PurpleBrain:
         else:
             thought = "I'm thinking about thinking itself."
         
-        self.thoughts.append({
-            "type": thought_type,
-            "content": thought,
-            "timestamp": datetime.now().isoformat()
-        })
-        
-        self.consciousness["total_thoughts"] = self.consciousness.get("total_thoughts", 0) + 1
-        self._save_all()
+        with self._lock:
+            self.thoughts.append({
+                "type": thought_type,
+                "content": thought,
+                "timestamp": datetime.now().isoformat()
+            })
+            
+            self.consciousness["total_thoughts"] = self.consciousness.get("total_thoughts", 0) + 1
+            self._save_all()
 
     # === Self-Awareness & Learning Methods ===
 

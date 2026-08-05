@@ -14,7 +14,7 @@ import time
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from typing import Any
-from collections import defaultdict
+from collections import defaultdict, deque
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -66,7 +66,7 @@ class DynamicKnowledgeBase:
                 "entries": {k: asdict(v) for k, v in self._entries.items()},
                 "stats": self._stats,
             }
-            (self._path / "learned.json").write_text(json.dumps(data, indent=2))
+            (self._path / "learned.json").write_text(json.dumps(data, separators=(',', ':')))
 
     def learn(self, key: str, value: str, source: str = "conversation",
               confidence: float = 1.0, tags: list[str] | None = None) -> bool:
@@ -156,14 +156,14 @@ class DynamicKnowledgeBase:
     def get_stats(self) -> dict:
         """Get knowledge base statistics."""
         with self._lock:
+            sources = defaultdict(int)
+            for entry in self._entries.values():
+                sources[entry.source] += 1
             return {
                 "total_entries": len(self._entries),
                 "total_learned": self._stats["total_learned"],
                 "total_accessed": self._stats["total_accessed"],
-                "sources": defaultdict(int, {
-                    e.source: sum(1 for e in self._entries.values() if e.source == e.source)
-                    for e in self._entries.values()
-                }),
+                "sources": dict(sources),
             }
 
 
@@ -210,7 +210,7 @@ class UserPreferenceTracker:
         with self._lock:
             self._preferences.last_updated = time.time()
             (self._path / "preferences.json").write_text(
-                json.dumps(asdict(self._preferences), indent=2)
+                json.dumps(asdict(self._preferences), separators=(',', ':'))
             )
 
     def update_from_interaction(self, user_text: str, response: str,
@@ -286,7 +286,7 @@ class ResponseQualityTracker:
         self._path.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
         self._max_records = max_records
-        self._records: list[ResponseRecord] = []
+        self._records: deque[ResponseRecord] = deque(maxlen=max_records)
         self._patterns: dict[str, dict] = defaultdict(lambda: {"good": 0, "bad": 0, "total": 0})
         self._load()
 
@@ -307,10 +307,10 @@ class ResponseQualityTracker:
     def save(self):
         with self._lock:
             data = {
-                "records": [asdict(r) for r in self._records[-self._max_records:]],
+                "records": [asdict(r) for r in list(self._records)[-self._max_records:]],
                 "patterns": dict(self._patterns),
             }
-            (self._path / "records.json").write_text(json.dumps(data, indent=2))
+            (self._path / "records.json").write_text(json.dumps(data, separators=(',', ':')))
 
     def record_response(self, query: str, response: str, intent: str = "unknown"):
         """Record a response for quality tracking."""
@@ -321,8 +321,6 @@ class ResponseQualityTracker:
                 intent=intent,
             )
             self._records.append(record)
-            if len(self._records) > self._max_records:
-                self._records = self._records[-self._max_records:]
 
     def record_feedback(self, response: str, positive: bool):
         """Record user feedback on a response."""
@@ -379,7 +377,7 @@ class AutoTrainer:
         self._preferences = UserPreferenceTracker(str(self._path / "preferences"))
         self._quality = ResponseQualityTracker(str(self._path / "responses"))
 
-        self._interaction_log: list[dict] = []
+        self._interaction_log: deque[dict] = deque(maxlen=500)
         self._stats = {
             "total_interactions": 0,
             "facts_learned": 0,
@@ -399,7 +397,7 @@ class AutoTrainer:
     def save(self):
         """Persist all learned data."""
         with self._lock:
-            (self._path / "stats.json").write_text(json.dumps(self._stats, indent=2))
+            (self._path / "stats.json").write_text(json.dumps(self._stats, separators=(',', ':')))
         self._knowledge.save()
         self._preferences.save()
         self._quality.save()
@@ -445,8 +443,6 @@ class AutoTrainer:
                 "feedback": feedback,
                 "timestamp": time.time(),
             })
-            if len(self._interaction_log) > 500:
-                self._interaction_log = self._interaction_log[-500:]
 
             # 7. Auto-save periodically
             if self._stats["total_interactions"] % 10 == 0:

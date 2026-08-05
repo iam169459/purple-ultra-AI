@@ -12,7 +12,7 @@ import threading
 from pathlib import Path
 from dataclasses import dataclass, field, asdict
 from typing import Any
-from collections import defaultdict
+from collections import defaultdict, deque
 
 
 @dataclass
@@ -38,23 +38,21 @@ class WorkingMemory:
 
     def __init__(self, max_size: int = 15):
         self._max_size = max_size
-        self._items: list[Memory] = []
+        self._items: deque[Memory] = deque(maxlen=max_size)
 
     def store(self, content: str, **kwargs) -> Memory:
         """Store in working memory, evicting oldest if full."""
         memory = Memory(content=content, memory_type="working", **kwargs)
         self._items.append(memory)
-        if len(self._items) > self._max_size:
-            self._items.pop(0)
         return memory
 
     def recall_recent(self, n: int = 5) -> list[Memory]:
         """Recall recent memories."""
-        return self._items[-n:]
+        return list(self._items)[-n:]
 
     def get_context(self) -> str:
         """Get working memory as context string."""
-        return "\n".join(m.content[:200] for m in self._items[-5:])
+        return "\n".join(m.content[:200] for m in list(self._items)[-5:])
 
     def clear(self):
         """Clear working memory."""
@@ -70,21 +68,23 @@ class EpisodicMemory:
         self._path = Path(memory_dir)
         self._path.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
-        self._episodes: list[dict] = []
+        self._episodes: deque[dict] = deque(maxlen=500)
         self._load()
 
     def _load(self):
         ep_file = self._path / "episodes.json"
         if ep_file.exists():
             try:
-                self._episodes = json.loads(ep_file.read_text())
+                data = json.loads(ep_file.read_text())
+                for ep in data[-500:]:
+                    self._episodes.append(ep)
             except Exception:
                 pass
 
     def save(self):
         with self._lock:
             (self._path / "episodes.json").write_text(
-                json.dumps(self._episodes[-500:], indent=2)
+                json.dumps(list(self._episodes), separators=(',', ':'))
             )
 
     def store_episode(self, event: str, emotion: str = "neutral",
@@ -99,8 +99,6 @@ class EpisodicMemory:
                 "timestamp": time.time(),
             }
             self._episodes.append(episode)
-            if len(self._episodes) > 500:
-                self._episodes = self._episodes[-500:]
 
     def recall_by_emotion(self, emotion: str, limit: int = 5) -> list[dict]:
         """Recall episodes matching an emotion."""
@@ -117,7 +115,7 @@ class EpisodicMemory:
     def get_recent(self, n: int = 5) -> list[dict]:
         """Get most recent episodes."""
         with self._lock:
-            return self._episodes[-n:]
+            return list(self._episodes)[-n:]
 
 
 class SemanticMemory:
@@ -150,10 +148,10 @@ class SemanticMemory:
     def save(self):
         with self._lock:
             (self._path / "concepts.json").write_text(
-                json.dumps(self._concepts, indent=2)
+                json.dumps(self._concepts, separators=(',', ':'))
             )
             (self._path / "relationships.json").write_text(
-                json.dumps(self._relationships[-1000:], indent=2)
+                json.dumps(self._relationships[-1000:], separators=(',', ':'))
             )
 
     def store_concept(self, name: str, definition: str,
@@ -229,7 +227,7 @@ class ProceduralMemory:
     def save(self):
         with self._lock:
             (self._path / "procedures.json").write_text(
-                json.dumps(self._procedures, indent=2)
+                json.dumps(self._procedures, separators=(',', ':'))
             )
 
     def store_procedure(self, name: str, steps: list[str],

@@ -11,10 +11,22 @@ import random
 import re
 import math
 import hashlib
+import string
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Any
 from collections import defaultdict
+
+# Pre-computed translation table for punctuation removal (module-level, computed once)
+_PUNCT_TABLE = str.maketrans('', '', string.punctuation)
+
+# Generic response prefixes (module-level constant, not rebuilt each call)
+_GENERIC_RESPONSES = ("I see.", "Got it.", "Interesting", "Let me help", "Here's what I know",
+                      "I understand", "Tell me more", "What else", "How can I help",
+                      "Great question", "Let me explain", "Let me walk you",
+                      "Here's how", "Let me think", "That's a good",
+                      "I'd say", "Based on my", "Regarding", "Let me consider",
+                      "I'm processing", "What aspect", "How can I assist")
 
 from ..config.settings import Config
 from ..brain.llm import LLMManager, LLMMessage, build_system_prompt
@@ -2114,8 +2126,7 @@ class OfflineBrain:
 
     def _classify_intent(self, text: str) -> tuple[str, float]:
         """Multi-layer intent classification with confidence scoring."""
-        import string
-        text_clean = text.translate(str.maketrans('', '', string.punctuation))
+        text_clean = text.translate(_PUNCT_TABLE)
         text_lower = text_clean.lower().strip()
         words = set(text_lower.split())
 
@@ -2198,6 +2209,10 @@ class OfflineBrain:
         """Search the massive knowledge base."""
         text_lower = text.lower()
 
+        # Check cache first
+        if text_lower in self._knowledge_cache:
+            return self._knowledge_cache[text_lower]
+
         # Check aliases first (with word boundary matching, prioritize longest alias)
         alias_matches = []
         for alias, key in _ALIASES.items():
@@ -2207,7 +2222,9 @@ class OfflineBrain:
         if alias_matches:
             alias_matches.sort(key=lambda x: x[0], reverse=True)
             _, _, best_key = alias_matches[0]
-            return _KNOWLEDGE[best_key]
+            result = _KNOWLEDGE[best_key]
+            self._knowledge_cache[text_lower] = result
+            return result
 
         # Exact key match (longest first)
         matches = []
@@ -2227,6 +2244,7 @@ class OfflineBrain:
             for skip_key, skip_words in skip_pairs:
                 if key == skip_key and any(w in text_lower for w in skip_words):
                     continue
+            self._knowledge_cache[text_lower] = value
             return value
 
         # Intent-aware matching
@@ -2235,6 +2253,7 @@ class OfflineBrain:
             topic = how_match.group(1).strip()
             for key, value in _KNOWLEDGE.items():
                 if key in topic or topic in key:
+                    self._knowledge_cache[text_lower] = value
                     return value
 
         # Word overlap matching
@@ -2272,6 +2291,8 @@ class OfflineBrain:
                             best_match = value
                             best_score = 0.3
 
+        if best_match:
+            self._knowledge_cache[text_lower] = best_match
         return best_match
 
     def _try_math(self, text: str) -> str | None:
@@ -2411,8 +2432,7 @@ class OfflineBrain:
             return learned, mood
 
         # 6. Intent-based response
-        import string
-        text_clean = text_lower.translate(str.maketrans('', '', string.punctuation))
+        text_clean = text_lower.translate(_PUNCT_TABLE)
         clean_words = set(text_clean.split())
 
         response_text = None
@@ -2595,14 +2615,7 @@ class Brain:
         brain_result = self.purple_brain.think(user_text)
         brain_response = brain_result.get("response", "")
 
-        _GENERIC = ("I see.", "Got it.", "Interesting", "Let me help", "Here's what I know",
-                    "I understand", "Tell me more", "What else", "How can I help",
-                    "Great question", "Let me explain", "Let me walk you",
-                    "Here's how", "Let me think", "That's a good",
-                    "I'd say", "Based on my", "Regarding", "Let me consider",
-                    "I'm processing", "What aspect", "How can I assist")
-
-        if brain_response and len(brain_response) > 50 and not any(brain_response.startswith(g) for g in _GENERIC):
+        if brain_response and len(brain_response) > 50 and not any(brain_response.startswith(g) for g in _GENERIC_RESPONSES):
             say = brain_response
         else:
             say, mood = self._offline.generate(user_text, current_mood)
@@ -2616,55 +2629,56 @@ class Brain:
         elif brain_result.get("perception", {}).get("emotion") in ["sadness", "fear"]:
             mood = "calm"
 
-        if self._nn_initialized and self.neural_net and self.learning:
-            try:
-                intent_label, _ = self.neural_net.classify_intent(user_text)
-                quality = self.neural_net.predict_quality(user_text, say)
-                topics = [w for w in user_text.lower().split() if len(w) > 4]
-                self.learning.learn_from_interaction(
-                    user_input=user_text,
-                    response=say,
-                    intent=intent_label,
-                    topics=topics[:5],
-                    was_helpful=quality > 0.6,
-                    response_time_ms=0.0,
-                )
-                self.neural_net.train_intent(user_text, intent_label)
-                self.neural_net.train_quality(user_text, say, quality)
-                self.neural_net.train_pattern(user_text)
+        # Consolidated learning pipeline - runs every 3 turns to reduce overhead
+        if self._response_count % 3 == 0:
+            if self._nn_initialized and self.neural_net and self.learning:
+                try:
+                    intent_label, _ = self.neural_net.classify_intent(user_text)
+                    quality = self.neural_net.predict_quality(user_text, say)
+                    topics = [w for w in user_text.lower().split() if len(w) > 4]
+                    self.learning.learn_from_interaction(
+                        user_input=user_text,
+                        response=say,
+                        intent=intent_label,
+                        topics=topics[:5],
+                        was_helpful=quality > 0.6,
+                        response_time_ms=0.0,
+                    )
+                    self.neural_net.train_intent(user_text, intent_label)
+                    self.neural_net.train_quality(user_text, say, quality)
+                    self.neural_net.train_pattern(user_text)
 
-                if self.massive_nn:
-                    self.massive_nn.process(user_text)
-                    self.massive_nn.train_from_interaction(user_text, intent_label, quality)
-
-                if self._response_count % 20 == 0:
-                    self.learning.run_consolidation()
-                if self._response_count % 50 == 0:
-                    self.neural_net.save()
-                    self.learning.save()
                     if self.massive_nn:
-                        self.massive_nn.save_all()
-            except Exception:
-                pass
+                        self.massive_nn.process(user_text)
+                        self.massive_nn.train_from_interaction(user_text, intent_label, quality)
 
-        # Auto-trainer: learn from every interaction
-        if self.auto_trainer:
-            try:
-                self.auto_trainer.learn_from_interaction(
-                    user_text=user_text,
-                    response=say,
-                    intent=brain_result.get("intent", "unknown"),
-                )
-                # Store in unified memory
-                if self.unified_memory:
-                    self.unified_memory.store(user_text, memory_type="working")
-                    self.unified_memory.store(say, memory_type="episodic",
-                                              importance=0.6,
-                                              tags=["response"])
-                    if self._response_count % 25 == 0:
-                        self.unified_memory.consolidate()
-            except Exception:
-                pass
+                    if self._response_count % 20 == 0:
+                        self.learning.run_consolidation()
+                    if self._response_count % 50 == 0:
+                        self.neural_net.save()
+                        self.learning.save()
+                        if self.massive_nn:
+                            self.massive_nn.save_all()
+                except Exception:
+                    pass
+
+            # Auto-trainer: learn from interaction (batched)
+            if self.auto_trainer:
+                try:
+                    self.auto_trainer.learn_from_interaction(
+                        user_text=user_text,
+                        response=say,
+                        intent=brain_result.get("intent", "unknown"),
+                    )
+                    if self.unified_memory:
+                        self.unified_memory.store(user_text, memory_type="working")
+                        self.unified_memory.store(say, memory_type="episodic",
+                                                  importance=0.6,
+                                                  tags=["response"])
+                        if self._response_count % 25 == 0:
+                            self.unified_memory.consolidate()
+                except Exception:
+                    pass
 
         return Decision(say=say, mood=mood, effect=None, actions=[])
 
