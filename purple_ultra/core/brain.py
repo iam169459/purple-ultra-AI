@@ -2850,6 +2850,20 @@ Lessons:"""
             except Exception:
                 pass
 
+    def refute_effect(self, effect: str, reason: str = "") -> str:
+        """Refute a voice effect and learn from it."""
+        if self.auto_trainer:
+            try:
+                self.auto_trainer.learn_from_interaction(
+                    user_text=f"refute effect {effect}",
+                    response=f"Effect {effect} refuted",
+                    intent="effect_refutation",
+                    feedback="negative",
+                )
+            except Exception:
+                pass
+        return f"Effect '{effect}' refuted" + (f": {reason}" if reason else "")
+
     def get_brain_status(self) -> dict:
         return self.purple_brain.get_brain_status()
 

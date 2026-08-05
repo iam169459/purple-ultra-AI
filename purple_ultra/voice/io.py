@@ -61,7 +61,7 @@ class VoiceIO:
     """Handles all voice input/output operations."""
 
     __slots__ = ('config', '_whisper_model', '_pyttsx3_engine', '_piper_available',
-                 '_super_admin', '_admin_override')
+                 '_super_admin', '_admin_override', '_last_effect', '_refuted_effects')
 
     def __init__(self, config: Config):
         self.config = config
@@ -70,6 +70,8 @@ class VoiceIO:
         self._piper_available = None
         self._super_admin = get_super_admin_voice()
         self._admin_override = False
+        self._last_effect: str | None = None
+        self._refuted_effects: list[dict] = []
 
     def _ensure_whisper(self):
         if self._whisper_model is None:
@@ -253,10 +255,40 @@ class VoiceIO:
         """Get super admin voice status."""
         return self._super_admin.get_status()
 
-    def speak_effect(self, effect: str):
-        """Speak a vocal effect."""
+    def speak_effect(self, effect: str) -> bool:
+        """Speak a vocal effect. Returns True if effect was spoken."""
         if effect and effect in EFFECT_PHRASES:
+            self._last_effect = effect
             self.speak(EFFECT_PHRASES[effect])
+            return True
+        return False
+
+    def refute_effect(self, reason: str = "") -> str:
+        """Refute/cancel the last voice effect."""
+        if self._last_effect:
+            refuted = self._last_effect
+            self._refuted_effects.append({
+                "effect": refuted,
+                "reason": reason,
+                "timestamp": __import__('time').time(),
+            })
+            self._last_effect = None
+            if reason:
+                return f"Effect '{refuted}' refuted: {reason}"
+            return f"Effect '{refuted}' refuted"
+        return "No effect to refute"
+
+    def get_last_effect(self) -> str | None:
+        """Get the last applied effect."""
+        return self._last_effect
+
+    def get_refuted_effects(self) -> list[dict]:
+        """Get history of refuted effects."""
+        return self._refuted_effects[-20:]
+
+    def clear_effect(self):
+        """Clear the current effect without recording it."""
+        self._last_effect = None
 
     def _speak_piper(self, text: str, voice_cfg: VoiceConfig):
         """Speak using Piper neural TTS."""

@@ -2132,6 +2132,59 @@ def register_commands(core: UltraCore):
     core.register_command(["recall", "what do you know about"], cmd_recall, priority=22)
     core.register_command(["my profile", "user preferences", "what do you know about me"], cmd_user_prefs, priority=21)
 
+    # ── VOICE EFFECT REFUTATION ──
+
+    def cmd_refute_effect(turn):
+        voice = core.get_subsystem("voice")
+        if not voice:
+            return "Voice system not available"
+        text = turn.user_text.lower().strip()
+        reason = ""
+        if "because" in text:
+            parts = text.split("because", 1)
+            reason = parts[1].strip() if len(parts) > 1 else ""
+        elif "refute" in text:
+            parts = text.split("refute", 1)
+            reason = parts[1].strip() if len(parts) > 1 else ""
+        elif "cancel" in text:
+            parts = text.split("cancel", 1)
+            reason = parts[1].strip() if len(parts) > 1 else ""
+        return voice.refute_effect(reason)
+
+    def cmd_last_effect(turn):
+        voice = core.get_subsystem("voice")
+        if not voice:
+            return "Voice system not available"
+        effect = voice.get_last_effect()
+        if effect:
+            return f"Last effect: {effect}"
+        return "No effect applied"
+
+    def cmd_refuted_history(turn):
+        voice = core.get_subsystem("voice")
+        if not voice:
+            return "Voice system not available"
+        refuted = voice.get_refuted_effects()
+        if not refuted:
+            return "No refuted effects"
+        lines = ["Refuted Effects:"]
+        for r in refuted[-10:]:
+            reason = f" - {r['reason']}" if r.get('reason') else ""
+            lines.append(f"  {r['effect']}{reason}")
+        return "\n".join(lines)
+
+    def cmd_clear_effect(turn):
+        voice = core.get_subsystem("voice")
+        if not voice:
+            return "Voice system not available"
+        voice.clear_effect()
+        return "Effect cleared"
+
+    core.register_command(["refute effect", "cancel effect", "undo effect", "refute"], cmd_refute_effect, priority=30)
+    core.register_command(["last effect", "current effect", "what effect"], cmd_last_effect, priority=29)
+    core.register_command(["refuted effects", "effect history", "refuted history"], cmd_refuted_history, priority=28)
+    core.register_command(["clear effect", "remove effect"], cmd_clear_effect, priority=27)
+
 
 def setup_servers(core: UltraCore, config: Config):
     """Setup WebSocket and REST API servers (optional)."""
