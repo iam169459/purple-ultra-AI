@@ -1872,6 +1872,16 @@ class ReasoningEngine:
             analysis["requires_examples"] = True
         elif any(w in text_lower for w in ["what if", "suppose", "imagine", "hypothetical"]):
             analysis["type"] = "hypothetical"
+        elif any(w in text_lower for w in ["opinion", "think", "believe", "prefer", "recommend", "advice"]):
+            analysis["type"] = "opinion"
+        elif any(w in text_lower for w in ["history", "origin", "when was", "who invented", "who created"]):
+            analysis["type"] = "historical"
+        elif any(w in text_lower for w in ["future", "prediction", "trend", "will happen", "forecast"]):
+            analysis["type"] = "predictive"
+        elif any(w in text_lower for w in ["problem", "issue", "error", "fix", "solve", "troubleshoot"]):
+            analysis["type"] = "problem_solving"
+        elif any(w in text_lower for w in ["list", "examples of", "types of", "kinds of", "name"]):
+            analysis["type"] = "enumeration"
 
         # Complexity detection
         word_count = len(text_lower.split())
@@ -1881,10 +1891,14 @@ class ReasoningEngine:
             analysis["complexity"] = "moderate"
 
         # Depth detection
-        if any(w in text_lower for w in ["deep", "detailed", "thorough", "comprehensive", "in depth"]):
+        if any(w in text_lower for w in ["deep", "detailed", "thorough", "comprehensive", "in depth", "explain fully", "tell me everything"]):
             analysis["depth_requested"] = "deep"
-        elif any(w in text_lower for w in ["brief", "short", "quick", "tldr", "summary"]):
+        elif any(w in text_lower for w in ["brief", "short", "quick", "tldr", "summary", "concise"]):
             analysis["depth_requested"] = "brief"
+
+        # Urgency detection
+        if any(w in text_lower for w in ["urgent", "asap", "immediately", "emergency", "critical"]):
+            analysis["urgency"] = "high"
 
         return analysis
 
@@ -1916,6 +1930,27 @@ class ReasoningEngine:
             self._chain.append("Projecting consequences...")
             self._chain.append("Evaluating second-order effects...")
             self._chain.append("Drawing implications...")
+        elif analysis["type"] == "historical":
+            self._chain.append("Identifying the time period...")
+            self._chain.append("Gathering key figures and events...")
+            self._chain.append("Tracing the progression...")
+            self._chain.append("Assessing significance and legacy...")
+        elif analysis["type"] == "predictive":
+            self._chain.append("Examining current trends...")
+            self._chain.append("Identifying driving forces...")
+            self._chain.append("Considering uncertainties...")
+            self._chain.append("Projecting likely outcomes...")
+        elif analysis["type"] == "problem_solving":
+            self._chain.append("Defining the problem clearly...")
+            self._chain.append("Identifying root causes...")
+            self._chain.append("Generating potential solutions...")
+            self._chain.append("Evaluating feasibility...")
+            self._chain.append("Recommending best approach...")
+        elif analysis["type"] == "enumeration":
+            self._chain.append("Identifying the category...")
+            self._chain.append("Gathering comprehensive list...")
+            self._chain.append("Organizing by relevance...")
+            self._chain.append("Presenting clearly...")
         else:
             self._chain.append("Understanding the question...")
             self._chain.append("Retrieving relevant knowledge...")
@@ -1961,6 +1996,24 @@ class ReasoningEngine:
                     "Consider both direct and indirect consequences. "
                     "Second-order effects often matter more than the immediate impact. "
                     "The most robust answers account for uncertainty and edge cases."
+                )
+            elif analysis["type"] == "historical":
+                response_parts.append(
+                    "\n\nHistorical context: "
+                    "Understanding the circumstances that led to this development "
+                    "helps us appreciate its significance and apply lessons to current situations."
+                )
+            elif analysis["type"] == "predictive":
+                response_parts.append(
+                    "\n\nLooking ahead: "
+                    "Predictions are inherently uncertain, but analyzing current trends "
+                    "and driving forces gives us a framework for understanding likely outcomes."
+                )
+            elif analysis["type"] == "problem_solving":
+                response_parts.append(
+                    "\n\nProblem-solving approach: "
+                    "Start by clearly defining the problem, then work through potential solutions "
+                    "systematically. Test each solution and iterate based on results."
                 )
 
         if analysis.get("requires_examples"):
