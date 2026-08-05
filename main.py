@@ -2028,6 +2028,110 @@ def register_commands(core: UltraCore):
     core.register_command(["language", "lang"], cmd_language, priority=65)
     core.register_command(["translate"], cmd_translate, priority=65)
 
+    # ── AUTO-TRAIN & SELF-LEARNING COMMANDS ──
+
+    def cmd_auto_train(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'auto_trainer') or not brain.auto_trainer:
+            return "Auto-trainer not available"
+        brain.auto_trainer.save()
+        return brain.auto_trainer.reflect()
+
+    def cmd_auto_stats(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'auto_trainer') or not brain.auto_trainer:
+            return "Auto-trainer not available"
+        stats = brain.auto_trainer.get_stats()
+        lines = ["Auto-Training Statistics:"]
+        lines.append(f"  Total Interactions: {stats['total_interactions']}")
+        lines.append(f"  Facts Learned: {stats['facts_learned']}")
+        lines.append(f"  Knowledge Entries: {stats['knowledge_entries']}")
+        lines.append(f"  Feedback Received: {stats['feedback_received']}")
+        prefs = stats.get("user_preferences", {})
+        lines.append(f"  User Style: {prefs.get('style', 'unknown')}")
+        lines.append(f"  Technical Level: {prefs.get('technical_level', 'unknown')}")
+        lines.append(f"  Response Length: {prefs.get('response_length', 'unknown')}")
+        return "\n".join(lines)
+
+    def cmd_memory_stats(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'unified_memory') or not brain.unified_memory:
+            return "Unified memory not available"
+        stats = brain.unified_memory.get_stats()
+        lines = ["Unified Memory Statistics:"]
+        lines.append(f"  Working Memory: {stats['working_memory_size']} items")
+        lines.append(f"  Episodes: {stats['episodes_count']}")
+        lines.append(f"  Concepts: {stats['concepts_count']}")
+        lines.append(f"  Relationships: {stats['relationships_count']}")
+        lines.append(f"  Procedures: {stats['procedures_count']}")
+        lines.append(f"  Total Stored: {stats['total_stored']}")
+        lines.append(f"  Total Recalled: {stats['total_recalled']}")
+        lines.append(f"  Consolidations: {stats['consolidations']}")
+        return "\n".join(lines)
+
+    def cmd_remember(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'auto_trainer') or not brain.auto_trainer:
+            return "Auto-trainer not available"
+        text = turn.user_text.strip()
+        # Learn the fact
+        facts = brain.auto_trainer._knowledge.extract_facts(text)
+        if facts:
+            for fact_key, fact_category in facts:
+                brain.auto_trainer._knowledge.learn(fact_key, f"[{fact_category}] {fact_key}")
+            brain.auto_trainer.save()
+            return f"Remembered: {', '.join(f[0] for f in facts)}"
+        # Store as direct knowledge
+        parts = text.split(" is ", 1)
+        if len(parts) == 2:
+            brain.auto_trainer._knowledge.learn(parts[0].strip(), parts[1].strip())
+            brain.auto_trainer.save()
+            return f"Remembered: {parts[0].strip()} = {parts[1].strip()}"
+        return "Usage: remember <fact> (e.g., 'remember that python is a programming language')"
+
+    def cmd_recall(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'auto_trainer') or not brain.auto_trainer:
+            return "Auto-trainer not available"
+        query = turn.user_text.replace("recall", "").replace("what do you know about", "").strip()
+        result = brain.auto_trainer.get_learned_knowledge(query)
+        if result:
+            return f"Recalled: {result}"
+        return f"I don't have specific knowledge about '{query}' yet. Tell me something about it!"
+
+    def cmd_user_prefs(turn):
+        brain = core.get_subsystem("brain")
+        if not brain or not hasattr(brain, 'auto_trainer') or not brain.auto_trainer:
+            return "Auto-trainer not available"
+        prefs = brain.auto_trainer._preferences.get_preferences()
+        lines = ["Your Profile (learned from conversations):"]
+        lines.append(f"  Response Style: {prefs.style}")
+        lines.append(f"  Technical Level: {prefs.technical_level}")
+        lines.append(f"  Response Length: {prefs.response_length}")
+        lines.append(f"  Interactions: {prefs.interaction_count}")
+        if prefs.topics_of_interest:
+            lines.append(f"  Top Interests: {', '.join(prefs.topics_of_interest[-10:])}")
+        return "\n".join(lines)
+
+    def cmd_feedback(turn):
+        brain = core.get_subsystem("brain")
+        if not brain:
+            return "Brain not available"
+        text = turn.user_text.lower().strip()
+        positive = any(w in text for w in ["good", "great", "thanks", "helpful", "perfect", "excellent", "nice", "awesome", "right", "correct"])
+        negative = any(w in text for w in ["bad", "wrong", "terrible", "incorrect", "stupid", "dumb", "useless", "fail"])
+        if positive or negative:
+            brain.record_feedback(turn.user_text, positive)
+            return f"Feedback recorded: {'positive' if positive else 'negative'}"
+        return "Say 'good', 'thanks', 'bad', 'wrong' to give feedback"
+
+    core.register_command(["auto train", "auto-train", "training status", "train status"], cmd_auto_train, priority=26)
+    core.register_command(["auto stats", "training stats", "learning stats"], cmd_auto_stats, priority=25)
+    core.register_command(["memory stats", "unified memory"], cmd_memory_stats, priority=24)
+    core.register_command(["remember", "learn that"], cmd_remember, priority=23)
+    core.register_command(["recall", "what do you know about"], cmd_recall, priority=22)
+    core.register_command(["my profile", "user preferences", "what do you know about me"], cmd_user_prefs, priority=21)
+
 
 def setup_servers(core: UltraCore, config: Config):
     """Setup WebSocket and REST API servers (optional)."""

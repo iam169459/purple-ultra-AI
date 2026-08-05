@@ -24,6 +24,8 @@ from ..brain.self_learning import SelfLearningSystem
 from ..brain.massive_network import BrainMassiveNetwork
 from ..brain.image_input import ImageInput
 from ..brain.brain_enhance import EXTRA_KNOWLEDGE, EXTRA_ALIASES, EXTRA_INTENT_PATTERNS
+from ..brain.auto_trainer import AutoTrainer
+from ..brain.unified_memory import UnifiedMemoryManager
 
 
 @dataclass
@@ -2532,7 +2534,7 @@ class Brain:
                  '_local_mode', '_response_count', 'purple_brain',
                  '_local_cache', '_intent_cache', '_offline',
                  'neural_net', 'learning', 'massive_nn', 'image_input',
-                 '_nn_initialized')
+                 '_nn_initialized', 'auto_trainer', 'unified_memory')
 
     def __init__(self, config: Config, llm_manager: LLMManager = None):
         self.config = config
@@ -2559,6 +2561,13 @@ class Brain:
             self.neural_net = None
             self.learning = None
             self.massive_nn = None
+
+        try:
+            self.auto_trainer = AutoTrainer(memory_dir="memory/auto_trainer")
+            self.unified_memory = UnifiedMemoryManager(memory_dir="memory/unified")
+        except Exception:
+            self.auto_trainer = None
+            self.unified_memory = None
 
     def _ensure_nn(self) -> None:
         if not self._nn_initialized:
@@ -2635,6 +2644,25 @@ class Brain:
                     self.learning.save()
                     if self.massive_nn:
                         self.massive_nn.save_all()
+            except Exception:
+                pass
+
+        # Auto-trainer: learn from every interaction
+        if self.auto_trainer:
+            try:
+                self.auto_trainer.learn_from_interaction(
+                    user_text=user_text,
+                    response=say,
+                    intent=brain_result.get("intent", "unknown"),
+                )
+                # Store in unified memory
+                if self.unified_memory:
+                    self.unified_memory.store(user_text, memory_type="working")
+                    self.unified_memory.store(say, memory_type="episodic",
+                                              importance=0.6,
+                                              tags=["response"])
+                    if self._response_count % 25 == 0:
+                        self.unified_memory.consolidate()
             except Exception:
                 pass
 
@@ -2718,6 +2746,17 @@ Respond with valid JSON only:
         self._response_count += 1
         self.purple_brain.consciousness["total_decisions"] += 1
 
+        # Auto-trainer for admin
+        if self.auto_trainer:
+            try:
+                self.auto_trainer.learn_from_interaction(
+                    user_text=user_text,
+                    response=say,
+                    intent="admin_command",
+                )
+            except Exception:
+                pass
+
         return Decision(say=say, mood=current_mood, effect=None, actions=[])
 
     def _parse_decision(self, raw: str, current_mood: str) -> Decision:
@@ -2800,6 +2839,16 @@ Lessons:"""
     def record_feedback(self, response: str, positive: bool):
         """Record user feedback for learning."""
         self._offline._learning.record_feedback(response, positive)
+        if self.auto_trainer:
+            try:
+                feedback = "good" if positive else "bad"
+                self.auto_trainer.learn_from_interaction(
+                    user_text="",
+                    response=response,
+                    feedback=feedback,
+                )
+            except Exception:
+                pass
 
     def get_brain_status(self) -> dict:
         return self.purple_brain.get_brain_status()
@@ -2807,10 +2856,21 @@ Lessons:"""
     def get_status(self) -> dict:
         brain_status = self.purple_brain.get_brain_status()
         brain_stats = self._offline.get_brain_stats()
-        return {
+        status = {
             "local_mode": self._local_mode,
             "llm_available": not self._local_mode,
             "response_count": self._response_count,
             "purple_brain": brain_status,
             "offline_brain": brain_stats,
         }
+        if self.auto_trainer:
+            try:
+                status["auto_trainer"] = self.auto_trainer.get_stats()
+            except Exception:
+                status["auto_trainer"] = {"error": "unavailable"}
+        if self.unified_memory:
+            try:
+                status["unified_memory"] = self.unified_memory.get_stats()
+            except Exception:
+                status["unified_memory"] = {"error": "unavailable"}
+        return status
