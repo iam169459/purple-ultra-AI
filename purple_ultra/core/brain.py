@@ -2196,12 +2196,16 @@ class OfflineBrain:
         """Search the massive knowledge base."""
         text_lower = text.lower()
 
-        # Check aliases first (with word boundary matching to avoid false positives)
+        # Check aliases first (with word boundary matching, prioritize longest alias)
+        alias_matches = []
         for alias, key in _ALIASES.items():
             if key in _KNOWLEDGE:
-                # Always use word boundary regex to avoid false substring matches
                 if re.search(r'\b' + re.escape(alias) + r'\b', text_lower):
-                    return _KNOWLEDGE[key]
+                    alias_matches.append((len(alias), alias, key))
+        if alias_matches:
+            alias_matches.sort(key=lambda x: x[0], reverse=True)
+            _, _, best_key = alias_matches[0]
+            return _KNOWLEDGE[best_key]
 
         # Exact key match (longest first)
         matches = []
