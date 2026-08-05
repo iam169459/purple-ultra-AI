@@ -23,6 +23,7 @@ from ..brain.neural_network import BrainNeuralNetwork
 from ..brain.self_learning import SelfLearningSystem
 from ..brain.massive_network import BrainMassiveNetwork
 from ..brain.image_input import ImageInput
+from ..brain.brain_enhance import EXTRA_KNOWLEDGE, EXTRA_ALIASES, EXTRA_INTENT_PATTERNS
 
 
 @dataclass
@@ -301,6 +302,9 @@ _KNOWLEDGE: dict[str, str] = {
     "memory": "Memory types: sensory (brief), short-term/working (7±2 items), long-term (unlimited). Encoding: rehearsal, elaboration, visual imagery. Retrieval: recall vs recognition. Forgetting curve: review at increasing intervals.",
     "creativity": "Creativity: divergent thinking (many solutions), convergent thinking (best solution). Techniques: brainstorming, SCAMPER, lateral thinking, mind mapping, analogical reasoning. Creativity is a skill that can be developed.",
 }
+
+# Merge additional 200+ knowledge entries from brain enhancement module
+_KNOWLEDGE.update(EXTRA_KNOWLEDGE)
 
 # Synonyms and aliases that map to knowledge base keys
 _ALIASES: dict[str, str] = {
@@ -1543,6 +1547,19 @@ _ALIASES: dict[str, str] = {
     "reproducibility": "http",
 }
 
+# Merge additional 150+ aliases from brain enhancement module
+_ALIASES.update(EXTRA_ALIASES)
+
+# Clean up broken placeholder aliases (800+ aliases incorrectly mapping to "http")
+_http_alias_whitelist = {
+    'http request', 'http response', 'http header', 'http status code',
+    'http method', 'get request', 'post request', 'http',
+}
+_broken_http = [k for k, v in _ALIASES.items()
+                if v == 'http' and k.lower() not in _http_alias_whitelist]
+for _k in _broken_http:
+    del _ALIASES[_k]
+
 # ═══════════════════════════════════════════════════════════════════════════
 #  INTENT PATTERNS
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1736,6 +1753,83 @@ _INTENT_PATTERNS: dict[str, list[tuple[list[str], str | None]]] = {
     ],
 }
 
+# Merge additional intent patterns from brain enhancement module
+# Add response strings to the new patterns since brain_enhance used empty lists
+for _intent_key, _pattern_groups in EXTRA_INTENT_PATTERNS.items():
+    if _intent_key not in _INTENT_PATTERNS:
+        # Provide default response strings for new intent categories
+        _enriched_responses = {
+            "question_explain": [
+                "Let me explain that in detail.",
+                "Here's a comprehensive explanation.",
+                "I'll break that down for you.",
+                "Let me describe that thoroughly.",
+            ],
+            "question_compare": [
+                "Let me compare those for you.",
+                "Here's how they differ.",
+                "I'll evaluate the key differences.",
+                "Let me analyze the comparison.",
+            ],
+            "question_why": [
+                "Here's the reason behind that.",
+                "Let me explain the cause.",
+                "That's a great question - here's why.",
+                "Let me trace the cause.",
+            ],
+            "code_help": [
+                "Let me write that code for you.",
+                "Here's an implementation approach.",
+                "I'll code that up.",
+                "Let me create a code example.",
+            ],
+            "learning": [
+                "Great question! Let me teach you about that.",
+                "Here's what you should know.",
+                "Let me walk you through this.",
+                "I'll explain this step by step.",
+            ],
+            "creative": [
+                "Let me create something for you.",
+                "Here's my creative take on that.",
+                "I'll design that for you.",
+                "Let me craft that.",
+            ],
+            "analysis": [
+                "Let me analyze that deeply.",
+                "Here's my thorough analysis.",
+                "I'll evaluate the key factors.",
+                "Let me examine that carefully.",
+            ],
+            "planning": [
+                "Let me outline a plan for that.",
+                "Here's a strategic approach.",
+                "I'll map out the steps.",
+                "Let me create a roadmap.",
+            ],
+            "problem_solving": [
+                "Let me help solve that.",
+                "Here's my approach to fixing that.",
+                "I'll troubleshoot this.",
+                "Let me work through this problem.",
+            ],
+            "opinion": [
+                "Here's my perspective on that.",
+                "Let me share my thoughts.",
+                "Based on my knowledge, here's my view.",
+                "I'll give you my honest assessment.",
+            ],
+        }
+        enriched = []
+        for keywords, _ in _pattern_groups:
+            resp = _enriched_responses.get(_intent_key, [
+                f"Let me help you with that.",
+                f"I can assist with that.",
+                f"Here's what I know about that.",
+            ])
+            enriched.append((keywords, resp))
+        _INTENT_PATTERNS[_intent_key] = enriched
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  REASONING ENGINE
@@ -1816,9 +1910,16 @@ class ReasoningEngine:
             self._chain.append("Evaluating each option...")
             self._chain.append("Weighing trade-offs...")
             self._chain.append("Drawing conclusions...")
+        elif analysis["type"] == "hypothetical":
+            self._chain.append("Defining the scenario...")
+            self._chain.append("Identifying key assumptions...")
+            self._chain.append("Projecting consequences...")
+            self._chain.append("Evaluating second-order effects...")
+            self._chain.append("Drawing implications...")
         else:
             self._chain.append("Understanding the question...")
             self._chain.append("Retrieving relevant knowledge...")
+            self._chain.append("Checking related domains...")
             self._chain.append("Synthesizing the answer...")
 
         return " → ".join(self._chain)
@@ -1854,6 +1955,20 @@ class ReasoningEngine:
                     "Consider: performance requirements, team expertise, ecosystem maturity, "
                     "and long-term maintainability."
                 )
+            elif analysis["type"] == "hypothetical":
+                response_parts.append(
+                    "\n\nIn exploring this scenario: "
+                    "Consider both direct and indirect consequences. "
+                    "Second-order effects often matter more than the immediate impact. "
+                    "The most robust answers account for uncertainty and edge cases."
+                )
+
+        if analysis.get("requires_examples"):
+            response_parts.append(
+                "\n\nPractical example: "
+                "Consider a real-world application where this concept directly impacts outcomes. "
+                "The key insight is understanding how theory translates to practice."
+            )
 
         return "\n".join(response_parts)
 
@@ -2028,10 +2143,12 @@ class OfflineBrain:
         """Search the massive knowledge base."""
         text_lower = text.lower()
 
-        # Check aliases first
+        # Check aliases first (with word boundary matching to avoid false positives)
         for alias, key in _ALIASES.items():
-            if alias in text_lower and key in _KNOWLEDGE:
-                return _KNOWLEDGE[key]
+            if key in _KNOWLEDGE:
+                # Always use word boundary regex to avoid false substring matches
+                if re.search(r'\b' + re.escape(alias) + r'\b', text_lower):
+                    return _KNOWLEDGE[key]
 
         # Exact key match (longest first)
         matches = []
@@ -2082,6 +2199,19 @@ class OfflineBrain:
                 if score > best_score:
                     best_score = score
                     best_match = value
+
+        # Fuzzy single-word matching for broader coverage
+        if not best_match and len(content_words) >= 1:
+            for word in content_words:
+                if len(word) < 4:
+                    continue
+                for key, value in _KNOWLEDGE.items():
+                    key_words = set(key.split())
+                    if word in key_words and len(value) > 80:
+                        # Prefer longer, more detailed knowledge entries
+                        if not best_match or len(value) > len(best_match):
+                            best_match = value
+                            best_score = 0.3
 
         return best_match
 
@@ -2195,10 +2325,15 @@ class OfflineBrain:
         # 3. Classify intent
         intent, confidence = self._classify_intent(text)
 
-        # 4. Knowledge lookup with deep analysis
+        # 4. Knowledge lookup - always try to enrich responses with knowledge
         knowledge_intents = {"question_factual", "question_how", "question_why",
-                             "explanation", "math", "code_help", "analysis"}
-        if intent in knowledge_intents or (confidence < 0.3 and "?" in text):
+                             "explanation", "math", "code_help", "analysis",
+                             "question_explain", "question_compare", "learning"}
+        should_lookup = (intent in knowledge_intents or
+                         confidence < 0.5 or
+                         "?" in text or
+                         any(w in text_lower for w in ["what", "how", "why", "tell", "explain", "describe"]))
+        if should_lookup:
             knowledge = self._lookup_knowledge(text)
             if knowledge:
                 # Deep reasoning for complex questions
@@ -2238,19 +2373,38 @@ class OfflineBrain:
                     response_text = random.choice(responses)
                     break
 
-        # 7. Fallback
+        # 7. Fallback with expert-level responses
         if response_text is None:
-            fallbacks = [
-                "Interesting! Tell me more about that.",
-                "I see. What specifically would you like to know?",
-                "That's a good point. Let me think about it.",
-                "Got it. How can I help you with that?",
-                "I understand. What would you like to do next?",
-                "Noted. Is there something specific I can help with?",
-                "I'm processing that. What's the most important part?",
-                "Let me consider that. What aspect interests you most?",
-            ]
-            response_text = random.choice(fallbacks)
+            # Try to find any related knowledge for a more informative fallback
+            words_in_query = [w for w in text_lower.split() if len(w) > 3]
+            related_knowledge = None
+            for w in words_in_query:
+                for key, value in _KNOWLEDGE.items():
+                    if w in key and len(value) > 50:
+                        related_knowledge = value
+                        break
+                if related_knowledge:
+                    break
+
+            if related_knowledge:
+                # Provide a knowledgeable response even without exact match
+                response_text = random.choice([
+                    f"That relates to a fascinating area. {related_knowledge[:200]}...",
+                    f"I can share some knowledge on that. {related_knowledge[:200]}...",
+                    f"Great question! Here's what I know: {related_knowledge[:200]}...",
+                ])
+            else:
+                fallbacks = [
+                    "That's an interesting topic. Could you tell me more about what specifically you'd like to know?",
+                    "I'd be happy to help with that. What aspect would you like me to focus on?",
+                    "Let me think about that. Could you provide a bit more context?",
+                    "That's a good question. Let me consider the best way to address it.",
+                    "I'm ready to dive into that. What's the most important part you'd like to explore?",
+                    "Interesting query. Would you like a detailed explanation or a quick overview?",
+                    "Let me process that. Are you looking for a definition, examples, or a deeper analysis?",
+                    "I can help with that. Would you like me to explain the concept, give examples, or compare options?",
+                ]
+                response_text = random.choice(fallbacks)
 
         # 8. Context occasionally
         if self._conversation_history and random.random() < 0.15:
