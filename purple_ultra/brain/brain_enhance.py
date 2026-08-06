@@ -1349,6 +1349,149 @@ EXTRA_ALIASES = {
     "memory techniques": "memory techniques",
     "memory palace": "memory techniques",
     "mnemonics": "memory techniques",
+
+    # Programming advanced aliases
+    "rust": "rust programming",
+    "golang": "go programming",
+    "go lang": "go programming",
+    "kotlin": "kotlin programming",
+    "swift": "swift programming",
+    "typescript": "typescript advanced",
+    "ts": "typescript advanced",
+    "python": "python advanced",
+    "javascript": "javascript advanced",
+    "js": "javascript advanced",
+    "sql": "sql advanced",
+    "regex": "regex advanced",
+    "regular expressions": "regex advanced",
+
+    # AI advanced aliases
+    "ai agents": "ai agents advanced",
+    "autonomous agents": "ai agents advanced",
+    "rag": "retrieval augmented generation",
+    "retrieval augmented": "retrieval augmented generation",
+    "ai alignment": "ai alignment research",
+    "alignment research": "ai alignment research",
+    "llm fine tuning": "llm fine tuning",
+    "fine tuning": "llm fine tuning",
+    "ai reasoning": "ai reasoning",
+    "chain of thought": "ai reasoning",
+    "multimodal": "multimodal ai",
+    "vision language": "multimodal ai",
+    "ai creativity": "ai creativity",
+    "generative ai creativity": "ai creativity",
+
+    # Security aliases
+    "web security": "web application security",
+    "appsec": "web application security",
+    "cloud security": "cloud security",
+    "aws security": "cloud security",
+    "network security": "network security",
+    "netsec": "network security",
+    "mobile security": "mobile security",
+    "app security": "mobile security",
+    "api security": "api security",
+
+    # Math aliases
+    "differential equations": "differential equations",
+    "ode": "differential equations",
+    "pde": "differential equations",
+    "fourier": "fourier transform",
+    "fft": "fourier transform",
+    "probability": "probability advanced",
+    "stats": "probability advanced",
+    "optimization": "optimization",
+    "convex optimization": "optimization",
+    "game theory": "game theory",
+    "information theory": "information theory",
+
+    # History aliases
+    "ancient history": "ancient history",
+    "ancient": "ancient history",
+    "medieval": "medieval history",
+    "middle ages": "medieval history",
+    "modern history": "modern history",
+    "ww2": "world war 2",
+    "world war ii": "world war 2",
+    "cold war": "cold war",
+
+    # Geography aliases
+    "geography": "world geography",
+    "world geography": "world geography",
+    "climate": "climate zones",
+    "climate zones": "climate zones",
+    "oceans": "oceanography",
+    "oceanography": "oceanography",
+    "plate tectonics": "plate tectonics",
+    "earthquakes": "plate tectonics",
+
+    # Economics aliases
+    "macroeconomics": "macroeconomics",
+    "macro": "macroeconomics",
+    "microeconomics": "microeconomics",
+    "micro": "microeconomics",
+    "behavioral economics": "behavioral economics",
+    "development economics": "development economics",
+
+    # Health aliases
+    "anatomy": "anatomy",
+    "body": "anatomy",
+    "physiology": "physiology",
+    "pharmacology": "pharmacology",
+    "drugs": "pharmacology",
+    "pathology": "pathology",
+    "disease": "pathology",
+    "epidemiology": "epidemiology",
+    "public health": "public health",
+
+    # Business aliases
+    "project management": "project management",
+    "pm": "project management",
+    "supply chain": "supply chain",
+    "logistics": "supply chain",
+    "data analysis": "data analysis",
+    "analytics": "data analysis",
+    "data visualization": "data visualization",
+    "dataviz": "data visualization",
+
+    # Creativity aliases
+    "creative writing": "creative writing",
+    "storytelling": "storytelling",
+    "narrative": "storytelling",
+    "design thinking": "design thinking",
+    "brainstorming": "brainstorming",
+
+    # Lifestyle aliases
+    "time management": "time management",
+    "productivity": "productivity",
+    "getting things done": "productivity",
+    "gtd": "productivity",
+    "minimalism": "minimalism",
+    "minimalist": "minimalism",
+    "journaling": "journaling",
+    "journal": "journaling",
+
+    # Nature aliases
+    "astronomy": "astronomy",
+    "space": "astronomy",
+    "stars": "astronomy",
+    "geology": "geology",
+    "rocks": "geology",
+    "ecology": "ecology",
+    "ecosystem": "ecology",
+    "marine biology": "marine biology",
+    "ocean life": "marine biology",
+    "botany": "botany",
+    "plants": "botany",
+
+    # Culture aliases
+    "literature": "literature",
+    "books": "literature",
+    "philosophy history": "philosophy history",
+    "religion": "religion",
+    "spirituality": "religion",
+    "mythology": "mythology",
+    "myths": "mythology",
 }
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -2108,4 +2251,97 @@ EXTRA_KNOWLEDGE.update({
     "puzzles": "Puzzles: problems requiring thought. Types: logic (Sudoku, KenKen), word (crosswords, anagrams), mechanical (Rubik's cube), visual (jigsaw), riddles. Benefits: cognitive training, problem-solving skills, stress relief, entertainment.",
     "survival skills": "Survival skills: wilderness emergency. Priorities: shelter, water, fire, food. Shelter: insulation from elements. Water: find, purify (boil, filter, chemicals). Fire: friction, flint, magnifying glass. Food: foraging (know what's safe), fishing, trapping. Navigation: sun, stars, compass.",
     "memory techniques": "Memory techniques: improve recall. Methods: memory palace (method of loci), spaced repetition, chunking, association, visualization, peg system, major system. Practice: active recall, interleaving, elaborative interrogation. Apps: Anki, Quizlet.",
+
+    # ── MORE PROGRAMMING ──
+    "rust programming": "Rust: systems language focused on safety and performance. Ownership system prevents data races at compile time. Borrowing: references with lifetime annotations. Pattern matching, algebraic types (enums), traits, async/await. Used in: OS, browsers, game engines, WebAssembly.",
+    "go programming": "Go (Golang): simple, fast, concurrent language by Google. Goroutines (lightweight threads), channels for communication. Garbage collected. Strong standard library. Used in: Docker, Kubernetes, Terraform, cloud infrastructure, CLI tools.",
+    "kotlin programming": "Kotlin: modern JVM language, 100% Java interoperable. Null safety, coroutines, extension functions, data classes, sealed classes. Official Android language. Kotlin Multiplatform for cross-platform development.",
+    "swift programming": "Swift: Apple's modern language for iOS/macOS. Value types, optionals, protocol-oriented, result builders. SwiftUI for declarative UI. Memory management with ARC. Fast, safe, expressive.",
+    "typescript advanced": "TypeScript advanced: conditional types, mapped types, template literal types, infer keyword, branded types, exhaustive checks, const assertions. Advanced patterns: builder pattern, dependency injection, type-safe events.",
+    "python advanced": "Python advanced: decorators, context managers, generators, coroutines, metaclasses, descriptors, ABC, slots, weakref, typing. Libraries: asyncio, dataclasses, typing, pathlib, functools, itertools.",
+    "javascript advanced": "JavaScript advanced: closures, prototypes, event loop, microtasks, WeakRef, Proxy, Reflect, generators, async iteration, SharedArrayBuffer, Atomics, WeakMap, WeakSet.",
+    "sql advanced": "SQL advanced: window functions (ROW_NUMBER, RANK, LAG, LEAD), CTEs, recursive queries, pivot/unpivot, JSON functions, full-text search, query optimization, execution plans, indexing strategies.",
+    "regex advanced": "Regex advanced: lookaheads, lookbehinds, atomic groups, possessive quantifiers, backreferences, named captures, recursive patterns, Unicode properties. Performance: avoid catastrophic backtracking.",
+
+    # ── MORE AI/ML ──
+    "ai agents advanced": "AI agents: LLM-powered autonomous systems. Components: planning (task decomposition), memory (short/long term), tools (APIs, code execution), reflection (self-critique). Frameworks: LangChain, AutoGPT, CrewAI, LlamaIndex.",
+    "retrieval augmented generation": "RAG: combine retrieval with generation. Process: embed query, search vector DB, retrieve relevant docs, augment prompt, generate. Improvements: re-ranking, query expansion, hybrid search, chunk optimization. Reduces hallucination.",
+    "ai alignment research": "AI alignment: ensuring AI systems act as intended. Approaches: RLHF, Constitutional AI, debate, interpretability. Challenges: mesa-optimization, reward hacking, value learning, corrigibility. Organizations: Anthropic, DeepMind, MIRI.",
+    "llm fine tuning": "LLM fine-tuning: adapt pre-trained models. Methods: full fine-tuning, LoRA, QLoRA, prefix tuning, prompt tuning, adapter layers. Data: instruction tuning, conversational, domain-specific. Evaluation: perplexity, human eval, benchmarks.",
+    "ai reasoning": "AI reasoning: chain-of-thought, tree-of-thoughts, graph-of-thoughts, self-consistency, ReAct (reasoning + acting), reflection, planning. Improves math, logic, complex problem solving.",
+    "multimodal ai": "Multimodal AI: models processing text, images, audio, video. Examples: GPT-4V (vision), Gemini, Claude 3. Architectures: cross-attention, late fusion, early fusion. Applications: image captioning, VQA, document understanding.",
+    "ai creativity": "AI creativity: generating novel content. Text: story generation, poetry, dialogue. Images: Stable Diffusion, DALL-E, Midjourney. Music: AIVA, Suno, Udio. Video: Sora, Runway. Challenges: originality, copyright, evaluation.",
+
+    # ── MORE SECURITY ──
+    "web application security": "Web app security: authentication (JWT, OAuth, sessions), authorization (RBAC, ABAC), input validation, output encoding, CSRF/XSS/SQLi prevention, security headers, rate limiting, logging, monitoring.",
+    "cloud security": "Cloud security: IAM (least privilege, MFA), encryption (at rest, in transit), logging (CloudTrail), network (VPC, security groups), compliance (CIS, SOC2), CSPM tools, container security, serverless security.",
+    "network security": "Network security: firewalls, IDS/IPS, VPN, network segmentation, zero trust, NAC (network access control), DDoS protection, traffic analysis, packet inspection, SIEM integration.",
+    "mobile security": "Mobile security: secure coding, OWASP Mobile Top 10, certificate pinning, code obfuscation, secure storage, biometric auth, jailbreak/root detection, app transport security, permissions model.",
+    "api security": "API security: authentication (API keys, OAuth), authorization, rate limiting, input validation, output filtering, HTTPS, CORS, request signing, API gateways, schema validation, logging.",
+
+    # ── MORE MATH ──
+    "differential equations": "Differential equations: equations involving derivatives. ODE: ordinary (single variable). PDE: partial (multiple variables). Solutions: analytical (exact) or numerical (Euler, Runge-Kutta). Applications: physics, engineering, biology, economics.",
+    "fourier transform": "Fourier transform: decomposes signals into frequencies. F(ω) = ∫f(t)e^(-iωt)dt. Inverse: f(t) = (1/2π)∫F(ω)e^(iωt)dω. FFT: fast algorithm O(n log n). Applications: signal processing, image compression, solving PDEs.",
+    "probability advanced": "Probability advanced: conditional expectation, law of total probability, Bayes rule, Markov chains, Poisson processes, central limit theorem, law of large numbers, characteristic functions, limit theorems.",
+    "optimization": "Optimization: finding best solution. Linear programming (simplex), convex optimization, gradient descent, Newton's method, genetic algorithms, simulated annealing. Applications: ML training, operations research, portfolio optimization.",
+    "game theory": "Game theory: strategic decision-making. Nash equilibrium, dominant strategies, Prisoner's dilemma, signaling games, mechanism design, auction theory. Applications: economics, politics, biology, computer science.",
+    "information theory": "Information theory: quantify information. Entropy: H(X) = -Σp(x)log p(x). Mutual information, channel capacity, Shannon's theorems. Applications: compression, error correction, cryptography, ML features.",
+
+    # ── MORE HISTORY ──
+    "ancient history": "Ancient history: civilizations before 500 CE. Mesopotamia (first cities, writing), Egypt (pyramids, pharaohs), Greece (democracy, philosophy), Rome (republic, empire), China (dynasties), India (Vedas, Buddhism).",
+    "medieval history": "Medieval history: 500-1500 CE. Byzantine Empire, Islamic Golden Age, Carolingian Empire, Crusades, Mongol Empire, feudalism, Black Death, Renaissance origins. Key figures: Charlemagne, Saladin, Genghis Khan.",
+    "modern history": "Modern history: 1500-present. Renaissance, Reformation, Enlightenment, revolutions (American, French, Industrial), world wars, Cold War, globalization, digital revolution. Key themes: democracy, nationalism, technology.",
+    "world war 2": "World War 2 (1939-1945): deadliest conflict. Axis (Germany, Italy, Japan) vs Allies (UK, USSR, US). Key events: Holocaust, D-Day, atomic bombs. 70-85 million deaths. Led to UN, Cold War, decolonization.",
+    "cold war": "Cold War (1947-1991): US vs USSR ideological conflict. Nuclear arms race, space race, proxy wars (Korea, Vietnam), Berlin Wall, Cuban Missile Crisis. Ended with Soviet collapse. Shaped modern geopolitics.",
+
+    # ── MORE GEOGRAPHY ──
+    "world geography": "World geography: continents (Asia 4.5B, Africa 1.4B, Europe 750M, Americas 1B, Oceania 45M, Antarctica 1k). Countries: 195 recognized. Features: Himalayas (tallest), Sahara (largest hot desert), Amazon (largest river by volume).",
+    "climate zones": "Climate zones: tropical (hot, wet), arid (dry), temperate (mild), continental (extreme), polar (cold). Köppen classification: A (tropical), B (arid), C (temperate), D (continental), E (polar). Determines biomes, agriculture, settlement.",
+    "oceanography": "Oceanography: study of oceans. Pacific (largest, 165M km²), Atlantic, Indian, Southern, Arctic. Features: mid-ocean ridges, trenches, currents (Gulf Stream), tides, marine ecosystems. Covers 71% of Earth's surface.",
+    "plate tectonics": "Plate tectonics: Earth's lithosphere divided into plates. Types: convergent (mountains, trenches), divergent (rifts, ridges), transform (earthquakes). Causes: mantle convection. Explains: earthquakes, volcanoes, mountain formation.",
+
+    # ── MORE ECONOMICS ──
+    "macroeconomics": "Macroeconomics: economy-wide phenomena. GDP, inflation, unemployment, monetary policy (interest rates, money supply), fiscal policy (taxes, spending), business cycles, trade balance, exchange rates.",
+    "microeconomics": "Microeconomics: individual decision-making. Supply/demand, elasticity, market structures (perfect competition, monopoly, oligopoly), game theory, consumer choice, production costs, market failure, externalities.",
+    "behavioral economics": "Behavioral economics: psychology + economics. Biases: anchoring, loss aversion, endowment effect, status quo bias, mental accounting. Nudges: choice architecture influencing decisions without restricting freedom.",
+    "development economics": "Development economics: improving living standards. Topics: poverty traps, education, health, institutions, foreign aid, trade, industrialization, agriculture, governance. Key thinkers: Sachs, Easterly, Acemoglu.",
+
+    # ── MORE HEALTH ──
+    "anatomy": "Anatomy: study of body structure. Systems: skeletal (206 bones), muscular (600+), circulatory, respiratory, digestive, nervous, endocrine, lymphatic, integumentary. Directions: anterior, posterior, medial, lateral, proximal, distal.",
+    "physiology": "Physiology: study of body function. Homeostasis: maintaining internal balance. Systems: cardiovascular (heart, blood), respiratory (gas exchange), renal (filtration), nervous (signal transmission), endocrine (hormones).",
+    "pharmacology": "Pharmacology: study of drugs. Drug actions: agonist (activates), antagonist (blocks). Pharmacokinetics: absorption, distribution, metabolism, excretion. Pharmacodynamics: dose-response, therapeutic index, side effects.",
+    "pathology": "Pathology: study of disease. Causes: genetic, infectious, environmental, autoimmune, neoplastic. Processes: inflammation, necrosis, fibrosis, metaplasia. Diagnosis: biopsy, imaging, lab tests. Branches: clinical, anatomical, molecular.",
+    "epidemiology": "Epidemiology: disease patterns in populations. Measures: incidence, prevalence, mortality, morbidity. Study designs: cohort, case-control, cross-sectional, randomized controlled trials. Bias: selection, information, confounding.",
+    "public health": "Public health: protecting community health. Areas: epidemiology, biostatistics, health policy, environmental health, social determinants, global health. Interventions: vaccination, sanitation, health education, screening programs.",
+
+    # ── MORE BUSINESS SKILLS ──
+    "project management": "Project management: planning, executing, closing projects. Methodologies: waterfall, agile, hybrid. Tools: Gantt charts, critical path, PERT. Phases: initiation, planning, execution, monitoring, closure. Certifications: PMP, PRINCE2, Scrum Master.",
+    "supply chain": "Supply chain: production flow from raw materials to customer. Components: sourcing, manufacturing, logistics, inventory, distribution. Optimization: demand forecasting, lean, just-in-time, ERP systems. Challenges: disruptions, visibility, sustainability.",
+    "data analysis": "Data analysis: inspecting, cleaning, transforming data. Tools: Excel, SQL, Python (pandas), R, Tableau, Power BI. Methods: descriptive, diagnostic, predictive, prescriptive statistics. Skills: critical thinking, storytelling, visualization.",
+    "data visualization": "Data visualization: presenting data graphically. Tools: Tableau, Power BI, D3.js, matplotlib, seaborn, ggplot. Principles: clarity, accuracy, efficiency, design. Charts: bar, line, scatter, heatmap, treemap, network.",
+
+    # ── MORE CREATIVITY ──
+    "creative writing": "Creative writing: expressing ideas artistically. Forms: fiction, non-fiction, poetry, drama, screenwriting. Elements: plot, character, setting, dialogue, theme, style. Techniques: show don't tell, voice, pacing, revision.",
+    "storytelling": "Storytelling: conveying narratives effectively. Structures: three-act, hero's journey, save the cat, in medias res. Elements: character arc, conflict, resolution, theme, worldbuilding. Applications: business, education, marketing, entertainment.",
+    "design thinking": "Design thinking: human-centered problem solving. Stages: empathize, define, ideate, prototype, test. Principles: iterative, collaborative, experimental. Applications: product design, service design, innovation, organizational change.",
+    "brainstorming": "Brainstorming: generating ideas. Rules: defer judgment, encourage wild ideas, build on others, stay focused, one conversation at a time. Techniques: mind mapping, SCAMPER, random word, reverse brainstorming, six thinking hats.",
+
+    # ── MORE LIFESTYLE ──
+    "time management": "Time management: organizing time effectively. Methods: Pomodoro, time blocking, Eisenhower matrix (urgent/important), 2-minute rule, GTD (Getting Things Done), 80/20 rule. Tools: calendars, task managers, automation.",
+    "productivity": "Productivity: achieving more with less. Principles: clear goals, focus, single-tasking, breaks, delegation, automation, batching, environment optimization. Habits: morning routine, weekly review, reflection. Tools: systems, templates.",
+    "minimalism": "Minimalism: owning less, living more. Principles: intentionality, decluttering, experiences over things, financial freedom, environmental impact. Methods: KonMari, capsule wardrobe, digital minimalism, essentialism.",
+    "journaling": "Journaling: writing for self-reflection. Types: gratitude, bullet, stream of consciousness, reflective, goal-tracking. Benefits: clarity, emotional processing, creativity, memory, accountability. Tools: physical journals, Day One, Notion.",
+
+    # ── MORE NATURE ──
+    "astronomy": "Astronomy: study of celestial objects. Solar system: Sun, 8 planets, dwarf planets, asteroids, comets. Stars: classify by spectral type (OBAFGKM), lifecycle. Galaxies: spiral, elliptical, irregular. Milky Way: 100-400B stars.",
+    "geology": "Geology: study of Earth. Layers: crust, mantle, outer core, inner core. Rocks: igneous (cooled magma), sedimentary (layered), metamorphic (heat/pressure). Minerals: 5000+ types. Processes: erosion, deposition, volcanism, earthquakes.",
+    "ecology": "Ecology: organisms interacting with environment. Levels: organism, population, community, ecosystem, biosphere. Concepts: food chains, nutrient cycling, biodiversity, succession, niche, habitat. Threats: habitat loss, climate change.",
+    "marine biology": "Marine biology: ocean life. Zones: photopelagic (light), mesopelagic (twilight), bathypelagic (midnight), abyssal (deep). Ecosystems: coral reefs, kelp forests, deep-sea vents, open ocean. biodiversity: 250k+ known species.",
+    "botany": "Botany: study of plants. Processes: photosynthesis, transpiration, germination, pollination. Structures: roots, stems, leaves, flowers, seeds. Types: bryophytes, ferns, gymnosperms, angiosperms. Importance: food, oxygen, medicine, materials.",
+
+    # ── MORE CULTURE ──
+    "literature": "Literature: written works. Genres: fiction, non-fiction, poetry, drama. Periods: classical, medieval, renaissance, enlightenment, romantic, modern, postmodern. Key works: Homer, Shakespeare, Austen, Kafka, Orwell, Morrison.",
+    "philosophy history": "Philosophy history: Western (Socrates, Plato, Aristotle, Descartes, Kant, Nietzsche), Eastern (Confucius, Buddha, Laozi), Islamic (Avicenna, Averroes), African (Ubuntu), Indigenous wisdom traditions.",
+    "religion": "Religion: systems of belief. Major: Christianity (2.4B), Islam (1.9B), Hinduism (1.2B), Buddhism (500M), Sikhism (30M), Judaism (15M). Concepts: God/gods, afterlife, ethics, ritual, community, meaning.",
+    "mythology": "Mythology: traditional stories. Greek (Zeus, Athena, Hercules), Norse (Odin, Thor, Loki), Egyptian (Ra, Osiris, Isis), Hindu (Vishnu, Shiva, Brahma), Japanese (Amaterasu, Izanagi), Native American traditions.",
 })
