@@ -29,6 +29,8 @@ language = "en"
 listen_seconds = 6.0
 energy_threshold = 300
 
+# LLM is OPTIONAL - the AI works fully offline with its own brain
+# Set enabled = true only if you want to use an external LLM
 [llm]
 provider = "ollama"
 host = "http://127.0.0.1:11434"

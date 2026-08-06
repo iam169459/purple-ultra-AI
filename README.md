@@ -22,7 +22,9 @@ cd purple-ultra-AI
 
 **Windows:** `run.bat install` then `run.bat`
 
-That's it. No cloud. No API keys required. Fully offline.
+That's it. No cloud. No API keys required. **Fully offline by default.**
+
+> **No LLM Required** — The AI uses its own offline brain with 1,911+ knowledge entries, neural networks, and reasoning. No external API needed.
 
 ---
 
@@ -176,14 +178,18 @@ mode = "professional"         # professional, companion
 name = "Purple Ultra"
 ```
 
-### LLM Options
+### LLM Options (All Optional)
+
+The AI works fully offline by default. LLM is only needed if you want enhanced responses.
 
 | Provider | Setup |
 |----------|-------|
-| **Ollama** (recommended) | Install [Ollama](https://ollama.ai), run `ollama pull llama3` |
+| **None** (default) | Works fully offline with built-in brain |
+| **Ollama** | Install [Ollama](https://ollama.ai), run `ollama pull llama3` |
 | **OpenAI** | Set `api_key` in config.toml |
 | **LM Studio** | Install [LM Studio](https://lmstudio.ai), start server |
-| **None** | Works without LLM (offline brain only) |
+
+To enable LLM: Set `enabled = true` in `[llm]` section of `config.toml`
 
 ---
 

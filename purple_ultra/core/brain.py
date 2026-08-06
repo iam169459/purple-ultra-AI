@@ -2551,25 +2551,38 @@ _offline_brain = OfflineBrain()
 # ═══════════════════════════════════════════════════════════════════════════
 
 class Brain:
-    """Processes user input through PurpleBrain/LLM and returns structured decisions."""
+    """Processes user input through PurpleBrain/LLM and returns structured decisions.
+    
+    Default mode: Offline brain (no LLM required).
+    The AI uses its own knowledge base, neural networks, and reasoning.
+    LLM is optional - only used if explicitly enabled in config.
+    """
 
     __slots__ = ('config', 'llm', '_system_prompt', '_personality_text',
                  '_local_mode', '_response_count', 'purple_brain',
                  '_local_cache', '_intent_cache', '_offline',
                  'neural_net', 'learning', 'massive_nn', 'image_input',
-                 '_nn_initialized', 'auto_trainer', 'unified_memory')
+                 '_nn_initialized', 'auto_trainer', 'unified_memory',
+                 '_offline_mode')
 
     def __init__(self, config: Config, llm_manager: LLMManager = None):
         self.config = config
         self.llm = llm_manager
         self._system_prompt = None
         self._personality_text = ""
-        self._local_mode = llm_manager is None or not llm_manager.is_available()
         self._response_count = 0
         self._local_cache: dict[str, str] = {}
         self._intent_cache: dict[str, tuple[str, float]] = {}
         self._offline = _offline_brain
         self._nn_initialized = False
+        self._offline_mode = True
+
+        if llm_manager and llm_manager.is_available() and config.llm.enabled:
+            self._local_mode = False
+            self._offline_mode = False
+        else:
+            self._local_mode = True
+            self._offline_mode = True
 
         self.purple_brain = PurpleBrain(
             storage_dir=str(Path("memory/brain"))
