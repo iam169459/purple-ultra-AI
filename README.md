@@ -3,16 +3,18 @@
 **Advanced Offline Voice Assistant** — Self-aware, self-learning, self-healing AI with 79 features, neural networks, and military-grade encryption.
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: Private](https://img.shields.io/badge/License-Private-red.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-purple.svg)]()
 [![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)]()
+
+> **PRIVATE PROJECT** — This is a proprietary, closed-source project. No unauthorized copying, distribution, or use is permitted.
 
 ---
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/refat189/purple-ultra-AI.git
+git clone https://github.com/iam169459/purple-ultra-AI.git
 cd purple-ultra-AI
 ./run.sh install
 ./run.sh
@@ -34,6 +36,8 @@ Purple Ultra AI is a fully offline voice assistant that:
 - **Protects** — Military-grade encryption (AES-256, ChaCha20, RSA-2048)
 - **Evolves** — Self-modifies its own code, creates new tools, writes plugins
 - **Remembers** — Episodic, semantic, and procedural memory with auto-consolidation
+- **Understands Feelings** — Voice emotion analysis detects user's emotional state
+- **Stays Curious** — Actively asks follow-up questions and explores topics
 
 ---
 
@@ -42,9 +46,11 @@ Purple Ultra AI is a fully offline voice assistant that:
 | Category | What You Get |
 |----------|-------------|
 | **Brain** | Self-awareness, self-learning, self-modification, autonomous improvement |
+| **Curiosity** | Follow-up questions, exploration prompts, interest tracking |
 | **Neural Network** | 17,555 neurons, 26M parameters, intent classification, pattern recognition |
 | **Encryption** | AES-256-CTR, ChaCha20, RSA-2048, SHA-256, SHA-512, HMAC, PBKDF2, digital signatures |
 | **Voice** | Offline STT (Whisper), multi-backend TTS, 18 mood profiles, speaker recognition |
+| **Emotion Analysis** | 14 emotions detected, voice & text analysis, adaptive responses |
 | **79 Feature Modules** | Todo, notes, calendar, weather, news, crypto, stocks, fitness, recipes, image/video processing, and more |
 | **240 Commands** | Neural thinking, reasoning, planning, self-heal, code analysis, and more |
 | **Self-Heal** | Auto-detects and fixes errors, modification log, rollback support |
@@ -85,10 +91,22 @@ Once running, type these:
 | `reflect` | Self-reflection |
 | `self aware` | Self-awareness status |
 | `who are you` | Identity info |
-| `curiosity` | Knowledge gaps |
+| `curiosity` | Knowledge gaps & curiosity report |
+| `ask me` | AI asks you a curious question |
+| `explore` | AI suggests a topic to explore |
+| `interests` | Show your detected interests |
+| `follow up` | AI asks a follow-up question |
 | `autonomous` | Self-improvement status |
 | `learn <fact>` | Teach something |
 | `correct <wrong> -> <right>` | Correct a mistake |
+
+### Voice Emotion
+| Command | Description |
+|---------|-------------|
+| `analyze emotion of <text>` | Analyze text emotion |
+| `how do I sound` | Voice emotion analysis |
+| `emotional state` | Current feelings |
+| `emotion history` | Past emotion readings |
 
 ### Self-Heal
 | Command | Description |
@@ -188,12 +206,13 @@ purple-ultra-AI/
 ├── config.toml                # Configuration
 ├── run.sh / run.bat           # Launchers
 ├── requirements.txt           # Python dependencies
+├── LICENSE                    # Private Proprietary License
 ├── purple_ultra/
 │   ├── core/                  # Orchestrator, brain, mood
-│   ├── brain/                 # LLM, emotion, thinking, knowledge
+│   ├── brain/                 # LLM, emotion, thinking, knowledge, curiosity
 │   ├── neural/                # Neural networks, embeddings, reasoning
 │   ├── advanced/              # Multi-agent, RLHF, security
-│   ├── voice/                 # STT, TTS, speaker recognition
+│   ├── voice/                 # STT, TTS, speaker recognition, emotion analysis
 │   ├── memory/                # Episodic, semantic, procedural
 │   ├── tools/                 # 30+ built-in tools
 │   ├── security/              # AES-256, ChaCha20, RSA encryption
@@ -240,6 +259,7 @@ User Input → VoiceIO → Brain (LLM) → ToolRunner → VoiceIO → Response
           SpeakerRecognizer      KnowledgeGraph
           NeuralNetwork          SelfAwareness
           SelfLearning           SelfModification
+          VoiceAnalyzer          CuriosityEngine
 ```
 
 ---
@@ -248,35 +268,27 @@ User Input → VoiceIO → Brain (LLM) → ToolRunner → VoiceIO → Response
 
 1. **Input** — Text or voice input via VoiceIO
 2. **Identify** — Speaker recognition detects who is talking
-3. **Emotion** — Emotion engine analyzes sentiment
+3. **Emotion** — Voice analyzer detects user's emotional state
 4. **Think** — Brain decides response using LLM + offline knowledge
-5. **Act** — Tool runner executes any needed actions
-6. **Learn** — System auto-learns from the interaction
-7. **Heal** — Self-heal scans for issues after each turn
-8. **Respond** — Voice or text output with appropriate mood
+5. **Adapt** — Response adapted based on user's feelings
+6. **Act** — Tool runner executes any needed actions
+7. **Learn** — System auto-learns from the interaction
+8. **Curiosity** — AI generates follow-up questions and exploration prompts
+9. **Heal** — Self-heal scans for issues after each turn
+10. **Respond** — Voice or text output with appropriate mood
 
 ---
 
 ## License
 
-MIT License — Copyright (c) 2026 Refat
+**PRIVATE PROPRIETARY LICENSE**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Copyright (c) 2026 Refat. All rights reserved.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This software is the private property of Refat. NO rights are granted to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Unauthorized use is strictly prohibited and may result in legal action.
 
 See [LICENSE](LICENSE) for full text.
