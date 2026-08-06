@@ -59,16 +59,30 @@ MOOD_OPENERS: dict[str, str] = {
 }
 
 
+BANGLA_VOICE_MAP: dict[str, str] = {
+    "Samantha": "Ting-Ting",
+    "Alex": "Ting-Ting",
+    "Daniel": "Ting-Ting",
+    "Karen": "Ting-Ting",
+    "Moira": "Ting-Ting",
+    "Tessa": "Ting-Ting",
+    "Veena": "Veena",
+}
+
+BANGLA_PIPER_MODEL = "bn_BD-nishita-medium"
+
+
 class VoiceIO:
     """Handles all voice input/output operations."""
 
     __slots__ = ('config', '_whisper_model', '_pyttsx3_engine', '_piper_available',
                  '_super_admin', '_admin_override', '_last_effect', '_refuted_effects',
-                 '_analyzer')
+                 '_analyzer', '_current_language', '_whisper_models')
 
     def __init__(self, config: Config):
         self.config = config
         self._whisper_model = None
+        self._whisper_models: dict[str, object] = {}
         self._pyttsx3_engine = None
         self._piper_available = None
         self._super_admin = get_super_admin_voice()
@@ -76,25 +90,46 @@ class VoiceIO:
         self._last_effect: str | None = None
         self._refuted_effects: list[dict] = []
         self._analyzer = VoiceAnalyzer()
+        self._current_language = "en"
+
+    def set_language(self, lang: str):
+        """Set the current language for STT and TTS."""
+        if lang in ("en", "bn", "bangla", "bengali"):
+            self._current_language = "bn" if lang in ("bn", "bangla", "bengali") else "en"
+            self._whisper_model = None
+            return True
+        return False
+
+    def get_language(self) -> str:
+        """Get the current language code."""
+        return self._current_language
 
     def _ensure_whisper(self):
-        if self._whisper_model is None:
-            try:
-                from faster_whisper import WhisperModel
+        lang = self._current_language
+        if lang in self._whisper_models:
+            self._whisper_model = self._whisper_models[lang]
+            return
+
+        try:
+            from faster_whisper import WhisperModel
+            if lang == "bn":
+                model_path = self.config.stt.model_bangla
+            else:
                 model_path = self.config.stt.model
-                models_dir = Path("models")
-                models_dir.mkdir(exist_ok=True)
-                local_path = models_dir / model_path.split("/")[-1]
-                if local_path.exists():
-                    model_path = str(local_path)
-                self._whisper_model = WhisperModel(
-                    model_path,
-                    device=self.config.stt.device,
-                    compute_type=self.config.stt.compute_type,
-                )
-            except ImportError:
-                print("Warning: faster-whisper not installed. STT unavailable.")
-                self._whisper_model = False
+            models_dir = Path("models")
+            models_dir.mkdir(exist_ok=True)
+            local_path = models_dir / model_path.split("/")[-1]
+            if local_path.exists():
+                model_path = str(local_path)
+            self._whisper_model = WhisperModel(
+                model_path,
+                device=self.config.stt.device,
+                compute_type=self.config.stt.compute_type,
+            )
+            self._whisper_models[lang] = self._whisper_model
+        except ImportError:
+            print("Warning: faster-whisper not installed. STT unavailable.")
+            self._whisper_model = False
 
     def _ensure_pyttsx3(self):
         if self._pyttsx3_engine is None:
@@ -149,9 +184,10 @@ class VoiceIO:
                 audio_int16 = (audio_flat * 32767).astype(np.int16)
                 wf.writeframes(audio_int16.tobytes())
 
+            lang = "bn" if self._current_language == "bn" else "en"
             segments, _ = self._whisper_model.transcribe(
                 tmp_path,
-                language=self.config.stt.language,
+                language=lang,
                 beam_size=5,
             )
             text = " ".join(s.text.strip() for s in segments).strip()
@@ -246,12 +282,50 @@ class VoiceIO:
         else:
             voice_cfg = self.config.voice
 
-        if self._can_use_piper():
+        if self._current_language == "bn":
+            self._speak_bangla(text, voice_cfg)
+        elif self._can_use_piper():
             self._speak_piper(text, voice_cfg)
         elif sys.platform == "darwin":
             self._speak_macos(text, voice_cfg)
         else:
             self._speak_pyttsx3(text, voice_cfg)
+
+    def _speak_bangla(self, text: str, voice_cfg: VoiceConfig):
+        """Speak Bangla text using Piper or macOS say."""
+        if self._can_use_piper():
+            try:
+                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+                    tmp_path = f.name
+                model = self.config.tts.piper_model_bangla
+                process = subprocess.Popen(
+                    ["piper", "--model", model, "--output_file", tmp_path],
+                    stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                )
+                process.communicate(input=text.encode("utf-8"))
+                if process.returncode == 0:
+                    subprocess.run(["afplay", tmp_path], capture_output=True)
+                try:
+                    os.unlink(tmp_path)
+                except OSError:
+                    pass
+                return
+            except Exception:
+                pass
+
+        if sys.platform == "darwin":
+            try:
+                voice_name = BANGLA_VOICE_MAP.get(voice_cfg.name, "Ting-Ting")
+                rate_param = f"-r {voice_cfg.rate}"
+                subprocess.run(
+                    ["say", "-v", f"{voice_name}{rate_param}", text],
+                    capture_output=True, timeout=30,
+                )
+                return
+            except Exception:
+                pass
+
+        self._speak_pyttsx3(text, voice_cfg)
 
     def speak_admin(self, text: str, mood: str = None):
         """Speak with super admin voice - cannot be intercepted."""
@@ -305,8 +379,9 @@ class VoiceIO:
         try:
             with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
                 tmp_path = f.name
+            model = self.config.tts.piper_model
             process = subprocess.Popen(
-                ["piper", "--model", self.config.tts.piper_model, "--output_file", tmp_path],
+                ["piper", "--model", model, "--output_file", tmp_path],
                 stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             )
             process.communicate(input=text.encode())

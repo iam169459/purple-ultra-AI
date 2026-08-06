@@ -16,11 +16,22 @@ class VoiceConfig:
     volume: float = 0.9
     language: str = "en"
 
+    BANGLA_VOICES: dict[str, str] = field(default_factory=lambda: {
+        "Samantha": "Ting-Ting",
+        "Alex": "Ting-Ting",
+        "Daniel": "Ting-Ting",
+    })
+
+    BANGLA_PIPER_MODEL: str = "bn_BD-nishita-medium"
+
+    BANGLA_NAMES: list[str] = field(default_factory=lambda: ["Ting-Ting", "Veena"])
+
 
 @dataclass(frozen=True)
 class TtsConfig:
     engine: str = "auto"
     piper_model: str = "en_US-amy-medium"
+    piper_model_bangla: str = "bn_BD-nishita-medium"
     fallback_to_say: bool = True
     fallback_to_pyttsx3: bool = True
     chunk_size: int = 500
@@ -30,6 +41,7 @@ class TtsConfig:
 class SttConfig:
     engine: str = "faster-whisper"
     model: str = "Systran/faster-whisper-small.en"
+    model_bangla: str = "Systran/faster-whisper-small"
     device: str = "cpu"
     compute_type: str = "int8"
     language: str = "en"

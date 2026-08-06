@@ -2173,6 +2173,36 @@ def register_commands(core: UltraCore):
     core.register_command(["language", "lang"], cmd_language, priority=65)
     core.register_command(["translate"], cmd_translate, priority=65)
 
+    def cmd_bangla(turn):
+        """Switch to Bangla voice mode."""
+        voice = core.get_subsystem("voice")
+        text = turn.user_text.lower().strip()
+
+        if "off" in text or "english" in text or "en" in text:
+            if voice:
+                voice.set_language("en")
+            return "Switched to English voice mode"
+
+        if voice:
+            voice.set_language("bn")
+            return "বাংলা মোড চালু হয়েছে! (Bangla mode enabled!)\nNow speaking and listening in Bangla."
+
+        return "Voice system not available"
+
+    def cmd_bangla_status(turn):
+        """Check Bangla voice status."""
+        voice = core.get_subsystem("voice")
+        if voice:
+            lang = voice.get_language()
+            if lang == "bn":
+                return "বাংলা মোড সক্রিয় (Bangla mode active)\nSTT: Bangla Whisper model\nTTS: Ting-Ting voice (macOS) / Piper Bangla"
+            return "English mode active\nSay 'bangla' to switch to Bangla"
+        return "Voice system not available"
+
+    core.register_command(["bangla", "bengali", "বাংলা", "bangla on", "switch bangla", "use bangla"], cmd_bangla, priority=66)
+    core.register_command(["bangla off", "english", "switch english", "use english"], cmd_bangla, priority=66)
+    core.register_command(["bangla status", "বাংলা status", "voice language"], cmd_bangla_status, priority=65)
+
     # ── AUTO-TRAIN & SELF-LEARNING COMMANDS ──
 
     def cmd_auto_train(turn):
