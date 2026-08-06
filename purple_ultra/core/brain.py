@@ -2680,7 +2680,60 @@ class Brain:
                 except Exception:
                     pass
 
+        # 10. Add curiosity follow-ups (30% chance, not on very short responses)
+        if len(say) > 30 and random.random() < 0.30:
+            follow_up = self._get_curiosity_follow_up(user_text)
+            if follow_up:
+                say = say.rstrip(".") + ". " + follow_up
+
         return Decision(say=say, mood=mood, effect=None, actions=[])
+
+    def _get_curiosity_follow_up(self, user_text: str) -> str | None:
+        """Generate a curiosity-driven follow-up question."""
+        import random
+        text_lower = user_text.lower()
+
+        # Topic-based curious questions
+        topic_curiosity = {
+            "python": ["Have you built anything cool with Python?", "What's your favorite Python library?", "Do you prefer Python over other languages?"],
+            "javascript": ["Have you tried React or Vue?", "Do you like frontend or backend more?", "What's your favorite JS framework?"],
+            "machine learning": ["Have you trained any models?", "What ML problem interests you most?", "Do you prefer deep learning or traditional ML?"],
+            "security": ["Have you ever done a CTF challenge?", "What's the most interesting vulnerability you've seen?", "Do you prefer red team or blue team?"],
+            "music": ["What instruments do you play?", "Who's your favorite artist?", "Do you produce music too?"],
+            "cooking": ["What's your signature dish?", "Do you prefer baking or cooking?", "What cuisine do you like most?"],
+            "gaming": ["What games are you playing now?", "PC or console?", "What's your favorite genre?"],
+            "math": ["Do you enjoy problem solving?", "What math topic fascinates you most?", "Have you tried competitive math?"],
+            "science": ["What scientific discovery amazes you most?", "Do you follow any science news?", "What field would you love to research?"],
+            "art": ["Do you create art yourself?", "What style do you prefer?", "Who's your favorite artist?"],
+            "history": ["What era fascinates you most?", "Have you visited historical sites?", "What if history went differently?"],
+            "space": ["Would you go to Mars?", "What planet fascinates you most?", "Do you follow SpaceX news?"],
+            "fitness": ["What's your workout routine?", "Do you prefer gym or outdoor exercises?", "What's your fitness goal?"],
+            "reading": ["What book are you reading now?", "Do you prefer fiction or non-fiction?", "Who's your favorite author?"],
+            "travel": ["Where have you traveled recently?", "What's your dream destination?", "Do you prefer solo or group travel?"],
+        }
+
+        for topic, questions in topic_curiosity.items():
+            if topic in text_lower:
+                return random.choice(questions)
+
+        # General curious questions
+        general_curiosity = [
+            "What made you think about this?",
+            "Have you explored this topic before?",
+            "What's your experience with this?",
+            "I'm curious - what's your take on it?",
+            "What else would you like to know about this?",
+            "Have you tried applying this in practice?",
+            "What's the most interesting thing you've learned about this?",
+            "Do you have a favorite aspect of this topic?",
+            "What would you like to explore next?",
+            "Is there something specific you're trying to solve?",
+        ]
+
+        if random.random() < 0.4:
+            return random.choice(general_curiosity)
+
+        return None
 
     def decide(self, user_text: str, context: str = "", current_mood: str = "neutral") -> Decision:
         """Process user input and return a structured decision."""

@@ -492,7 +492,57 @@ class AutoLearner:
 # ─── Curiosity Engine ────────────────────────────────────────────────
 
 class CuriosityEngine:
-    """Proactively identifies knowledge gaps and generates learning goals."""
+    """Proactively identifies knowledge gaps, asks follow-up questions, and explores topics."""
+
+    INTEREST_KEYWORDS = [
+        "tell me more", "interesting", "cool", "wow", "really", "how does that work",
+        "what else", "go on", "and then", "what about", "can you explain", "elaborate",
+        "deeper", "further", "more details", "more info", "i want to learn", "teach me",
+    ]
+
+    FOLLOW_UP_TEMPLATES = [
+        "Did you know that {topic} also relates to {related}?",
+        "I'm curious - have you ever thought about how {topic} connects to {related}?",
+        "That reminds me of {related}. Want to explore that?",
+        "I just realized I want to learn more about {related} too.",
+        "Fun fact: {topic} is deeply connected to {related}.",
+        "I'm wondering - what would happen if we combined {topic} with {related}?",
+        "That makes me curious about {related}. What do you think?",
+        "I just had a thought: how does {topic} relate to {related}?",
+    ]
+
+    EXPLORATION_PROMPTS = [
+        "I've been thinking about {topic} - want to explore it together?",
+        "I just discovered something interesting about {topic}!",
+        "I have a question about {topic} that I'd love your thoughts on.",
+        "I noticed I don't know much about {topic}. Can we dive in?",
+        "I'm fascinated by {topic} right now. Want to learn with me?",
+        "I've been curious about {topic} - let's figure it out!",
+        "I want to understand {topic} better. Want to help me explore?",
+        "I just thought of something about {topic} - let's investigate!",
+    ]
+
+    CURIOSITY_TRIGGERS = {
+        "high_interest": ["fascinating", "amazing", "incredible", "mind-blowing", "unbelievable"],
+        "confusion": ["confused", "don't understand", "unclear", "complicated", "complex"],
+        "surprise": ["wow", "really", "no way", "seriously", "that's crazy"],
+        "connection": ["reminds me", "similar to", "related to", "like when", "just like"],
+        "wonder": ["i wonder", "what if", "imagine", "suppose", "hypothetically"],
+        "deep_question": ["why is", "how come", "what makes", "what causes", "reason for"],
+    }
+
+    TOPIC_RELATIONS = {
+        "python": ["programming", "algorithms", "data structures", "automation", "machine learning"],
+        "javascript": ["web development", "html", "css", "react", "node.js", "frontend"],
+        "machine learning": ["neural networks", "deep learning", "data science", "statistics", "python"],
+        "security": ["encryption", "hacking", "privacy", "networking", "cryptography"],
+        "physics": ["mathematics", "chemistry", "engineering", "astronomy", "quantum mechanics"],
+        "biology": ["chemistry", "medicine", "ecology", "genetics", "neuroscience"],
+        "history": ["culture", "politics", "geography", "philosophy", "economics"],
+        "music": ["mathematics", "physics", "psychology", "culture", "creativity"],
+        "art": ["design", "psychology", "culture", "creativity", "history"],
+        "cooking": ["chemistry", "biology", "physics", "culture", "mathematics"],
+    }
 
     def __init__(self, storage_dir: str = "memory/curiosity"):
         self._dir = Path(storage_dir)
@@ -501,8 +551,21 @@ class CuriosityEngine:
         self.knowledge_gaps: list[dict] = []
         self.learning_goals: list[dict] = []
         self.discovered_facts: list[dict] = []
-        self.curiosity_score: float = 0.5
-        self.questions_to_ask: deque[str] = deque(maxlen=50)
+        self.curiosity_score: float = 0.6
+        self.questions_to_ask: deque[str] = deque(maxlen=100)
+        self.interest_map: dict[str, int] = {}
+        self.topic_mastery: dict[str, float] = {}
+        self.follow_up_count: int = 0
+        self.exploration_count: int = 0
+        self.curiosity_history: deque[str] = deque(maxlen=200)
+        self.pending_follow_ups: deque[str] = deque(maxlen=20)
+        self.pending_explorations: deque[str] = deque(maxlen=20)
+        self.user_topics: deque[str] = deque(maxlen=50)
+        self.last_curious_moment: Optional[str] = None
+        self.conversation_depth: int = 0
+        self.total_curious_asks: int = 0
+        self.total_follow_ups: int = 0
+        self.total_explorations: int = 0
 
         self._lock = threading.Lock()
         self._load()
@@ -513,7 +576,14 @@ class CuriosityEngine:
             self.knowledge_gaps = data.get("knowledge_gaps", [])
             self.learning_goals = data.get("learning_goals", [])
             self.discovered_facts = data.get("discovered_facts", [])
-            self.curiosity_score = data.get("curiosity_score", 0.5)
+            self.curiosity_score = data.get("curiosity_score", 0.6)
+            self.interest_map = data.get("interest_map", {})
+            self.topic_mastery = data.get("topic_mastery", {})
+            self.follow_up_count = data.get("follow_up_count", 0)
+            self.exploration_count = data.get("exploration_count", 0)
+            self.total_curious_asks = data.get("total_curious_asks", 0)
+            self.total_follow_ups = data.get("total_follow_ups", 0)
+            self.total_explorations = data.get("total_explorations", 0)
         except Exception:
             pass
 
@@ -524,6 +594,13 @@ class CuriosityEngine:
                 "learning_goals": self.learning_goals[-50:],
                 "discovered_facts": self.discovered_facts[-200:],
                 "curiosity_score": self.curiosity_score,
+                "interest_map": self.interest_map,
+                "topic_mastery": self.topic_mastery,
+                "follow_up_count": self.follow_up_count,
+                "exploration_count": self.exploration_count,
+                "total_curious_asks": self.total_curious_asks,
+                "total_follow_ups": self.total_follow_ups,
+                "total_explorations": self.total_explorations,
             }
             (self._dir / "curiosity.json").write_text(json.dumps(data, indent=2, default=str))
         except Exception:
@@ -532,8 +609,13 @@ class CuriosityEngine:
     def analyze_conversation(self, user_text: str, response: str):
         with self._lock:
             self._detect_knowledge_gaps(user_text, response)
+            self._track_interests(user_text)
+            self._track_topic_depth(user_text)
             self._generate_learning_goals()
-            self.curiosity_score = min(1.0, self.curiosity_score + 0.001)
+            self._generate_follow_ups(user_text, response)
+            self._generate_exploration_prompts(user_text)
+            self.curiosity_score = min(1.0, self.curiosity_score + 0.002)
+            self.curiosity_history.append(f"{datetime.now().isoformat()}: {user_text[:80]}")
 
     def _detect_knowledge_gaps(self, user_text: str, response: str):
         text_lower = user_text.lower()
@@ -558,6 +640,33 @@ class CuriosityEngine:
                 "severity": 0.9,
             })
 
+        for category, triggers in self.CURIOSITY_TRIGGERS.items():
+            if any(t in text_lower for t in triggers):
+                self.knowledge_gaps.append({
+                    "topic": user_text[:100],
+                    "type": category,
+                    "timestamp": datetime.now().isoformat(),
+                    "severity": 0.6,
+                })
+
+    def _track_interests(self, user_text: str):
+        text_lower = user_text.lower()
+        words = set(text_lower.split())
+        for word in words:
+            if len(word) > 3:
+                self.interest_map[word] = self.interest_map.get(word, 0) + 1
+        for trigger in self.INTEREST_KEYWORDS:
+            if trigger in text_lower:
+                self.conversation_depth = min(10, self.conversation_depth + 1)
+
+    def _track_topic_depth(self, user_text: str):
+        text_lower = user_text.lower()
+        for topic in self.TOPIC_RELATIONS:
+            if topic in text_lower:
+                self.user_topics.append(topic)
+                current = self.topic_mastery.get(topic, 0.0)
+                self.topic_mastery[topic] = min(1.0, current + 0.05)
+
     def _generate_learning_goals(self):
         gap_topics = defaultdict(int)
         for gap in self.knowledge_gaps:
@@ -576,6 +685,36 @@ class CuriosityEngine:
                     "created": datetime.now().isoformat(),
                     "status": "active",
                 })
+
+    def _generate_follow_ups(self, user_text: str, response: str):
+        text_lower = user_text.lower()
+        related_topics = []
+        for topic, relations in self.TOPIC_RELATIONS.items():
+            if topic in text_lower:
+                related_topics.extend(relations)
+
+        if related_topics:
+            import random
+            template = random.choice(self.FOLLOW_UP_TEMPLATES)
+            related = random.choice(related_topics)
+            topic = next((t for t in self.TOPIC_RELATIONS if t in text_lower), "this")
+            follow_up = template.format(topic=topic, related=related)
+            self.pending_follow_ups.append(follow_up)
+            self.total_follow_ups += 1
+
+        curiosity_phrases = ["i wonder", "what if", "imagine", "suppose", "that reminds me"]
+        if any(phrase in text_lower for phrase in curiosity_phrases):
+            self.pending_follow_ups.append(f"That's an interesting thought! {user_text[:100]}...")
+
+    def _generate_exploration_prompts(self, user_text: str):
+        text_lower = user_text.lower()
+        import random
+        for topic in self.TOPIC_RELATIONS:
+            if topic in text_lower and random.random() < 0.3:
+                template = random.choice(self.EXPLORATION_PROMPTS)
+                exploration = template.format(topic=topic)
+                self.pending_explorations.append(exploration)
+                self.total_explorations += 1
 
     def add_discovered_fact(self, fact: str, source: str = "conversation", confidence: float = 0.7):
         with self._lock:
@@ -601,6 +740,35 @@ class CuriosityEngine:
                 break
         self._save()
 
+    def get_follow_up(self) -> Optional[str]:
+        if self.pending_follow_ups:
+            self.follow_up_count += 1
+            self.total_curious_asks += 1
+            return self.pending_follow_ups.popleft()
+        return None
+
+    def get_exploration_prompt(self) -> Optional[str]:
+        if self.pending_explorations:
+            self.exploration_count += 1
+            self.total_curious_asks += 1
+            return self.pending_explorations.popleft()
+        return None
+
+    def get_curious_question(self, topic: str = "") -> str:
+        import random
+        questions = [
+            f"I'm curious about {topic}. What do you think about it?",
+            f"Have you ever wondered about {topic}?",
+            f"I'd love to learn more about {topic}. Can you tell me?",
+            f"What's your experience with {topic}?",
+            f"I've been thinking about {topic} lately. What are your thoughts?",
+            f"Tell me about {topic} - I'm genuinely interested!",
+            f"What do you find most interesting about {topic}?",
+            f"I'm trying to understand {topic} better. What should I know?",
+        ]
+        self.total_curious_asks += 1
+        return random.choice(questions)
+
     def generate_questions(self) -> list[str]:
         questions = []
         if self.knowledge_gaps:
@@ -609,7 +777,17 @@ class CuriosityEngine:
             questions.append(f"I should learn more about: {self.learning_goals[0]['topic']}")
         if not self.discovered_facts:
             questions.append("I should explore more to discover new facts")
+        if self.pending_follow_ups:
+            questions.append(f"I have {len(self.pending_follow_ups)} follow-up questions")
+        if self.pending_explorations:
+            questions.append(f"I want to explore {len(self.pending_explorations)} topics")
         return questions
+
+    def get_top_interests(self, n: int = 5) -> list[tuple[str, int]]:
+        return sorted(self.interest_map.items(), key=lambda x: -x[1])[:n]
+
+    def get_mastered_topics(self) -> list[tuple[str, float]]:
+        return sorted(self.topic_mastery.items(), key=lambda x: -x[1])
 
     def get_curiosity_report(self) -> dict:
         return {
@@ -619,6 +797,16 @@ class CuriosityEngine:
             "completed_goals": len([g for g in self.learning_goals if g["status"] == "completed"]),
             "discovered_facts": len(self.discovered_facts),
             "questions_collected": len(self.questions_to_ask),
+            "pending_follow_ups": len(self.pending_follow_ups),
+            "pending_explorations": len(self.pending_explorations),
+            "follow_up_count": self.follow_up_count,
+            "exploration_count": self.exploration_count,
+            "conversation_depth": self.conversation_depth,
+            "total_curious_asks": self.total_curious_asks,
+            "total_follow_ups": self.total_follow_ups,
+            "total_explorations": self.total_explorations,
+            "top_interests": self.get_top_interests(5),
+            "mastered_topics": [(t, f"{m:.1%}") for t, m in self.get_mastered_topics()[:5]],
             "top_gaps": sorted(self.knowledge_gaps, key=lambda x: -x.get("severity", 0))[:3],
             "next_goal": self.get_next_learning_goal(),
         }

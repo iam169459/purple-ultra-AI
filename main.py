@@ -844,11 +844,82 @@ def register_commands(core: UltraCore):
                 f"Completed goals: {report['completed_goals']}",
                 f"Discovered facts: {report['discovered_facts']}",
                 f"Questions collected: {report['questions_collected']}",
+                f"Pending follow-ups: {report['pending_follow_ups']}",
+                f"Pending explorations: {report['pending_explorations']}",
+                f"Follow-ups asked: {report['follow_up_count']}",
+                f"Explorations done: {report['exploration_count']}",
+                f"Conversation depth: {report['conversation_depth']}",
+                f"Total curious asks: {report['total_curious_asks']}",
             ]
+            if report.get('top_interests'):
+                interests = ", ".join(f"{t}({c})" for t, c in report['top_interests'][:5])
+                lines.append(f"Top interests: {interests}")
+            if report.get('mastered_topics'):
+                mastered = ", ".join(f"{t}({m})" for t, m in report['mastered_topics'][:5])
+                lines.append(f"Mastered topics: {mastered}")
             if report.get('next_goal'):
                 lines.append(f"Next goal: {report['next_goal']['topic']}")
             return "\n".join(lines)
         return "Curiosity not available"
+
+    def cmd_ask_me(turn):
+        brain = core.get_subsystem("brain")
+        if hasattr(brain, 'purple_brain'):
+            curiosity = brain.purple_brain.curiosity
+            text = turn.text.lower().replace("ask me", "").replace("ask about", "").strip()
+            if text:
+                question = curiosity.get_curious_question(text)
+            else:
+                interests = curiosity.get_top_interests(3)
+                if interests:
+                    topic = interests[0][0]
+                    question = curiosity.get_curious_question(topic)
+                else:
+                    question = curiosity.get_curious_question("technology")
+            return question
+        return "I'm curious about everything! What would you like to explore together?"
+
+    def cmd_explore(turn):
+        brain = core.get_subsystem("brain")
+        if hasattr(brain, 'purple_brain'):
+            curiosity = brain.purple_brain.curiosity
+            prompt = curiosity.get_exploration_prompt()
+            if prompt:
+                return prompt
+            text = turn.text.lower().replace("explore", "").strip()
+            if text:
+                return curiosity.get_curious_question(text)
+            return "What topic should we explore together?"
+        return "Let's explore something! What interests you?"
+
+    def cmd_interests(turn):
+        brain = core.get_subsystem("brain")
+        if hasattr(brain, 'purple_brain'):
+            curiosity = brain.purple_brain.curiosity
+            interests = curiosity.get_top_interests(10)
+            if interests:
+                lines = ["=== Your Top Interests ==="]
+                for i, (topic, count) in enumerate(interests, 1):
+                    lines.append(f"  {i}. {topic} ({count} mentions)")
+                return "\n".join(lines)
+            return "I haven't detected your interests yet. Tell me what you like!"
+        return "Interest tracking not available"
+
+    def cmd_follow_up(turn):
+        brain = core.get_subsystem("brain")
+        if hasattr(brain, 'purple_brain'):
+            curiosity = brain.purple_brain.curiosity
+            follow_up = curiosity.get_follow_up()
+            if follow_up:
+                return follow_up
+            return "I'm thinking about what to ask next..."
+        return "Curiosity engine not available"
+
+    core.register_command(["curiosity", "knowledge gaps", "what do you want to learn", "curiosity report"], cmd_curiosity, priority=17)
+    core.register_command(["ask me", "ask about", "ask question", "what do you want to know"], cmd_ask_me, priority=16)
+    core.register_command(["explore", "let's explore", "explore topic"], cmd_explore, priority=16)
+    core.register_command(["interests", "my interests", "what do i like", "interest report"], cmd_interests, priority=15)
+    core.register_command(["follow up", "follow-up", "ask follow up"], cmd_follow_up, priority=15)
 
     def cmd_identity(turn):
         brain = core.get_subsystem("brain")
