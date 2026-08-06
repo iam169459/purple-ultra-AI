@@ -1150,6 +1150,205 @@ EXTRA_ALIASES = {
     "gpen certification": "gpen certification",
     "crtp": "crtp certification",
     "crtp certification": "crtp certification",
+
+    # Programming aliases
+    "design patterns": "design patterns",
+    "solid": "solid principles",
+    "solid principles": "solid principles",
+    "fp": "functional programming",
+    "functional": "functional programming",
+    "async": "concurrency",
+    "threading": "concurrency",
+    "parallel": "concurrency",
+    "microservice": "microservices",
+    "api design": "api design",
+    "rest api": "api design",
+    "testing": "testing",
+    "tdd": "testing",
+    "bdd": "testing",
+    "refactoring": "refactoring",
+    "code review": "code review",
+    "technical debt": "technical debt",
+
+    # AI advanced aliases
+    "transformer": "transformer architecture",
+    "attention": "attention mechanism types",
+    "self attention": "attention mechanism types",
+    "language model training": "language model training",
+    "ai safety": "ai safety",
+    "alignment": "ai safety",
+    "nas": "neural architecture search",
+    "neural architecture search": "neural architecture search",
+    "knowledge distillation": "knowledge distillation",
+    "federated learning": "federated learning",
+    "continual learning": "continual learning",
+    "catastrophic forgetting": "continual learning",
+
+    # Science aliases
+    "photosynthesis": "photosynthesis",
+    "evolution": "evolution",
+    "natural selection": "evolution",
+    "cell biology": "cell biology",
+    "cells": "cell biology",
+    "genetics": "genetics",
+    "dna": "genetics",
+    "crispr": "genetics",
+    "molecular biology": "molecular biology",
+    "chemistry": "chemistry basics",
+    "chem": "chemistry basics",
+    "organic": "organic chemistry",
+    "biochem": "biochemistry",
+
+    # Technology aliases
+    "5g": "5g technology",
+    "iot": "iot",
+    "internet of things": "iot",
+    "edge computing": "edge computing",
+    "ar": "ar vr",
+    "vr": "ar vr",
+    "augmented reality": "ar vr",
+    "virtual reality": "ar vr",
+    "blockchain": "blockchain advanced",
+    "smart contracts": "blockchain advanced",
+    "defi": "blockchain advanced",
+    "cloud native": "cloud native",
+    "kubernetes": "cloud native",
+    "k8s": "cloud native",
+    "serverless": "serverless",
+    "lambda": "serverless",
+    "devops": "devops",
+    "ci/cd": "devops",
+
+    # Business aliases
+    "startup": "startup",
+    "entrepreneur": "startup",
+    "product management": "product management",
+    "product manager": "product management",
+    "marketing": "marketing",
+    "seo": "marketing",
+    "content marketing": "marketing",
+    "sales": "sales",
+    "crm": "sales",
+    "finance": "finance",
+    "accounting": "finance",
+    "valuation": "finance",
+    "leadership": "leadership",
+    "management": "leadership",
+
+    # Health aliases
+    "nutrition": "nutrition",
+    "diet": "nutrition",
+    "exercise": "exercise",
+    "workout": "exercise",
+    "fitness": "exercise",
+    "sleep": "sleep",
+    "insomnia": "sleep",
+    "stress": "stress management",
+    "anxiety": "mental health",
+    "depression": "mental health",
+    "mental health": "mental health",
+    "meditation": "meditation",
+    "mindfulness": "meditation",
+    "yoga": "yoga",
+
+    # Philosophy aliases
+    "stoicism": "stoicism",
+    "stoic": "stoicism",
+    "existentialism": "existentialism",
+    "existential": "existentialism",
+    "critical thinking": "critical thinking",
+    "decision making": "decision making",
+    "problem solving": "problem solving",
+    "creativity": "creativity",
+
+    # Communication aliases
+    "public speaking": "public speaking",
+    "presentation": "public speaking",
+    "writing": "writing",
+    "copywriting": "writing",
+    "negotiation": "negotiation",
+    "persuasion": "persuasion",
+    "influence": "persuasion",
+
+    # Practical skills aliases
+    "first aid": "first aid",
+    "cooking": "cooking",
+    "recipes": "cooking",
+    "gardening": "gardening",
+    "home repair": "home repair",
+    "diy": "home repair",
+    "budgeting": "budgeting",
+    "personal finance": "budgeting",
+
+    # Language aliases
+    "chinese": "chinese",
+    "mandarin": "chinese",
+    "spanish": "spanish",
+    "español": "spanish",
+    "arabic": "arabic",
+    "japanese": "japanese",
+    "nihongo": "japanese",
+
+    # Environment aliases
+    "climate change": "climate change",
+    "global warming": "climate change",
+    "renewable energy": "renewable energy",
+    "solar": "renewable energy",
+    "wind energy": "renewable energy",
+    "sustainability": "sustainability",
+    "green": "sustainability",
+    "conservation": "conservation",
+    "wildlife": "conservation",
+
+    # Arts aliases
+    "music theory": "music theory",
+    "chords": "music theory",
+    "harmony": "music theory",
+    "photography": "photography",
+    "camera": "photography",
+    "graphic design": "graphic design",
+    "design": "graphic design",
+    "video editing": "video editing",
+    "premiere": "video editing",
+
+    # Social science aliases
+    "psychology": "psychology",
+    "cognitive": "psychology",
+    "behavior": "psychology",
+    "sociology": "sociology",
+    "society": "sociology",
+    "anthropology": "anthropology",
+    "culture": "anthropology",
+    "economics": "economics advanced",
+    "macro": "economics advanced",
+    "micro": "economics advanced",
+
+    # Math advanced aliases
+    "number theory": "number theory",
+    "primes": "number theory",
+    "combinatorics": "combinatorics",
+    "counting": "combinatorics",
+    "graph theory": "graph theory",
+    "topology": "topology",
+    "manifold": "topology",
+
+    # Food aliases
+    "baking": "baking",
+    "bread": "baking",
+    "fermentation": "fermentation",
+    "fermented": "fermentation",
+    "spices": "spices",
+    "seasoning": "spices",
+
+    # Miscellaneous aliases
+    "chess": "chess",
+    "puzzles": "puzzles",
+    "riddles": "puzzles",
+    "survival": "survival skills",
+    "wilderness": "survival skills",
+    "memory techniques": "memory techniques",
+    "memory palace": "memory techniques",
+    "mnemonics": "memory techniques",
 }
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1788,4 +1987,125 @@ EXTRA_KNOWLEDGE.update({
     "gpen certification": "GPEN (GIAC Penetration Tester): SANS certification. Covers: penetration testing methodology, exploitation, post-exploitation, password attacks, Windows/Linux attacks. Practical, hands-on. Requires SANS training or challenge.",
     "crtp certification": "CRTP (Certified Red Team Professional): Pentester Academy certification. Focus: Active Directory attacks, lateral movement, persistence, defense evasion. Hands-on with AD environment. Prerequisites: basic Windows/Linux.",
     "cieh certification": "CIEH (Certified Information Ethics Hacker): entry-level ethical hacking certification. Covers: introduction to ethical hacking, scanning networks, enumeration, system hacking, malware, sniffing, social engineering, DoS, session hijacking, web server, SQL injection, wireless, mobile, IoT, cloud, cryptography.",
+
+    # ── PROGRAMMING ADVANCED ──
+    "design patterns": "Design patterns are reusable solutions to common problems. Creational: Singleton, Factory, Abstract Factory, Builder, Prototype. Structural: Adapter, Bridge, Composite, Decorator, Facade, Proxy. Behavioral: Observer, Strategy, Command, Iterator, Template Method.",
+    "solid principles": "SOLID principles for OOP: Single Responsibility (one reason to change), Open-Closed (open for extension, closed for modification), Liskov Substitution (subtypes substitutable), Interface Segregation (many specific interfaces), Dependency Inversion (depend on abstractions).",
+    "functional programming": "Functional programming emphasizes pure functions and immutability. Concepts: first-class functions, higher-order functions, closures, currying, monads, functors. Benefits: easier testing, concurrency, reasoning. Languages: Haskell, Erlang, Elixir, F#.",
+    "concurrency": "Concurrent programming manages multiple tasks. Models: threads, processes, goroutines, async/await. Challenges: race conditions, deadlocks, starvation. Solutions: locks, mutexes, semaphores, channels, actor model. Tools: asyncio, threading, multiprocessing.",
+    "microservices": "Microservices architecture decomposes apps into small, independent services. Each service: own database, deployment, scaling. Communication: REST, gRPC, message queues. Benefits: independent deployment, technology diversity, fault isolation. Challenges: distributed systems complexity.",
+    "api design": "API design best practices: RESTful conventions, consistent naming, versioning, pagination, error handling, rate limiting, authentication (OAuth, API keys), documentation (OpenAPI/Swagger), HATEOAS, hypermedia links.",
+    "testing": "Software testing pyramid: unit (fast, many), integration (moderate), end-to-end (slow, few). TDD: write tests first. BDD: behavior-driven with natural language. Tools: pytest, Jest, JUnit, Selenium. Coverage: aim for critical paths, not 100%.",
+    "refactoring": "Refactoring improves code structure without changing behavior. Techniques: extract method, rename, move method, replace temp with query, decompose conditional. Martin Fowler's catalog. When: code smells, duplicated logic, complex methods. Tools: IDE refactorings.",
+    "code review": "Code review best practices: small PRs, clear descriptions, automated checks first, constructive feedback, focus on logic not style, suggest alternatives, approve promptly. Tools: GitHub PRs, GitLab MRs, Crucible. Benefits: knowledge sharing, bug prevention.",
+    "technical debt": "Technical debt: implied cost of future rework from quick solutions. Types: deliberate (trade-off), accidental (lack of knowledge), reckless (no standards). Management: track, prioritize, allocate time, prevent new debt. Metaphor: interest on borrowed time.",
+
+    # ── AI ADVANCED ──
+    "transformer architecture": "Transformer: attention-based architecture replacing recurrence. Self-attention: O(n²) complexity. Multi-head attention: parallel attention layers. Positional encoding: inject order information. Layer norm, residual connections. Variants: encoder-only (BERT), decoder-only (GPT), encoder-decoder (T5).",
+    "attention mechanism types": "Attention types: self-attention (Q=K=V), cross-attention (different Q, K, V), causal/masked (prevent looking ahead), sparse (limited attention patterns), linear (O(n) approximations), flash attention (memory efficient). Multi-head: multiple attention functions in parallel.",
+    "language model training": "LM training stages: pre-training (next token prediction on large corpus), fine-tuning (task-specific data), RLHF (alignment with human preferences). Optimization: AdamW, learning rate scheduling, gradient clipping, mixed precision. Data: tokenization, deduplication, quality filtering.",
+    "ai safety": "AI safety research ensures AI remains beneficial. Topics: alignment (matching human values), corrigibility (allowing shutdown), interpretability (understanding decisions), robustness (resisting adversarial attacks), fairness (avoiding bias), transparency (open about capabilities).",
+    "neural architecture search": "NAS automates neural network design. Methods: reinforcement learning, evolutionary algorithms, differentiable search (DARTS). Search space: layers, operations, connectivity. Efficiency: weight sharing, early stopping. Found efficient architectures like EfficientNet.",
+    "knowledge distillation": "Knowledge distillation transfers knowledge from large model (teacher) to smaller model (student). Process: train teacher, use teacher's soft labels to train student. Benefits: smaller, faster models with similar accuracy. Used for: deployment, edge devices.",
+    "federated learning": "Federated learning trains models across decentralized data. Process: send model to devices, train locally, aggregate updates. Benefits: privacy (data stays local), compliance (GDPR). Challenges: non-IID data, communication efficiency, security. Used by: Google (keyboard prediction).",
+    "continual learning": "Continual/lifelong learning prevents catastrophic forgetting. Techniques: elastic weight consolidation (EWC), progressive neural networks, experience replay, packnet. Goal: learn new tasks without forgetting old ones. Critical for real-world AI deployment.",
+
+    # ── SCIENCE ADVANCED ──
+    "photosynthesis": "Photosynthesis converts light energy to chemical energy. Light reactions: water splitting, O₂ release, ATP/NADPH production. Calvin cycle: CO₂ fixation, sugar synthesis. Chloroplasts contain chlorophyll (absorbs red/blue light). 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂.",
+    "evolution": "Evolution by natural selection (Darwin, 1859): variation, inheritance, selection, time. Mechanisms: mutation, genetic drift, gene flow, natural selection, sexual selection. Speciation: allopatric (geographic), sympatric (same area). Evidence: fossils, DNA, comparative anatomy.",
+    "cell biology": "Cell: basic unit of life. Eukaryotic: nucleus, organelles (mitochondria, ER, Golgi, lysosomes). Prokaryotic: no nucleus, simpler. Cell membrane: phospholipid bilayer, proteins. Cell cycle: G1, S (DNA replication), G2, M (mitosis). Cancer: uncontrolled cell division.",
+    "genetics": "Genetics studies heredity. Mendelian: dominant/recessive, segregation, independent assortment. DNA → RNA → protein (central dogma). Genes code for proteins. Mutations: point, insertion, deletion, frameshift. Genetic engineering: CRISPR, restriction enzymes, vectors.",
+    "molecular biology": "Molecular biology studies biological processes at molecular level. Central dogma: DNA → RNA → protein. Transcription: DNA → mRNA. Translation: mRNA → protein (ribosomes). Replication: DNA → DNA. Regulation: promoters, enhancers, epigenetics.",
+    "chemistry basics": "Chemistry studies matter and its interactions. Atoms: protons, neutrons, electrons. Periodic table: elements organized by atomic number. Bonds: ionic (electron transfer), covalent (electron sharing), metallic. Reactions: synthesis, decomposition, single/double replacement, combustion.",
+    "organic chemistry": "Organic chemistry studies carbon compounds. Functional groups: hydroxyl (-OH), carboxyl (-COOH), amino (-NH₂), carbonyl (C=O). Reactions: substitution, elimination, addition, rearrangement. Polymers: long chains of repeating monomers. Important for: pharmaceuticals, plastics, biology.",
+    "biochemistry": "Biochemistry studies chemical processes in living organisms. Proteins: amino acids, peptide bonds, folding, enzymes. Carbohydrates: glucose, starch, glycogen. Lipids: fats, phospholipids, steroids. Nucleic acids: DNA, RNA. Metabolism: catabolism, anabolism.",
+
+    # ── TECHNOLOGY ──
+    "5g technology": "5G: fifth generation mobile network. Features: 10 Gbps peak, 1ms latency, 1M devices/km². Bands: sub-6 GHz (coverage), mmWave (speed). Technologies: massive MIMO, beamforming, network slicing. Use cases: IoT, autonomous vehicles, AR/VR, remote surgery.",
+    "iot": "Internet of Things connects physical devices to the internet. Protocols: MQTT, CoAP, HTTP, Zigbee, Z-Wave, LoRaWAN. Platforms: AWS IoT, Azure IoT, Google Cloud IoT. Challenges: security, scalability, power consumption, interoperability. Applications: smart home, industrial, healthcare.",
+    "edge computing": "Edge computing processes data near the source, not in cloud. Benefits: low latency, reduced bandwidth, privacy, offline operation. Platforms: AWS Outposts, Azure Stack, edge servers, IoT gateways. Use cases: autonomous vehicles, industrial IoT, AR/VR, real-time analytics.",
+    "ar vr": "AR (Augmented Reality) overlays digital on physical. VR (Virtual Reality) immerses in digital world. MR (Mixed Reality) combines both. Hardware: Meta Quest, Apple Vision Pro, HoloLens. Technologies: SLAM, hand tracking, eye tracking. Applications: gaming, training, healthcare.",
+    "blockchain advanced": "Blockchain: distributed ledger technology. Consensus: PoW (energy-intensive), PoS (stake-based), DPoS (delegated), PBFT (Byzantine fault tolerant). Smart contracts: self-executing code. Layer 2: rollups, sidechains for scalability. DeFi: decentralized finance. NFTs: non-fungible tokens.",
+    "cloud native": "Cloud-native applications designed for cloud. Principles: microservices, containers, DevOps, CI/CD. Technologies: Kubernetes, Docker, service mesh (Istio), serverless (Lambda). Twelve-factor app methodology. Benefits: scalability, resilience, portability.",
+    "serverless": "Serverless computing: run code without managing servers. Platforms: AWS Lambda, Azure Functions, Google Cloud Functions. Benefits: auto-scaling, pay-per-use, no server management. Limitations: cold starts, vendor lock-in, debugging complexity. Use: APIs, data processing, events.",
+    "devops": "DevOps: collaboration between development and operations. Practices: CI/CD, infrastructure as code, monitoring, logging, automation. Tools: Git, Jenkins, GitHub Actions, Terraform, Ansible, Docker, Kubernetes, Prometheus, Grafana. Benefits: faster delivery, fewer bugs.",
+
+    # ── BUSINESS & ENTREPRENEURSHIP ──
+    "startup": "Startup: early-stage company designed for rapid growth. Stages: pre-seed, seed, Series A/B/C. Metrics: MRR, churn, CAC, LTV, burn rate, runway. Methods: lean startup (build-measure-learn), MVP, pivot. Funding: bootstrapping, angels, VCs, crowdfunding.",
+    "product management": "Product management: guiding product success. Responsibilities: strategy, roadmap, features, prioritization. Methods: Agile, Scrum, Kanban. Tools: Jira, Linear, Notion. Skills: user research, data analysis, stakeholder management, market analysis.",
+    "marketing": "Marketing: promoting products/services. Mix: Product, Price, Place, Promotion. Digital marketing: SEO, SEM, social media, email, content marketing. Analytics: Google Analytics, conversion tracking. Growth hacking: rapid experimentation across funnel.",
+    "sales": "Sales process: prospecting, qualification, presentation, handling objections, closing, follow-up. Methods: consultative, solution, challenger, inbound. CRM: Salesforce, HubSpot. Metrics: conversion rate, deal size, cycle length, quota attainment.",
+    "finance": "Finance: managing money. Accounting: debits/credits, balance sheet, income statement, cash flow. Valuation: DCF, comparable companies, precedent transactions. Investment: stocks, bonds, real estate, alternatives. Personal: budgeting, emergency fund, compound interest.",
+    "leadership": "Leadership: guiding people and organizations. Styles: transformational, servant, autocratic, democratic, laissez-faire. Skills: communication, decision-making, emotional intelligence, strategic thinking. Frameworks: Situational Leadership, Strengths-Based, Level 5.",
+
+    # ── HEALTH & WELLNESS ──
+    "nutrition": "Nutrition: fueling the body. Macronutrients: protein (build/repair), carbs (energy), fats (hormones, absorption). Micronutrients: vitamins, minerals. Guidelines: balanced diet, portion control, whole foods, limited processed foods, adequate hydration.",
+    "exercise": "Exercise: physical activity for health. Types: aerobic (cardio), anaerobic (strength), flexibility, balance. Benefits: weight management, cardiovascular health, mental health, sleep quality, longevity. Guidelines: 150 min moderate or 75 min vigorous per week.",
+    "sleep": "Sleep: essential for health. Stages: NREM (1-3), REM (dreaming). Cycles: 4-6 per night (90 min each). Adults need 7-9 hours. Tips: consistent schedule, cool dark room, limit screens before bed, avoid caffeine after 2 PM. Consequences of poor sleep: impaired cognition, weakened immunity.",
+    "stress management": "Stress management techniques: deep breathing, meditation, exercise, time management, social support, boundaries, journaling, nature exposure, hobbies, professional help. Chronic stress: damages immune, cardiovascular, digestive systems. Acute stress: can be motivating.",
+    "mental health": "Mental health: emotional, psychological, social well-being. Common conditions: anxiety, depression, PTSD, ADHD, bipolar. Treatment: therapy (CBT, DBT, psychodynamic), medication, lifestyle changes, support groups. Stigma reduction: mental health is health.",
+    "meditation": "Meditation: training attention and awareness. Types: mindfulness (present moment), transcendental (mantra), loving-kindness, body scan, zen. Benefits: reduced stress, improved focus, emotional regulation, sleep. Apps: Headspace, Calm, Insight Timer. Start with 5-10 minutes daily.",
+    "yoga": "Yoga: physical, mental, spiritual practice. Types: Hatha (gentle), Vinyasa (flow), Ashtanga (power), Yin (passive), Kundalini (energy). Benefits: flexibility, strength, balance, stress reduction, mindfulness. Poses: downward dog, warrior, tree, child's pose.",
+
+    # ── PHILOSOPHY & THINKING ──
+    "stoicism": "Stoicism: ancient Greek philosophy. Key: focus on what you can control, accept what you can't. Virtues: wisdom, courage, justice, temperance. Practitioners: Marcus Aurelius, Seneca, Epictetus. Modern: Cognitive Behavioral Therapy (CBT) inspired by Stoicism.",
+    "existentialism": "Existentialism: philosophy of individual existence. Key: existence precedes essence, freedom, responsibility, authenticity. Thinkers: Kierkegaard, Nietzsche, Heidegger, Sartre, Camus. Themes: absurdity, angst, choice, meaning-making, death awareness.",
+    "critical thinking": "Critical thinking: analyzing information objectively. Skills: interpretation, analysis, evaluation, inference, explanation, self-regulation. Techniques: Socratic questioning, logical fallacies identification, bias recognition, evidence evaluation, argument mapping.",
+    "decision making": "Decision making: choosing between alternatives. Models: rational (define, generate, evaluate, select), bounded rationality (satisficing), intuitive, creative. Biases: anchoring, confirmation, sunk cost, availability, overconfidence. Tools: decision matrix, SWOT, pro/con lists.",
+    "problem solving": "Problem solving: finding solutions. Steps: define problem, generate alternatives, evaluate options, implement solution, monitor results. Techniques: root cause analysis (5 whys), brainstorming, lateral thinking, mind mapping, design thinking.",
+    "creativity": "Creativity: generating novel, useful ideas. Techniques: brainstorming, SCAMPER, random word association, mind mapping, reverse brainstorming, analogical thinking. Blocks: fear of failure, perfectionism, routine. Cultivate: diverse experiences, curiosity, playfulness.",
+
+    # ── COMMUNICATION ──
+    "public speaking": "Public speaking: presenting to audiences. Structure: hook, thesis, body, conclusion, call to action. Techniques: storytelling, rhetorical questions, repetition, pauses, eye contact. Preparation: know audience, practice, handle nerves (deep breathing).",
+    "writing": "Writing: clear communication through text. Types: academic, business, creative, technical. Principles: clarity, conciseness, coherence, correctness. Process: outline, draft, revise, edit, proofread. Style: active voice, varied sentences, strong verbs.",
+    "negotiation": "Negotiation: reaching agreement. Principles (Getting to Yes): separate people from problems, focus on interests not positions, generate options, use objective criteria. BATNA: Best Alternative To Negotiated Agreement. Tactics: anchoring, mirroring, silence.",
+    "persuasion": "Persuasion: influencing beliefs/actions. Aristotle's modes: ethos (credibility), pathos (emotion), logos (logic). Cialdini's principles: reciprocity, commitment, social proof, authority, liking, scarcity. Ethics: use responsibly, avoid manipulation.",
+
+    # ── PRACTICAL SKILLS ──
+    "first aid": "First aid basics: assess scene safety, call emergency, check responsiveness, control bleeding (direct pressure, elevation), treat shock (lie down, elevate legs), CPR (30 compressions : 2 breaths), burns (cool water), fractures (immobilize).",
+    "cooking": "Cooking fundamentals: knife skills, heat control (sauté, simmer, roast, grill), seasoning (salt, acid, fat, heat), food safety (temperature, cross-contamination), meal planning, budgeting. Techniques: mise en place, deglazing, emulsification.",
+    "gardening": "Gardening: growing plants. Basics: soil preparation, watering, sunlight, spacing, temperature. Types: vegetables, herbs, flowers, fruits. Methods: container, raised bed, in-ground, hydroponics. Benefits: fresh food, mental health, exercise, biodiversity.",
+    "home repair": "Home repair basics: fixing leaky faucets, unclogging drains, patching drywall, painting, basic electrical (outlets, switches), HVAC maintenance, roof inspection. Tools: hammer, drill, level, tape measure, pliers, wrench. Safety: turn off power/water.",
+    "budgeting": "Budgeting: managing finances. Method: 50/30/20 (needs/wants/savings). Steps: track income, track expenses, categorize, set limits, review monthly. Tools: spreadsheets, YNAB, Mint, envelope method. Emergency fund: 3-6 months expenses.",
+
+    # ── LANGUAGES ──
+    "chinese": "Mandarin Chinese: most spoken language (1.1B). Tones: 4 + neutral. Characters: logographic (thousands needed). Pinyin: romanization system. Grammar: SVO, no conjugation, measure words. Dialects: Mandarin, Cantonese, Wu, Min. Written: simplified (mainland), traditional (Taiwan).",
+    "spanish": "Spanish: Romance language, 500M speakers. Grammar: gendered nouns, verb conjugations, subjunctive mood. Dialects: Castilian (Spain), Latin American. Uses: second most studied language, official in 20 countries. Resources: Duolingo, practice with native speakers.",
+    "arabic": "Arabic: Semitic language, 400M speakers. Script: cursive right-to-left. Types: Modern Standard (formal), dialects (colloquial). Grammar: root system (3 letters), gendered, VSO order. Dialects: Egyptian, Levantine, Gulf, Maghrebi. Important for: religion, business, diplomacy.",
+    "japanese": "Japanese: agglutinative language, 128M speakers. Writing: hiragana (46), katakana (46), kanji (2000+). Grammar: SOV, particles, no articles, honorific system (keigo). Dialects: Kansai, Tohoku. Pop culture: anime, manga, games drive learning interest.",
+
+    # ── ENVIRONMENT ──
+    "climate change": "Climate change: long-term temperature and weather patterns. Causes: greenhouse gas emissions (CO₂, CH₄). Effects: rising temperatures, sea level rise, extreme weather, biodiversity loss. Solutions: renewable energy, efficiency, carbon capture, policy changes.",
+    "renewable energy": "Renewable energy: sustainable power sources. Types: solar (photovoltaic, thermal), wind (onshore, offshore), hydroelectric, geothermal, biomass, tidal. Benefits: reduced emissions, energy independence, job creation. Challenges: intermittency, storage, infrastructure.",
+    "sustainability": "Sustainability: meeting present needs without compromising future. Three pillars: environmental, social, economic. Practices: reduce/reuse/recycle, circular economy, green building, sustainable agriculture, ethical consumption. UN SDGs: 17 goals for global development.",
+    "conservation": "Conservation: protecting natural resources. Approaches: habitat preservation, species protection, sustainable use, restoration. Threats: habitat loss, climate change, pollution, overexploitation, invasive species. Organizations: WWF, Conservation International, local groups.",
+
+    # ── CREATIVITY & ARTS ──
+    "music theory": "Music theory: study of music fundamentals. Elements: pitch, rhythm, melody, harmony, timbre. Scales: major, minor, pentatonic, chromatic. Chords: triads (major, minor, diminished), seventh chords. Time signatures: 4/4, 3/4, 6/8. Keys, transposition, modes.",
+    "photography": "Photography: capturing light. Exposure triangle: aperture (depth of field), shutter speed (motion), ISO (sensitivity). Composition: rule of thirds, leading lines, framing, symmetry. Modes: manual, aperture priority, shutter priority. Editing: Lightroom, Photoshop.",
+    "graphic design": "Graphic design: visual communication. Principles: balance, contrast, hierarchy, repetition, alignment, white space. Typography: font pairing, hierarchy, readability. Color theory: complementary, analogous, triadic. Tools: Figma, Adobe Creative Suite, Canva.",
+    "video editing": "Video editing: assembling footage. Techniques: cuts, transitions, color grading, audio mixing, effects. Software: Adobe Premiere, Final Cut Pro, DaVinci Resolve, iMovie. Workflow: organize, rough cut, fine cut, export. Formats: MP4, MOV, ProRes.",
+
+    # ── SOCIAL SCIENCES ──
+    "psychology": "Psychology: study of mind and behavior. Branches: clinical, cognitive, developmental, social, personality, industrial-organizational. Methods: experiments, surveys, observation, case studies. Key concepts: conditioning, cognition, development, disorders, therapy.",
+    "sociology": "Sociology: study of society and social behavior. Topics: stratification, inequality, culture, deviance, religion, education, family, race, gender, organizations. Theories: functionalism, conflict theory, symbolic interactionism. Methods: surveys, ethnography, experiments.",
+    "anthropology": "Anthropology: study of humans, past and present. Subfields: cultural, linguistic, archaeology, biological. Methods: fieldwork, ethnography, participant observation. Concepts: culture, relativism, holism, adaptation. Applied: user research, market research, cultural consulting.",
+    "economics advanced": "Economics advanced: macro (GDP, inflation, unemployment, monetary/fiscal policy), micro (supply/demand, market structures, game theory), behavioral (biases, heuristics), development (growth, institutions), international (trade, exchange rates).",
+
+    # ── MATHEMATICS ADVANCED ──
+    "number theory": "Number theory: study of integers. Topics: primes, divisibility, modular arithmetic, Diophantine equations. Goldbach conjecture, Riemann hypothesis. Applications: cryptography (RSA), hashing, random number generation.",
+    "combinatorics": "Combinatorics: counting and arranging. Permutations (order matters), combinations (order doesn't). Binomial coefficient: C(n,k) = n!/(k!(n-k)!). Pigeonhole principle, inclusion-exclusion. Applications: probability, algorithm analysis, design.",
+    "graph theory": "Graph theory: study of networks. Concepts: paths, cycles, connectivity, coloring, matching. Euler paths, Hamiltonian cycles. Trees: acyclic connected graphs. Applications: social networks, routing, scheduling, molecular structures.",
+    "topology": "Topology: study of properties preserved under continuous deformation. Concepts: open/closed sets, continuity, compactness, connectedness. Surfaces: sphere, torus, Klein bottle. Euler characteristic: V-E+F=2. Applications: data analysis (topological data analysis), physics.",
+
+    # ── FOOD & CULINARY ──
+    "baking": "Baking: cooking with dry heat. Science: flour (structure), sugar (sweetness, browning), fat (tenderness), eggs (binding, leavening), leavening agents (baking soda, yeast). Techniques: creaming, folding, proofing. Temperatures matter for chemistry.",
+    "fermentation": "Fermentation: metabolic process converting sugars. Types: alcoholic (beer, wine), lactic (yogurt, sauerkraut), acetic (vinegar), kombucha. Benefits: preservation, flavor, probiotics, nutrition. Tools: temperature control, airlocks, salt ratios.",
+    "spices": "Spices: dried plant parts for flavoring. Common: cinnamon, cumin, turmeric, ginger, paprika, oregano, thyme, rosemary. Storage: airtight, dark, cool. Toasting: enhances flavor. Grinding: fresh is better. Blends: curry, garam masala, za'atar, five spice.",
+
+    # ── MISCELLANEOUS ──
+    "chess": "Chess: strategy board game. Pieces: king, queen, rook, bishop, knight, pawn. Rules: check, checkmate, stalemate, castling, en passant, promotion. Strategy: center control, piece development, king safety, pawn structure. Openings: Italian, Sicilian, Queen's Gambit.",
+    "puzzles": "Puzzles: problems requiring thought. Types: logic (Sudoku, KenKen), word (crosswords, anagrams), mechanical (Rubik's cube), visual (jigsaw), riddles. Benefits: cognitive training, problem-solving skills, stress relief, entertainment.",
+    "survival skills": "Survival skills: wilderness emergency. Priorities: shelter, water, fire, food. Shelter: insulation from elements. Water: find, purify (boil, filter, chemicals). Fire: friction, flint, magnifying glass. Food: foraging (know what's safe), fishing, trapping. Navigation: sun, stars, compass.",
+    "memory techniques": "Memory techniques: improve recall. Methods: memory palace (method of loci), spaced repetition, chunking, association, visualization, peg system, major system. Practice: active recall, interleaving, elaborative interrogation. Apps: Anki, Quizlet.",
 })
