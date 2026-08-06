@@ -1492,6 +1492,125 @@ EXTRA_ALIASES = {
     "spirituality": "religion",
     "mythology": "mythology",
     "myths": "mythology",
+
+    # Kid brain aliases - colors
+    "colors": "red",
+    "colour": "red",
+    "colours": "red",
+    "colourful": "red",
+
+    # Kid brain aliases - shapes
+    "shapes": "circle",
+    "shape": "circle",
+
+    # Kid brain aliases - numbers
+    "numbers": "number 0",
+    "counting": "number 0",
+    "count": "number 0",
+    "one two three": "number 0",
+
+    # Kid brain aliases - feelings
+    "feelings": "what is happy",
+    "emotion": "what is happy",
+    "emotions": "what is happy",
+    "how do you feel": "what is happy",
+
+    # Kid brain aliases - daily life
+    "food": "what is breakfast",
+    "eating": "what is breakfast",
+    "meals": "what is breakfast",
+    "sleeping": "what is bedtime",
+    "wake up": "what is morning",
+    "good morning": "what is morning",
+    "good night": "what is bedtime",
+    "good evening": "what is evening",
+
+    # Kid brain aliases - science
+    "weather": "what is sunny",
+    "sunny": "what is sunny",
+    "rainy": "what is rainy",
+    "snowy": "what is snowy",
+    "windy": "what is windy",
+    "animals": "what is dog",
+    "pets": "what is pet",
+    "plants": "what is tree",
+    "trees": "what is tree",
+    "flowers": "what is flower",
+
+    # Kid brain aliases - body
+    "body": "what is head",
+    "body parts": "what is head",
+    "hands": "what is hand",
+    "feet": "what is foot",
+    "eyes": "what is eyes",
+    "ears": "what is ears",
+    "nose": "what is nose",
+    "mouth": "what is mouth",
+    "teeth": "what is brushing teeth",
+
+    # Kid brain aliases - time
+    "time": "what is today",
+    "days": "what is week",
+    "week": "what is week",
+    "months": "what is month",
+    "year": "what is year",
+    "seasons": "what is season",
+
+    # Kid brain aliases - math
+    "math": "what is addition",
+    "maths": "what is addition",
+    "add": "what is addition",
+    "plus": "what is plus",
+    "minus": "what is minus",
+    "times": "what is multiplication",
+    "divide": "what is division",
+    "equal": "what is equals",
+
+    # Kid brain aliases - safety
+    "safety": "what is safe",
+    "danger": "what is danger",
+    "emergency": "what is 911",
+    "police": "what is police officer",
+    "fire": "what is firefighter",
+    "doctor": "what is doctor",
+    "nurse": "what is doctor",
+
+    # Kid brain aliases - places
+    "home": "what is family",
+    "school": "what is teacher",
+    "park": "what is playground",
+    "playground": "what is playground",
+    "library": "what is library",
+    "hospital": "what is doctor",
+    "store": "what is shopping",
+    "shop": "what is shopping",
+
+    # Kid brain aliases - activities
+    "play": "what is playground",
+    "playing": "what is playground",
+    "games": "what is games",
+    "toys": "what is toys",
+    "crafts": "what is craft",
+    "art": "what is drawing",
+    "drawing": "what is drawing",
+    "painting": "what is painting",
+    "music": "what is music",
+    "singing": "what is song",
+    "dancing": "what is dance",
+
+    # Kid brain aliases - simple words
+    "what is good": "what is honest",
+    "what is bad": "what is lazy",
+    "what is big": "what is bigger",
+    "what is small": "what is smaller",
+    "what is new": "what is old",
+    "what is old": "what is old",
+    "what is fast": "what is fast",
+    "what is slow": "what is slow",
+    "what is hot": "what is heat",
+    "what is cold weather": "what is cold",
+    "what is loud": "what is sound",
+    "what is quiet": "what is quiet",
 }
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -2344,4 +2463,253 @@ EXTRA_KNOWLEDGE.update({
     "philosophy history": "Philosophy history: Western (Socrates, Plato, Aristotle, Descartes, Kant, Nietzsche), Eastern (Confucius, Buddha, Laozi), Islamic (Avicenna, Averroes), African (Ubuntu), Indigenous wisdom traditions.",
     "religion": "Religion: systems of belief. Major: Christianity (2.4B), Islam (1.9B), Hinduism (1.2B), Buddhism (500M), Sikhism (30M), Judaism (15M). Concepts: God/gods, afterlife, ethics, ritual, community, meaning.",
     "mythology": "Mythology: traditional stories. Greek (Zeus, Athena, Hercules), Norse (Odin, Thor, Loki), Egyptian (Ra, Osiris, Isis), Hindu (Vishnu, Shiva, Brahma), Japanese (Amaterasu, Izanagi), Native American traditions.",
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    #  KID BRAIN TRAINING - Basic Concepts for Learning
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    # ── COLORS ──
+    "red": "Red is a primary color. Examples: fire truck, apple, rose, blood, stop sign. Red can mean love, danger, or anger. In rainbows, red is the first color. Red wavelengths are longest in visible light.",
+    "blue": "Blue is a primary color. Examples: sky, ocean, sapphire, blueberries. Blue can mean calm, sadness (feeling blue), or trust. Blue is the most popular favorite color worldwide. Blue is rare in nature.",
+    "yellow": "Yellow is a primary color. Examples: sun, banana, lemon, duckling, sunflower. Yellow means happiness, sunshine, caution (traffic lights), and cowardice (yellow-bellied). Yellow is the brightest color to the eye.",
+    "green": "Green is a secondary color (blue + yellow). Examples: grass, leaves, trees, frogs, emeralds. Green means nature, growth, go (traffic light), envy (green with envy), and money in the US.",
+    "orange": "Orange is a secondary color (red + yellow). Examples: orange fruit, sunset, pumpkin, carrot, clown fish. Orange means energy, warmth, autumn, and Halloween. Orange is named after the fruit.",
+    "purple": "Purple is a secondary color (red + blue). Examples: grapes, lavender, amethyst, royal robes. Purple means royalty, luxury, creativity, and mystery. Purple is rare in nature, making it special.",
+    "pink": "Pink is a tint of red (red + white). Examples: flamingo, cotton candy, cherry blossoms, bubblegum. Pink means love, sweetness, femininity, and playfulness. Pink flamingos get color from their diet.",
+    "brown": "Brown is a tertiary color. Examples: chocolate, earth, wood, bears, coffee. Brown means stability, reliability, warmth, and nature. Brown is common in nature (soil, trees, animals).",
+    "black": "Black is the absence of light. Examples: night, coal, shadows, panther, chalkboard. Black means elegance, power, mystery, mourning (in some cultures), and evil. Black absorbs all colors.",
+    "white": "White is all colors combined. Examples: snow, clouds, milk, paper, pearls. White means purity, innocence, peace, cleanliness, and blank. White reflects all colors of light.",
+    "gray": "Gray is between black and white. Examples: elephant, cloudy sky, stone, mouse, silver. Gray means neutral, balance, wisdom, maturity, and ambiguity. Gray is common in urban environments.",
+    "gold": "Gold is a metallic yellow. Examples: treasure, rings, trophies, sunshine, honey. Gold means wealth, achievement, first place, luxury, and warmth. Gold is a precious metal used in jewelry.",
+    "silver": "Silver is a metallic gray. Examples: moon, mirror, coins, jewelry, cutlery. Silver means second place, modern, sleek, lunar, and valuable. Silver is used in electronics and photography.",
+
+    # ── SHAPES ──
+    "circle": "A circle is a round shape with no corners or edges. Every point is the same distance from the center. Examples: clock, coin, wheel, sun, ball. Circles have 360 degrees. Pi (π) relates circumference to diameter.",
+    "square": "A square has 4 equal sides and 4 right angles (90°). Examples: window, tile, chessboard, cracker, book. Squares have 4 lines of symmetry. Area = side × side. Squares are rectangles.",
+    "triangle": "A triangle has 3 sides and 3 angles. Types: equilateral (all equal), isosceles (two equal), scalene (none equal). Angles add to 180°. Examples: ramp, pizza slice, yield sign, hanger.",
+    "rectangle": "A rectangle has 4 sides with 4 right angles. Opposite sides are equal. Examples: door, phone, paper, table, book. Rectangles have 2 lines of symmetry. Area = length × width.",
+    "oval": "An oval is an elongated circle, like an egg. It has no corners or straight edges. Examples: egg, face, rugby ball, mirror, stadium. Ovals are sometimes called ellipses.",
+    "star": "A star has points radiating from a center. Common: 5-pointed star (★). Examples: starfish, star fruit, North Star, Hollywood stars, rating symbols. Stars symbolize excellence and guidance.",
+    "heart": "A heart (♥) is a symbol of love. It has two rounded tops meeting at a point. Examples: Valentine's Day, playing cards, emoji (❤️), jewelry. Hearts represent love, care, and emotions.",
+    "diamond": "A diamond (◆) is a square turned 45°. Also called a rhombus. Examples: playing cards, road signs, gemstone, kite shape. Diamonds symbolize hardness, value, and clarity.",
+    "pentagon": "A pentagon has 5 sides and 5 angles. Regular pentagon: all sides and angles equal (108° each). Examples: Pentagon building, home plate, football, some flowers.",
+    "hexagon": "A hexagon has 6 sides and 6 angles. Regular hexagon: all sides equal (120° each). Examples: honeycomb, snowflake, bolt head, nut. Hexagons are strong and efficient shapes in nature.",
+
+    # ── NUMBERS ──
+    "number 0": "Zero (0) means nothing or empty. Zero is a number and a placeholder (10, 100). Invented independently in India and Mesoamerica. Zero is even. Any number + 0 = itself. Zero is the absence of quantity.",
+    "number 1": "One (1) is the first counting number. It's a unit. 1 is odd. 1 × any number = that number. 1 is neither prime nor composite. First: ordinal number. Unity, uniqueness.",
+    "number 2": "Two (2) is the first even number. Pairs, couples, duality. 2 is prime. Binary: 0 and 1. Two eyes, two hands. Second: ordinal. 2 + 2 = 4. Two-dimensional: length and width.",
+    "number 3": "Three (3) is the first odd prime. Three dimensions: length, width, height. Three primary colors. Three states of matter (solid, liquid, gas). Tricycle has 3 wheels. Three Blind Mice.",
+    "number 4": "Four (4) is even. Four seasons (spring, summer, fall, winter). Four directions (north, south, east, west). Four limbs. Four wheels on a car. Quadrilateral has 4 sides. Fourth: ordinal.",
+    "number 5": "Five (5) is prime. Five senses (sight, hearing, touch, taste, smell). Five fingers on each hand. Five toes on each foot. Starfish have 5 arms. Pentagon has 5 sides. Fifth: ordinal.",
+    "number 6": "Six (6) is even and composite. Six legs on insects. Hexagon has 6 sides. Six-pack (abs or soda). Six strings on guitar. Half a dozen = 6. Sixth: ordinal.",
+    "number 7": "Seven (7) is prime. Seven colors of rainbow. Seven days in a week. Seven continents. Seven dwarves. Lucky in many cultures. Heptagon has 7 sides. Seventh: ordinal.",
+    "number 8": "Eight (8) is even and composite. Octopus has 8 arms. Octagon has 8 sides. Stop sign is octagonal. Eight bits = 1 byte. Spider has 8 legs. Eighth: ordinal.",
+    "number 9": "Nine (9) is odd and composite. Nine planets (if counting Pluto). Nine lives (cats). Nine innings in baseball. Enneagon has 9 sides. 3 × 3 = 9. Ninth: ordinal.",
+    "number 10": "Ten (10) is even and composite. We count in base 10. Ten fingers and toes. Top 10 lists. Decade = 10 years. Decagon has 10 sides. Tenth: ordinal. Decimal system.",
+
+    # ── SIMPLE WORDS & MEANINGS ──
+    "what is happy": "Happy means feeling good, joyful, pleased. When you laugh, smile, or get a present. Synonyms: glad, joyful, cheerful, delighted. Opposite: sad. Being happy makes you feel warm inside.",
+    "what is sad": "Sad means feeling unhappy, sorrowful, or down. When you cry, lose something, or someone is hurt. Synonyms: unhappy, gloomy, miserable, heartbroken. Opposite: happy. It's okay to feel sad sometimes.",
+    "what is angry": "Angry means feeling mad, upset, or furious. When someone takes your toy or treats you unfairly. Synonyms: mad, irritated, frustrated, enraged. Opposite: calm. Take deep breaths when angry.",
+    "what is scared": "Scared means feeling afraid, frightened, or nervous. When you see something scary or don't know what will happen. Synonyms: afraid, frightened, terrified, anxious. Opposite: brave. It's okay to be scared.",
+    "what is love": "Love means caring deeply about someone or something. When you hug your family, pet your dog, or help a friend. Love makes you feel warm, safe, and happy. Love is shown through actions and words.",
+    "what is friends": "Friends are people you like and enjoy being with. Friends play together, help each other, and share. Good friends are kind, honest, and loyal. You can have many friends. Friendship is special.",
+    "what is family": "Family is people related to you or who care for you. Family: parents, siblings, grandparents, aunts, uncles, cousins. Family loves you, keeps you safe, and helps you grow. Every family is different.",
+    "what is sharing": "Sharing means giving part of something to others. Sharing toys, food, or time. Sharing makes others happy and makes friends. It's important to take turns. Sharing is caring.",
+    "what is polite": "Polite means being respectful and kind to others. Saying please, thank you, sorry, excuse me. Polite people listen, take turns, and don't interrupt. Being polite makes people like you.",
+    "what is brave": "Brave means doing something even when you're scared. Standing up for a friend, trying something new, or going to the doctor. Brave doesn't mean not scared - it means trying anyway.",
+    "what is honest": "Honest means telling the truth and not lying or cheating. Honest people are trusted and respected. If you break something, tell the truth. Honesty is always the best policy.",
+    "what is kind": "Kind means being nice, helpful, and caring to others. Helping someone up, sharing, saying nice things. Kindness makes the world better. Small acts of kindness matter.",
+    "what is lazy": "Lazy means not wanting to work or do things. Staying in bed, not doing homework, avoiding chores. Being lazy means missing out on fun and learning. It's better to be active.",
+    "what is smart": "Smart means knowing a lot, learning quickly, and solving problems. Reading books, asking questions, and trying new things make you smarter. Smart isn't just about school - it's about life.",
+    "what is strong": "Strong means having power, force, or ability. Strong muscles let you lift heavy things. Strong minds help you solve problems. Strong people help others. Being strong is good.",
+
+    # ── DAILY LIFE BASICS ──
+    "what is breakfast": "Breakfast is the first meal of the day, eaten in the morning. Break + fast = breaking the fast from sleeping. Good breakfasts: cereal, eggs, toast, fruit, yogurt. Breakfast gives you energy for the day.",
+    "what is lunch": "Lunch is the midday meal, usually around noon. Lunch comes between breakfast and dinner. Typical lunches: sandwiches, soup, salad, leftovers. Lunch gives energy for the afternoon.",
+    "what is dinner": "Dinner is the main evening meal. Some call it supper. Dinner is usually the biggest meal. Families often eat dinner together. It can include meat, vegetables, rice, pasta.",
+    "what is bedtime": "Bedtime is when you go to sleep at night. Kids need 9-12 hours of sleep. Good bedtime routine: brush teeth, pajamas, story, lights out. Sleeping helps your body grow and your brain rest.",
+    "what is morning": "Morning is when the sun comes up, from sunrise to noon. Morning is when you wake up, eat breakfast, and start your day. Birds sing in the morning. Morning dew is on the grass.",
+    "what is afternoon": "Afternoon is the time after noon and before evening. From 12 PM to about 5 PM. After lunch, you might play, do homework, or take a nap. The sun is high in the sky.",
+    "what is evening": "Evening is the time from late afternoon to bedtime. When the sun sets and it gets dark. Dinner time, family time, story time. Stars come out in the evening.",
+    "what is night": "Night is when the sun goes down and it's dark. Time to sleep. Stars and moon are visible. Nocturnal animals come out. Night is necessary for rest and growth.",
+    "what is weekend": "Weekend is Saturday and Sunday, when most people don't work or go to school. Time to play, rest, spend time with family, do fun activities. Two days off before the new week.",
+    "what is holiday": "A holiday is a special day off from work or school. Holidays: birthdays, Christmas, Easter, Thanksgiving, New Year's, national holidays. Holidays are for celebration, rest, and family.",
+
+    # ── SIMPLE SCIENCE ──
+    "what is water": "Water (H₂O) is a liquid we drink, cook with, and use to clean. Water is everywhere: oceans, rivers, lakes, rain, ice. We need water to survive. 70% of Earth is water. Water has 3 states: liquid, solid (ice), gas (steam).",
+    "what is air": "Air is invisible gas we breathe. Air is a mixture: 78% nitrogen, 21% oxygen, 1% other gases. We need oxygen to live. Air fills space, has weight, and can be compressed. Wind is moving air.",
+    "what is fire": "Fire needs 3 things: heat, fuel, and oxygen (fire triangle). Fire gives light, warmth, and cooks food. Fire can be dangerous - can burn and destroy. Never play with fire. Call for help if there's a fire.",
+    "what is gravity": "Gravity is the force that pulls things toward each other. Earth's gravity keeps us on the ground. Gravity makes things fall down. The bigger something is, the stronger its gravity. Gravity keeps planets in orbit.",
+    "what is sun": "The Sun is a star at the center of our solar system. It's a huge ball of hot gas (plasma). The Sun gives us light and warmth. Without the Sun, there would be no life on Earth. The Sun is 4.6 billion years old.",
+    "what is moon": "The Moon orbits Earth. It reflects sunlight - it doesn't make its own light. Moon phases: new, crescent, half, full. The Moon causes tides. People walked on the Moon in 1969 (Apollo 11).",
+    "what is rain": "Rain is water falling from clouds. Water evaporates from oceans/lakes, forms clouds, then falls as rain. Rain fills rivers and lakes, helps plants grow. We use umbrellas in rain. Too much rain causes floods.",
+    "what is snow": "Snow is frozen water (ice crystals) falling from clouds. Snow happens when it's very cold (below freezing/32°F/0°C). Snow is white and fluffy. You can make snowmen and have snowball fights.",
+    "what is wind": "Wind is moving air. Wind happens because the sun heats the Earth unevenly, making air move. Wind can be gentle (breeze) or strong (storm). Wind helps pollinate plants, generates power.",
+    "what is electricity": "Electricity is energy from charged particles. Lightning is natural electricity. We use electricity for lights, TV, computers, refrigerators. Electricity travels through wires. Be careful - electricity can shock you.",
+    "what is sound": "Sound is vibration traveling through air (or water/solids). Sound has pitch (high/low) and volume (loud/quiet). We hear with ears. Sound travels about 343 meters per second in air. Sound cannot travel in space (vacuum).",
+    "what is light": "Light is energy that lets us see. Light travels very fast (300,000 km per second). Light comes from the sun, lamps, fire. Light can bend (refraction) and bounce (reflection). White light contains all colors.",
+    "what is heat": "Heat is thermal energy moving from hot to cold things. Heat comes from the sun, fire, friction, electricity. We measure heat in degrees (Celsius, Fahrenheit). Heat makes things expand, cold makes them shrink.",
+    "what is cold": "Cold is the absence of heat. Cold means low temperature. Ice, snow, winter are cold. Cold slows things down. Animals hibernate in cold. We wear warm clothes when it's cold.",
+
+    # ── ANIMALS ──
+    "what is dog": "Dogs are domesticated mammals, man's best friend. They bark, wag tails, and lick to show love. Dogs come in many breeds (sizes and colors). They eat meat and kibble. Dogs need walks, play, and love.",
+    "what is cat": "Cats are small furry pets. They purr when happy, meow to communicate. Cats are independent but loving. They hunt mice and birds. Cats need food, water, litter box, and play. They sleep a lot.",
+    "what is bird": "Birds are animals with feathers, wings, and beaks. Most can fly. Birds lay eggs. They sing songs. Examples: robin, eagle, penguin, parrot. Birds eat seeds, insects, or other animals.",
+    "what is fish": "Fish live in water and breathe through gills. They have fins and scales. Fish lay eggs. Examples: goldfish, salmon, shark, clownfish. Fish come in many sizes and colors.",
+    "what is elephant": "Elephants are the largest land animals. They have trunks, big ears, and tusks. Elephants live in Africa and Asia. They're smart and social. Elephants eat plants and need lots of water.",
+    "what is lion": "Lions are big cats called the King of the Jungle. Male lions have manes. Lions live in groups called prides. They hunt zebras, antelope. Lions roar loudly. They live in African savannas.",
+    "what is bear": "Bears are large mammals. They eat plants, fish, honey. Bears hibernate in winter. Types: brown, black, polar, panda. Bears are strong swimmers and climbers.",
+    "what is rabbit": "Rabbits are small furry animals with long ears and fluffy tails. They hop and dig burrows. Rabbits eat carrots, lettuce, hay. They're gentle and make good pets. Baby rabbits are called kits.",
+    "what is turtle": "Turtles have hard shells for protection. They walk slowly. Some live in water, some on land. Turtles lay eggs. They eat plants and small animals. Turtles can live very long - over 100 years!",
+    "what is butterfly": "Butterflies are insects with colorful wings. They start as caterpillars, then become cocoons (chrysalis), then emerge as butterflies. Butterflies drink flower nectar. They help pollinate flowers.",
+    "what is bee": "Bees are insects that make honey. They live in hives with a queen. Bees pollinate flowers - very important! They buzz and can sting (but die after). Bees are hard workers.",
+    "what is ant": "Ants are tiny insects that live in colonies. They have queens, workers, soldiers. Ants carry things much bigger than themselves. They communicate with chemicals. Ants build complex nests underground.",
+    "what is frog": "Frogs are amphibians (live in water and on land). They start as tadpoles, then grow legs. Frogs croak (ribbit). They eat insects with their long sticky tongues. Frogs have smooth, moist skin.",
+    "what is snake": "Snakes are reptiles without legs. They slither on their bellies. Snakes flick their tongues to smell. Some are venomous (poisonous), most are not. Snakes eat mice, eggs, insects.",
+    "what is dolphin": "Dolphins are intelligent marine mammals. They live in the ocean, breathe air, and are very social. Dolphins communicate with clicks and whistles. They swim in groups (pods) and like to play.",
+    "what is whale": "Whales are the largest animals on Earth. Blue whales can be 100 feet long. Whales live in the ocean, breathe air, and are mammals. They sing songs and migrate long distances.",
+
+    # ── PLANTS ──
+    "what is tree": "Trees are large plants with trunks, branches, and leaves. They give us oxygen, shade, wood, and fruit. Trees can live hundreds of years. Types: oak, pine, maple, palm. Trees lose leaves in fall (deciduous) or keep them (evergreen).",
+    "what is flower": "Flowers are the colorful parts of plants. They attract bees and butterflies for pollination. Flowers have petals, stems, and sometimes thorns. Examples: rose, daisy, tulip, sunflower. Flowers become fruits.",
+    "what is grass": "Grass is a green plant covering the ground. It's soft and grows everywhere. Grass needs water and sunlight. Animals eat grass (cows, horses). We mow lawns. Grass prevents soil erosion.",
+    "what is leaf": "Leaves are flat green parts of plants. They make food from sunlight (photosynthesis). Leaves have veins for water and food. Leaves change color in fall (red, orange, yellow). Trees shed leaves.",
+    "what is seed": "A seed is a baby plant inside a shell. Seeds need water, warmth, and soil to grow (sprout). Seeds come from flowers and fruits. Examples: apple seeds, sunflower seeds, acorns. Birds eat seeds.",
+    "what is fruit": "Fruit is the sweet, fleshy part of a plant containing seeds. Fruits help seeds spread. Examples: apple, banana, orange, strawberry. We eat fruits for vitamins. Vegetables are different (roots, stems, leaves).",
+    "what is vegetable": "Vegetables are plants we eat: roots (carrots), stems (celery), leaves (lettuce), flowers (broccoli), fruits (tomatoes). Vegetables are healthy - full of vitamins and fiber. Eat your veggies!",
+
+    # ── WEATHER ──
+    "what is sunny": "Sunny weather means the sun is shining bright. No clouds or few clouds. Sunny days are warm and good for playing outside. Wear sunscreen to protect from sunburn. Sunny = happy weather for most.",
+    "what is cloudy": "Cloudy weather means clouds cover the sky. Sun is hidden. It might rain. Clouds are water vapor in the sky. Clouds come in shapes: cumulus (fluffy), stratus (blanket), cirrus (wispy).",
+    "what is rainy": "Rainy weather means water falls from clouds. Use umbrella, wear raincoat and boots. Puddles form. Rain helps plants grow. Don't play in flooded areas. Rain can be light (drizzle) or heavy (downpour).",
+    "what is snowy": "Snowy weather means frozen water falls from clouds. Very cold! Build snowmen, have snowball fights. Wear warm clothes: coat, hat, gloves, boots. Roads get icy - be careful. Snow is beautiful.",
+    "what is windy": "Windy weather means air moves fast. Trees sway, leaves blow, hats fly off. Wind can be refreshing or dangerous (storms). Kites fly well in wind. Hold onto your hat!",
+    "what is stormy": "Stormy weather has strong wind, heavy rain, lightning, and thunder. Stay inside during storms. Don't stand under trees. Lightning is dangerous. Storms usually pass quickly.",
+    "what is thunder": "Thunder is the loud noise during a storm. Lightning heats air very fast, making it expand and create sound waves. Lightning comes first (you see it), then thunder (you hear it).",
+    "what is lightning": "Lightning is a bright flash of electricity in the sky. It's very hot (hotter than the sun!). Lightning happens during storms. Stay indoors, away from windows. Don't be scared - it's natural.",
+
+    # ── BODY PARTS ──
+    "what is head": "Head is the top part of your body. Your brain is inside your head. Eyes, ears, nose, mouth are on your head. You think with your head. Wear a helmet to protect your head!",
+    "what is eyes": "Eyes let you see. Humans have 2 eyes. Eyes have pupils (black center), iris (colored part), eyelids, eyelashes. Eyes send signals to your brain. Protect your eyes - wear sunglasses in bright sun.",
+    "what is ears": "Ears let you hear. Humans have 2 ears. Ears detect sound waves and send signals to your brain. Ears also help with balance. Don't put things in your ears. Protect your hearing!",
+    "what is nose": "Nose lets you smell and breathe. You have 1 nose. Nose warms and cleans air you breathe. Nose has millions of smell receptors. You can smell food, flowers, rain. Nose also tastes (flavor = smell + taste).",
+    "what is mouth": "Mouth lets you eat, drink, talk, and smile. Inside: teeth (chew), tongue (taste), lips. Mouth is the start of your digestive system. Brush your teeth twice a day! Say kind things with your mouth.",
+    "what is hand": "Hands have 5 fingers each (including thumb). Hands let you grab, write, draw, play, hug. Fingertips have fingerprints (unique to you). Hands are very useful - take care of them!",
+    "what is foot": "Feet are at the bottom of your legs. Humans have 2 feet with 5 toes each. Feet help you walk, run, jump, stand. Feet have arches for support. Wear shoes to protect your feet.",
+    "what is heart": "Heart is a muscle inside your chest that pumps blood. It beats about 100 times per minute. Heart sends oxygen and food to your whole body. You feel your heart beat when you run or are excited.",
+    "what is stomach": "Stomach is inside your belly. It消化 food you eat. Stomach has acid to break down food. After stomach, food goes to intestines. You feel hungry when stomach is empty. Don't overeat!",
+    "what is brain": "Brain is inside your head. Brain thinks, remembers, controls your body. Brain weighs about 3 pounds. Brain has billions of neurons (nerve cells). Brain never sleeps - even when you do!",
+
+    # ── EMOTIONS & SOCIAL ──
+    "what is shy": "Shy means nervous around new people or in new situations. Shy people might blush, look down, or be quiet. Being shy is okay! It usually goes away as you get comfortable. Shy doesn't mean unfriendly.",
+    "what is excited": "Excited means very happy and can't wait! When something good is coming: birthday, vacation, playing with friends. You might jump, smile big, or talk fast. Excitement is a wonderful feeling!",
+    "what is surprised": "Surprised means something unexpected happened. A surprise party, a gift, or something new. Surprises can be happy (gifts) or scary (loud noises). Say 'wow!' when surprised.",
+    "what is proud": "Proud means feeling good about something you did. Getting a good grade, learning something new, helping someone. Pride is a good feeling - it means you worked hard! Be proud of yourself.",
+    "what is lonely": "Lonely means feeling alone and sad. When friends are away or nobody plays with you. Everyone feels lonely sometimes. Talk to family or friends. Loneliness is temporary - people care about you.",
+    "what is nervous": "Nervous means feeling worried or anxious. Before a test, performance, or new experience. Your stomach might hurt, hands shake. It's okay! Take deep breaths. Nervousness means you care.",
+    "what is bored": "Bored means nothing interesting is happening. When you don't know what to do. Try something new: read, draw, play, help someone. Boredom means you need a new activity!",
+    "what is thankful": "Thankful means feeling grateful. Thankful for food, family, friends, gifts, help. Say 'thank you' when someone does something nice. Being thankful makes you happier. Keep a gratitude list!",
+    "what is sorry": "Sorry means you regret doing something wrong. Saying 'I'm sorry' when you hurt someone, break something, or make a mistake. Sorry is the first step to fixing things. Everyone makes mistakes.",
+    "what is fair": "Fair means everyone gets the same or what they deserve. Fairness is important. Taking turns, sharing equally, following rules. Life isn't always fair, but we should try to be fair.",
+
+    # ── SIMPLE MATH ──
+    "what is addition": "Addition (+) means putting numbers together. 2 + 3 = 5. Addition makes bigger numbers. Use when counting all, combining groups, or finding totals. The + sign means add.",
+    "what is subtraction": "Subtraction (-) means taking away. 5 - 2 = 3. Subtraction makes smaller numbers. Use when something is removed, lost, or eaten. The - sign means subtract.",
+    "what is multiplication": "Multiplication (×) is repeated addition. 3 × 4 = 12 (three groups of four). Multiplication is faster than adding the same number many times. The × sign means multiply.",
+    "what is division": "Division (÷) is splitting into equal groups. 12 ÷ 3 = 4 (twelve split into three groups = four each). Division is the opposite of multiplication. The ÷ sign means divide.",
+    "what is plus": "Plus (+) means add. 5 + 3 = 8. 'Plus' is another word for addition. When you see +, put the numbers together to get a bigger number.",
+    "what is minus": "Minus (-) means subtract. 8 - 3 = 5. 'Minus' is another word for subtraction. When you see -, take away to get a smaller number.",
+    "what is equals": "Equals (=) means 'is the same as' or 'makes'. 5 + 3 = 8 (five plus three equals eight, or five plus three makes eight). The = sign shows the answer.",
+    "what is more": "More means a bigger amount. 5 is more than 3. You want more cookies, more play time, more friends. More is the opposite of less.",
+    "what is less": "Less means a smaller amount. 3 is less than 5. Use less when comparing: I have less candy than you. Less is the opposite of more.",
+    "what is bigger": "Bigger means larger in size. An elephant is bigger than a mouse. A house is bigger than a car. Bigger means more space, more room.",
+    "what is smaller": "Smaller means less in size. A mouse is smaller than an elephant. An ant is smaller than a rock. Smaller means less space.",
+    "what is same": "Same means equal or identical. Twins look the same. 2 + 2 is the same as 1 + 3 (both equal 4). Same means not different.",
+    "what is different": "Different means not the same. Cats and dogs are different. Apples and oranges are different. Different is interesting - it makes the world colorful!",
+    "what is pattern": "A pattern is something that repeats. Red-blue-red-blue is a pattern. 1-2-1-2 is a pattern. Patterns are everywhere: stripes, numbers, music. Finding patterns helps you learn.",
+    "what is sorting": "Sorting means putting things in groups. Sort by color: reds together, blues together. Sort by size: big pile, small pile. Sort by type: fruits, vegetables. Sorting helps organize things.",
+
+    # ── SIMPLE GEOGRAPHY ──
+    "what is land": "Land is solid ground where people live, plants grow, and animals walk. Land includes continents, countries, mountains, forests, deserts, cities. 29% of Earth is land. Land is valuable.",
+    "what is ocean": "Oceans are huge bodies of saltwater. 5 oceans: Pacific, Atlantic, Indian, Southern, Arctic. Oceans cover 71% of Earth. Oceans have fish, whales, coral, waves. Oceans are important for life.",
+    "what is mountain": "Mountains are very tall land formations. Mountains have peaks, slopes, valleys. Highest: Mount Everest (29,032 ft). Mountains have snow on top. Mountains are formed by tectonic plates pushing up.",
+    "what is river": "Rivers are flowing water from mountains to oceans. Rivers provide drinking water, fish, transportation. Famous rivers: Nile, Amazon, Mississippi, Yangtze. Rivers carve valleys and support life.",
+    "what is lake": "Lakes are bodies of water surrounded by land. Lakes have fresh water. Biggest: Caspian Sea (technically a lake). Lakes form from rivers, glaciers, or volcanic craters. Lakes are good for fishing and swimming.",
+    "what is forest": "Forests are areas with many trees. Forests provide oxygen, habitat for animals, wood, clean air. Types: rainforest, temperate, boreal. Forests cover 31% of Earth. Save the forests!",
+    "what is desert": "Deserts are dry areas with little rain. Deserts can be hot (Sahara) or cold (Antarctic). Deserts have special plants (cactus) and animals (camel). Deserts have sand dunes and rock formations.",
+    "what is island": "An island is land surrounded by water. Big islands: Australia, Greenland, Madagascar. Small islands: tropical paradise. Islands have beaches, palm trees, coral reefs. Islands are formed by volcanoes or coral.",
+    "what is country": "A country is a nation with its own government, borders, and people. There are 195 countries. Countries have flags, capitals, languages. Examples: USA, Japan, Brazil, France, Nigeria.",
+    "what is continent": "Continents are the biggest land areas. 7 continents: Asia (largest), Africa, North America, South America, Antarctica, Europe, Australia (smallest). Continents have many countries.",
+
+    # ── TIME CONCEPTS ──
+    "what is today": "Today is this day - right now! Today you wake up, do activities, go to sleep. Today is the present. Make the most of today! Today is special because it's happening now.",
+    "what is yesterday": "Yesterday was the day before today. Yesterday is in the past - already happened. You can't change yesterday, but you can learn from it. Yesterday's fun becomes today's memories.",
+    "what is tomorrow": "Tomorrow is the day after today. Tomorrow is in the future - hasn't happened yet. Tomorrow you can plan to do fun things. Tomorrow is full of possibilities!",
+    "what is week": "A week has 7 days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. School days: Monday-Friday. Weekend: Saturday-Sunday. A month has about 4 weeks.",
+    "what is month": "A month is about 4 weeks (28-31 days). There are 12 months: January, February, March, April, May, June, July, August, September, October, November, December. A year has 12 months.",
+    "what is year": "A year is 365 days (366 in leap year). A year has 12 months, 4 seasons. One year = time for Earth to orbit the Sun. You get a year older on your birthday. A year feels long!",
+    "what is birthday": "Birthday is the day you were born, celebrated once a year! Birthday means cake, candles, presents, friends, family. Each birthday you get older. Your birthday is special - celebrate it!",
+    "what is season": "Seasons are 4 parts of the year: Spring (warm, flowers bloom), Summer (hot, vacation), Fall/Autumn (leaves change, harvest), Winter (cold, snow). Seasons change because Earth tilts.",
+
+    # ── SIMPLE MUSIC ──
+    "what is music": "Music is organized sound that people enjoy. Music has melody (tune), rhythm (beat), harmony (chords). Music makes you feel emotions: happy, sad, excited, calm. Everyone can enjoy music!",
+    "what is song": "A song is music with words (lyrics) that you sing. Songs tell stories, express feelings, or just sound fun. Everyone can sing! Songs can be happy, sad, fast, slow, loud, quiet.",
+    "what is dance": "Dance is moving your body to music. Dancing is fun and good exercise. You can dance alone or with others. There are many dance styles: ballet, hip-hop, folk, disco. Just move!",
+    "what is rhythm": "Rhythm is the beat of music. Rhythm is the pattern of sounds and silences. You can clap, tap, or stomp rhythm. Rhythm makes you want to move. Steady rhythm keeps music together.",
+
+    # ── SIMPLE ART ──
+    "what is drawing": "Drawing is making pictures with pencils, crayons, or markers. You can draw anything: people, animals, places, ideas. Practice makes you better. Drawing is fun and creative!",
+    "what is painting": "Painting is making pictures with paint and brush. Types: watercolor, acrylic, oil. Painting uses colors to show things. Painting is expressive - you can paint feelings!",
+    "what is color mixing": "Color mixing: Primary colors (red, blue, yellow) make all other colors. Red + Blue = Purple. Red + Yellow = Orange. Blue + Yellow = Green. Mixing makes new colors!",
+    "what is craft": "Crafts are things you make by hand. Paper crafts, origami, knitting, pottery, jewelry. Crafts are fun and creative. You can give handmade gifts - they're extra special!",
+
+    # ── FOOD & EATING ──
+    "what is food": "Food is what we eat for energy and health. Food groups: fruits, vegetables, grains, protein, dairy. Eat a variety! Food gives you energy to play, learn, and grow. Thank farmers for food!",
+    "what is fruit food": "Fruits are sweet foods from plants. Examples: apple, banana, orange, grape, strawberry. Fruits have vitamins, especially vitamin C. Eat 2-3 servings of fruit daily. Fruits are nature's candy!",
+    "what is vegetable food": "Vegetables are healthy foods from plants. Examples: carrot, broccoli, spinach, tomato, potato. Vegetables have vitamins, minerals, fiber. Eat 3-5 servings daily. Vegetables help you grow strong!",
+    "what is protein": "Protein builds strong muscles and body. Sources: meat, fish, eggs, beans, nuts, tofu. Kids need protein to grow. Protein helps repair body. Eat protein at every meal!",
+    "what is vitamin": "Vitamins are nutrients your body needs in small amounts. Vitamin A (carrots) for eyes. Vitamin C (oranges) for immunity. Vitamin D (sunlight) for bones. Eat colorful fruits and vegetables!",
+    "what is healthy": "Healthy means your body works well. Healthy eating, exercise, sleep, hygiene. Healthy people have energy, feel good, get sick less. Small healthy choices add up to big benefits!",
+    "what is junk food": "Junk food is food with lots of sugar, salt, or fat but few nutrients. Examples: candy, chips, soda, fast food. Junk food tastes good but isn't healthy. Eat it sometimes, not every day.",
+
+    # ── SAFETY BASICS ──
+    "what is safe": "Safe means protected from danger. Being safe: looking both ways, wearing seatbelt, not talking to strangers, telling adults about problems. Safety rules keep you healthy and happy!",
+    "what is danger": "Danger means something could hurt you. Traffic, fire, strangers, sharp objects, electricity. If you feel danger, tell an adult right away! Danger signs mean be careful!",
+    "what is stranger danger": "Stranger danger means being careful around people you don't know. Never go somewhere with a stranger. Never take candy from strangers. Tell a trusted adult if a stranger makes you uncomfortable.",
+    "what is 911": "911 is the emergency phone number. Call 911 if someone is hurt, there's a fire, or you're in danger. Stay calm, say your name, address, and what's wrong. 911 helps in emergencies!",
+    "what is crossing street": "To cross the street safely: stop at the curb, look left, look right, look left again. If clear, walk (don't run) across. Use crosswalks. Hold an adult's hand. Never chase a ball into the street!",
+    "what is fire safety": "Fire safety: Don't play with matches or lighters. If clothes catch fire: stop, drop, roll. If there's a fire: get low, crawl to exit, get out, call 911. Have a family fire escape plan!",
+    "what is water safety": "Water safety: Never swim alone - always with an adult. Don't run near pools. Wear life jacket on boats. Don't dive in shallow water. If in trouble: float, wave, yell for help.",
+
+    # ── SIMPLE KITCHEN ──
+    "what is cooking": "Cooking is preparing food with heat. Cooking makes food safe, tasty, and nutritious. Simple cooking: boiling, frying, baking. Kids can help with cooking (with adult supervision). Cooking is a life skill!",
+    "what is boiling": "Boiling means heating water until bubbles form (100°C/212°F). Used to cook pasta, eggs, vegetables. Boiling water is very hot - be careful! Water boils faster with a lid.",
+    "what is baking": "Baking uses an oven to cook food. Baking bread, cakes, cookies, pizza. Oven is hot - adults only! Baking uses chemistry: ingredients react to make food rise and brown.",
+    "what is frying": "Frying means cooking in hot oil or butter. Pan frying, deep frying. Frying makes food crispy and tasty. Hot oil splatters - be careful! Frying is fast cooking.",
+    "what is recipe": "A recipe is instructions for making food. Recipe tells: ingredients (what you need), steps (what to do), time and temperature. Follow recipes carefully for best results. Start with simple recipes!",
+
+    # ── SIMPLE HOUSEHOLD ──
+    "what is cleaning": "Cleaning means making things tidy and germ-free. Clean your room, wash hands, wipe tables. Cleaning keeps you healthy and makes nice spaces. Make cleaning a daily habit!",
+    "what is washing hands": "Wash hands with soap and water for 20 seconds (sing Happy Birthday twice). Wash before eating, after bathroom, after playing outside, after touching animals. Soap kills germs!",
+    "what is brushing teeth": "Brush teeth twice a day: morning and night. Brush for 2 minutes. Use fluoride toothpaste. Brush all surfaces: front, back, top. Floss daily. Healthy teeth help you eat and smile!",
+    "what is making bed": "Making your bed means pulling up sheets and blankets, arranging pillows. Takes 2 minutes! Making bed starts your day organized. It looks nice and makes you feel accomplished.",
+
+    # ── SIMPLE ANIMAL GROUPS ──
+    "what is pet": "A pet is an animal you keep at home and care for. Common pets: dogs, cats, fish, birds, hamsters. Pets need food, water, shelter, love. Taking care of pets is a big responsibility!",
+    "what is farm animal": "Farm animals are raised on farms for food or work. Examples: cow (milk, meat), chicken (eggs, meat), pig (meat), horse (riding, work), sheep (wool), goat (milk). Farmers care for farm animals.",
+    "what is wild animal": "Wild animals live in nature, not at home. Examples: lions, elephants, bears, deer, eagles. Wild animals need freedom. Visit them at zoos or in nature. Don't try to keep wild animals as pets!",
+    "what is insect": "Insects are tiny animals with 6 legs and 3 body parts. Examples: ants, bees, butterflies, beetles, flies. Some insects fly. Insects are very numerous - millions of species!",
+    "what is reptile": "Reptiles are cold-blooded animals with scales. Examples: snakes, lizards, turtles, crocodiles. Reptiles lay eggs (usually). They need warmth. Reptiles are vertebrates (have backbones).",
+    "what is mammal": "Mammals are warm-blooded animals with fur/hair that feed babies milk. Examples: dogs, cats, humans, whales, bats, elephants. Mammals are intelligent and social. Humans are mammals!",
+    "what is amphibian": "Amphibians are animals that live in water AND on land. Examples: frogs, toads, salamanders. Amphibians start in water (tadpoles) then move to land. They have moist skin.",
+
+    # ── SIMPLE PEOPLE & COMMUNITY ──
+    "what is teacher": "A teacher is a person who helps you learn. Teachers know about subjects like math, reading, science. Teachers are patient and caring. Thank your teacher! Teachers make a difference.",
+    "what is doctor": "A doctor is a person who helps sick people get better. Doctors check your health, give medicine, do checkups. Visit doctor once a year. Doctors help you stay healthy!",
+    "what is firefighter": "A firefighter fights fires and rescues people. Firefighters wear helmets, coats, and use hoses. They drive fire trucks with sirens. Firefighters are brave heroes! Call 911 for fires.",
+    "what is police officer": "A police officer keeps people safe and follows the law. Police officers help lost children, catch bad guys, direct traffic. Police cars have lights and sirens. Police are our friends!",
+    "what is neighbor": "A neighbor is someone who lives near you. Neighbors live in the same street or building. Good neighbors are friendly and help each other. Wave hello to your neighbors!",
+    "what is community": "A community is a group of people living together. Your neighborhood, town, or city is your community. Communities have schools, parks, shops, libraries. Everyone helps the community!",
 })
