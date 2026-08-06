@@ -1689,8 +1689,8 @@ def register_commands(core: UltraCore):
         """Application control."""
         text = turn.user_text.lower().strip()
         
-        if "open app " in text or "launch " in text:
-            app = text.replace("open app", "").replace("launch", "").strip()
+        if "open app " in text or "launch " in text or text.startswith("open "):
+            app = text.replace("open app", "").replace("launch", "").replace("open", "").strip()
             if app:
                 try:
                     if sys.platform == "darwin":
@@ -1800,7 +1800,7 @@ def register_commands(core: UltraCore):
                          cmd_package_powers, priority=80)
     core.register_command(["git status", "git commit", "git log", "git push", "git pull"], 
                          cmd_git_powers, priority=80)
-    core.register_command(["open app", "launch", "close app", "quit", "list apps", "running apps"], 
+    core.register_command(["open app", "open", "launch", "close app", "quit", "list apps", "running apps"], 
                          cmd_app_powers, priority=80)
     core.register_command(["screenshot", "screen capture", "volume up", "volume down", "mute"], 
                          cmd_media_powers, priority=75)
