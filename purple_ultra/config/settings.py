@@ -42,11 +42,15 @@ class SttConfig:
     engine: str = "faster-whisper"
     model: str = "Systran/faster-whisper-small.en"
     model_bangla: str = "Systran/faster-whisper-small"
+    model_multilingual: str = "Systran/faster-whisper-medium"
     device: str = "cpu"
     compute_type: str = "int8"
     language: str = "en"
     listen_seconds: float = 6.0
     energy_threshold: int = 300
+    beam_size: int = 5
+    best_of: int = 5
+    vad_filter: bool = True
 
 
 @dataclass(frozen=True)

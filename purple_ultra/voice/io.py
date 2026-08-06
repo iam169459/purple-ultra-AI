@@ -9,6 +9,7 @@ import subprocess
 import sys
 import tempfile
 import wave
+from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
@@ -71,13 +72,34 @@ BANGLA_VOICE_MAP: dict[str, str] = {
 
 BANGLA_PIPER_MODEL = "bn_BD-nishita-medium"
 
+BANGLA_STT_SETTINGS = {
+    "beam_size": 5,
+    "best_of": 5,
+    "patience": 2.0,
+    "condition_without_timestamps": True,
+    "without_timestamps": True,
+    "vad_filter": True,
+    "vad_parameters": {
+        "min_silence_duration_ms": 500,
+        "speech_pad_ms": 400,
+        "threshold": 0.35,
+    },
+}
+
+BANGLA_TTS_SETTINGS = {
+    "speed": 1.0,
+    "sentence_silence": 0.3,
+    "length_scale": 1.0,
+}
+
 
 class VoiceIO:
     """Handles all voice input/output operations."""
 
     __slots__ = ('config', '_whisper_model', '_pyttsx3_engine', '_piper_available',
                  '_super_admin', '_admin_override', '_last_effect', '_refuted_effects',
-                 '_analyzer', '_current_language', '_whisper_models')
+                 '_analyzer', '_current_language', '_whisper_models', '_audio_buffer',
+                 '_sample_rate', '_preloaded')
 
     def __init__(self, config: Config):
         self.config = config
@@ -91,6 +113,9 @@ class VoiceIO:
         self._refuted_effects: list[dict] = []
         self._analyzer = VoiceAnalyzer()
         self._current_language = "en"
+        self._audio_buffer: deque[np.ndarray] = deque(maxlen=3)
+        self._sample_rate = 16000
+        self._preloaded: dict[str, bool] = {"en": False, "bn": False}
 
     def set_language(self, lang: str):
         """Set the current language for STT and TTS."""
@@ -104,8 +129,19 @@ class VoiceIO:
         """Get the current language code."""
         return self._current_language
 
-    def _ensure_whisper(self):
-        lang = self._current_language
+    def preload_models(self, lang: str = None):
+        """Preload Whisper models for faster first recognition."""
+        langs = [lang] if lang else ["en", "bn"]
+        for l in langs:
+            if l in ("bn", "bangla", "bengali"):
+                l = "bn"
+            elif l in ("en", "english"):
+                l = "en"
+            if not self._preloaded.get(l):
+                self._ensure_whisper_for_lang(l)
+
+    def _ensure_whisper_for_lang(self, lang: str):
+        """Ensure Whisper model is loaded for a specific language."""
         if lang in self._whisper_models:
             self._whisper_model = self._whisper_models[lang]
             return
@@ -127,9 +163,17 @@ class VoiceIO:
                 compute_type=self.config.stt.compute_type,
             )
             self._whisper_models[lang] = self._whisper_model
+            self._preloaded[lang] = True
         except ImportError:
             print("Warning: faster-whisper not installed. STT unavailable.")
             self._whisper_model = False
+
+    def _ensure_whisper(self):
+        lang = self._current_language
+        if lang in self._whisper_models:
+            self._whisper_model = self._whisper_models[lang]
+            return
+        self._ensure_whisper_for_lang(lang)
 
     def _ensure_pyttsx3(self):
         if self._pyttsx3_engine is None:
@@ -164,7 +208,7 @@ class VoiceIO:
 
         try:
             duration = self.config.stt.listen_seconds
-            sample_rate = 16000
+            sample_rate = self._sample_rate
             audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype="float32")
             sd.wait()
             audio_flat = audio.flatten()
@@ -175,22 +219,36 @@ class VoiceIO:
             if np.max(np.abs(audio_flat)) < 0.002:
                 return Heard(text="", voiceprint=voiceprint, emotion=emotion)
 
+            audio_processed = self._preprocess_audio(audio_flat, sample_rate)
+
             with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
                 tmp_path = f.name
             with wave.open(tmp_path, "wb") as wf:
                 wf.setnchannels(1)
                 wf.setsampwidth(2)
                 wf.setframerate(sample_rate)
-                audio_int16 = (audio_flat * 32767).astype(np.int16)
+                audio_int16 = (audio_processed * 32767).astype(np.int16)
                 wf.writeframes(audio_int16.tobytes())
 
             lang = "bn" if self._current_language == "bn" else "en"
-            segments, _ = self._whisper_model.transcribe(
-                tmp_path,
-                language=lang,
-                beam_size=5,
-            )
+            transcribe_kwargs = {
+                "language": lang,
+                "beam_size": BANGLA_STT_SETTINGS["beam_size"],
+                "best_of": BANGLA_STT_SETTINGS["best_of"],
+                "patience": BANGLA_STT_SETTINGS["patience"],
+                "condition_without_timestamps": BANGLA_STT_SETTINGS["condition_without_timestamps"],
+                "without_timestamps": BANGLA_STT_SETTINGS["without_timestamps"],
+                "vad_filter": BANGLA_STT_SETTINGS["vad_filter"],
+                "vad_parameters": BANGLA_STT_SETTINGS["vad_parameters"],
+            }
+
+            segments, info = self._whisper_model.transcribe(tmp_path, **transcribe_kwargs)
             text = " ".join(s.text.strip() for s in segments).strip()
+
+            if info.language and info.language != lang:
+                detected_lang = info.language
+                if detected_lang in ("bn", "bn"):
+                    pass
 
             if emotion.confidence < 0.3:
                 text_emotion = self._analyzer.analyze_text_sentiment(text)
@@ -208,6 +266,44 @@ class VoiceIO:
             print(f"Listen error: {e}")
             return Heard(text="")
 
+    def _preprocess_audio(self, audio: np.ndarray, sample_rate: int) -> np.ndarray:
+        """Preprocess audio for better recognition."""
+        try:
+            audio = audio.astype(np.float32)
+
+            rms = np.sqrt(np.mean(audio ** 2))
+            if rms > 0:
+                target_rms = 0.1
+                audio = audio * (target_rms / rms)
+
+            audio = np.clip(audio, -1.0, 1.0)
+
+            audio = self._apply_pre_emphasis(audio, 0.97)
+
+            audio = self._normalize_audio(audio)
+
+            audio = self._apply_noise_gate(audio, threshold=0.01)
+
+            return audio
+        except Exception:
+            return audio
+
+    def _apply_pre_emphasis(self, audio: np.ndarray, factor: float = 0.97) -> np.ndarray:
+        """Apply pre-emphasis filter to boost high frequencies."""
+        return np.append(audio[0], audio[1:] - factor * audio[:-1])
+
+    def _normalize_audio(self, audio: np.ndarray) -> np.ndarray:
+        """Normalize audio to [-1, 1] range."""
+        max_val = np.max(np.abs(audio))
+        if max_val > 0:
+            audio = audio / max_val
+        return audio
+
+    def _apply_noise_gate(self, audio: np.ndarray, threshold: float = 0.01) -> np.ndarray:
+        """Apply noise gate to reduce background noise."""
+        mask = np.abs(audio) > threshold
+        return audio * mask
+
     def _listen_fallback(self) -> Heard:
         """Fallback using system microphone recording."""
         self._ensure_whisper()
@@ -223,8 +319,14 @@ class VoiceIO:
                 )
             else:
                 return Heard(text="")
+
+            lang = "bn" if self._current_language == "bn" else "en"
             segments, _ = self._whisper_model.transcribe(
-                tmp_path, language=self.config.stt.language, beam_size=5,
+                tmp_path,
+                language=lang,
+                beam_size=BANGLA_STT_SETTINGS["beam_size"],
+                vad_filter=BANGLA_STT_SETTINGS["vad_filter"],
+                vad_parameters=BANGLA_STT_SETTINGS["vad_parameters"],
             )
             text = " ".join(s.text.strip() for s in segments).strip()
             try:
@@ -292,40 +394,80 @@ class VoiceIO:
             self._speak_pyttsx3(text, voice_cfg)
 
     def _speak_bangla(self, text: str, voice_cfg: VoiceConfig):
-        """Speak Bangla text using Piper or macOS say."""
-        if self._can_use_piper():
-            try:
-                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
-                    tmp_path = f.name
-                model = self.config.tts.piper_model_bangla
-                process = subprocess.Popen(
-                    ["piper", "--model", model, "--output_file", tmp_path],
-                    stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                )
-                process.communicate(input=text.encode("utf-8"))
-                if process.returncode == 0:
-                    subprocess.run(["afplay", tmp_path], capture_output=True)
+        """Speak Bangla text using Piper or macOS say with optimized settings."""
+        chunks = self._split_bangla_text(text, max_chars=400)
+
+        for chunk in chunks:
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+
+            if self._can_use_piper():
                 try:
-                    os.unlink(tmp_path)
-                except OSError:
+                    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+                        tmp_path = f.name
+                    model = self.config.tts.piper_model_bangla
+                    piper_args = [
+                        "piper",
+                        "--model", model,
+                        "--output_file", tmp_path,
+                        "--sentence_silence", str(BANGLA_TTS_SETTINGS["sentence_silence"]),
+                    ]
+                    process = subprocess.Popen(
+                        piper_args,
+                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                    )
+                    process.communicate(input=chunk.encode("utf-8"))
+                    if process.returncode == 0:
+                        subprocess.run(["afplay", tmp_path], capture_output=True)
+                    try:
+                        os.unlink(tmp_path)
+                    except OSError:
+                        pass
+                    continue
+                except Exception:
                     pass
-                return
-            except Exception:
-                pass
 
-        if sys.platform == "darwin":
-            try:
-                voice_name = BANGLA_VOICE_MAP.get(voice_cfg.name, "Ting-Ting")
-                rate_param = f"-r {voice_cfg.rate}"
-                subprocess.run(
-                    ["say", "-v", f"{voice_name}{rate_param}", text],
-                    capture_output=True, timeout=30,
-                )
-                return
-            except Exception:
-                pass
+            if sys.platform == "darwin":
+                try:
+                    voice_name = BANGLA_VOICE_MAP.get(voice_cfg.name, "Ting-Ting")
+                    rate = int(voice_cfg.rate * BANGLA_TTS_SETTINGS["speed"])
+                    rate_param = f"-r {rate}"
+                    subprocess.run(
+                        ["say", "-v", f"{voice_name}", rate_param, chunk],
+                        capture_output=True, timeout=30,
+                    )
+                    continue
+                except Exception:
+                    pass
 
-        self._speak_pyttsx3(text, voice_cfg)
+            self._speak_pyttsx3(chunk, voice_cfg)
+
+    def _split_bangla_text(self, text: str, max_chars: int = 400) -> list[str]:
+        """Split Bangla text into chunks for better TTS processing."""
+        if len(text) <= max_chars:
+            return [text]
+
+        chunks = []
+        sentences = text.replace("।", "।|").replace("?", "?|").replace("!", "!|").split("|")
+        current_chunk = ""
+
+        for sentence in sentences:
+            sentence = sentence.strip()
+            if not sentence:
+                continue
+
+            if len(current_chunk) + len(sentence) + 1 <= max_chars:
+                current_chunk = (current_chunk + " " + sentence).strip()
+            else:
+                if current_chunk:
+                    chunks.append(current_chunk)
+                current_chunk = sentence
+
+        if current_chunk:
+            chunks.append(current_chunk)
+
+        return chunks if chunks else [text]
 
     def speak_admin(self, text: str, mood: str = None):
         """Speak with super admin voice - cannot be intercepted."""
