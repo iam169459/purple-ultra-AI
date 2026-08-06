@@ -2608,7 +2608,7 @@ class Brain:
             self._system_prompt = build_system_prompt(self.config, self._personality_text)
         return self._system_prompt
 
-    def _local_decide(self, user_text: str, current_mood: str) -> Decision:
+    def _local_decide(self, user_text: str, current_mood: str, voice_emotion: dict | None = None) -> Decision:
         """Generate response using the enhanced offline brain with neural network + self-learning + massive NN."""
         self._ensure_nn()
 
@@ -2628,6 +2628,9 @@ class Brain:
             mood = "happy"
         elif brain_result.get("perception", {}).get("emotion") in ["sadness", "fear"]:
             mood = "calm"
+
+        if voice_emotion:
+            say = self._adapt_response_to_emotion(say, voice_emotion, user_text)
 
         # Consolidated learning pipeline - runs every 3 turns to reduce overhead
         if self._response_count % 3 == 0:
@@ -2735,7 +2738,45 @@ class Brain:
 
         return None
 
-    def decide(self, user_text: str, context: str = "", current_mood: str = "neutral") -> Decision:
+    def _adapt_response_to_emotion(self, response: str, voice_emotion: dict, user_text: str) -> str:
+        """Adapt response based on detected user emotion from voice."""
+        primary = voice_emotion.get("primary", "neutral")
+        confidence = voice_emotion.get("confidence", 0.0)
+        valence = voice_emotion.get("valence", 0.0)
+
+        if confidence < 0.4:
+            return response
+
+        emotion_prefixes = {
+            "sad": ["I hear you. ", "I understand. ", "That sounds tough. "],
+            "angry": ["I get it. ", "That's frustrating. ", "I hear your frustration. "],
+            "fear": ["It's okay. ", "Don't worry. ", "I'm here. "],
+            "tired": ["I understand. ", "Take your time. ", "No rush. "],
+            "frustrated": ["I see. ", "That's understandable. ", "Let's work through this. "],
+            "anxious": ["It's okay. ", "Take a breath. ", "We'll figure this out. "],
+            "confused": ["Let me help clarify. ", "Good question. ", "Let me explain. "],
+            "excited": ["That's great! ", "Awesome! ", "Love the energy! "],
+            "happy": ["That's wonderful! ", "Great to hear! ", "I'm glad! "],
+            "confident": ["Absolutely. ", "You've got this. ", "Exactly right. "],
+            "bored": ["Let me make this more interesting. ", "How about this angle? ", "Let's try something different. "],
+        }
+
+        if primary in emotion_prefixes and valence < 0:
+            prefix = random.choice(emotion_prefixes[primary])
+            response = prefix + response[0].lower() + response[1:] if response else prefix
+
+        if primary == "sad" and "sorry" not in response.lower():
+            response = response.rstrip(".") + ". I'm here for you if you need anything."
+
+        if primary == "angry" and len(response) > 50:
+            response = response.rstrip(".") + ". Let me know how I can help fix this."
+
+        if primary == "tired" and len(response) > 100:
+            response = response[:200].rstrip() + "... Let me know if you'd like me to keep it brief."
+
+        return response
+
+    def decide(self, user_text: str, context: str = "", current_mood: str = "neutral", voice_emotion: dict | None = None) -> Decision:
         """Process user input and return a structured decision."""
         if self._local_mode:
             return self._local_decide(user_text, current_mood)

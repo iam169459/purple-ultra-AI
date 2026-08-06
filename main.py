@@ -1391,6 +1391,80 @@ def register_commands(core: UltraCore):
                          cmd_admin_voice, priority=100)
     core.register_command(["admin speak"], cmd_admin_speak, priority=100)
 
+    # ========== VOICE EMOTION ANALYSIS ==========
+    def cmd_voice_emotion(turn):
+        """Analyze emotion from voice or text."""
+        voice = core.get_subsystem("voice")
+        text = turn.text.lower().strip()
+
+        if "analyze" in text or "emotion" in text or "feeling" in text:
+            input_text = text.replace("analyze", "").replace("emotion", "").replace("feeling", "").replace("of", "").replace("my", "").strip()
+            if input_text:
+                analyzer = voice.get_analyzer() if voice else None
+                if analyzer:
+                    result = analyzer.analyze_text_sentiment(input_text)
+                    lines = [
+                        "=== Voice Emotion Analysis ===",
+                        f"Primary emotion: {result.primary}",
+                        f"Confidence: {result.confidence:.0%}",
+                        f"Secondary: {result.secondary}",
+                        f"Valence: {result.valence:.2f} (negative to positive)",
+                        f"Arousal: {result.arousal:.2f} (calm to excited)",
+                        f"Dominance: {result.dominance:.2f} (submissive to dominant)",
+                        f"Energy: {result.energy:.2f}",
+                    ]
+                    if result.emotions:
+                        top_emotions = sorted(result.emotions.items(), key=lambda x: -x[1])[:3]
+                        lines.append("Emotion scores:")
+                        for emo, score in top_emotions:
+                            lines.append(f"  {emo}: {score:.3f}")
+                    return "\n".join(lines)
+                return "Voice analyzer not available"
+            return "What text should I analyze? Try: analyze emotion of I'm so happy today"
+        return "Try: analyze emotion of <text>"
+
+    def cmd_voice_state(turn):
+        """Show current emotional state from voice."""
+        voice = core.get_subsystem("voice")
+        if voice:
+            state = voice.get_emotional_state()
+            history = voice.get_emotion_history()
+            lines = [
+                "=== Current Emotional State ===",
+                f"State: {state}",
+                f"Recent readings: {len(history)}",
+            ]
+            if history:
+                recent = history[-5:]
+                lines.append("Recent emotions:")
+                for h in recent:
+                    lines.append(f"  {h['primary']} ({h['confidence']:.0%}) - valence: {h['valence']:.2f}")
+            return "\n".join(lines)
+        return "Voice system not available"
+
+    def cmd_voice_history(turn):
+        """Show emotion history."""
+        voice = core.get_subsystem("voice")
+        if voice:
+            history = voice.get_emotion_history()
+            if history:
+                lines = ["=== Emotion History (last 20) ==="]
+                for i, h in enumerate(history[-20:], 1):
+                    lines.append(f"  {i}. {h['primary']} ({h['confidence']:.0%}) - {h['valence']:.2f}/{h['arousal']:.2f}")
+                avg_valence = sum(h['valence'] for h in history) / len(history)
+                avg_arousal = sum(h['arousal'] for h in history) / len(history)
+                lines.append(f"\nAverage: valence={avg_valence:.2f}, arousal={avg_arousal:.2f}")
+                return "\n".join(lines)
+            return "No emotion history yet. Talk to me and I'll analyze your voice!"
+        return "Voice system not available"
+
+    core.register_command(["analyze emotion", "emotion analysis", "voice emotion", "how do i sound", "how am i feeling"], 
+                         cmd_voice_emotion, priority=14)
+    core.register_command(["emotional state", "current emotion", "my feelings", "feeling state"], 
+                         cmd_voice_state, priority=14)
+    core.register_command(["emotion history", "feelings history", "voice history"], 
+                         cmd_voice_history, priority=13)
+
     # ========== SYSTEM POWERS ==========
     import subprocess
     import signal

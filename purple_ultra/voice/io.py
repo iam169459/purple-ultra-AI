@@ -17,12 +17,14 @@ import numpy as np
 
 from ..config.settings import Config, VoiceConfig
 from .super_admin import get_super_admin_voice, SuperAdminVoice, SUPER_ADMIN_ID
+from .analyzer import VoiceAnalyzer, VoiceEmotion
 
 
 @dataclass(frozen=True)
 class Heard:
     text: str
     voiceprint: list[float] = field(default_factory=list)
+    emotion: Optional[VoiceEmotion] = None
 
 
 EFFECT_PHRASES: dict[str, str] = {
@@ -61,7 +63,8 @@ class VoiceIO:
     """Handles all voice input/output operations."""
 
     __slots__ = ('config', '_whisper_model', '_pyttsx3_engine', '_piper_available',
-                 '_super_admin', '_admin_override', '_last_effect', '_refuted_effects')
+                 '_super_admin', '_admin_override', '_last_effect', '_refuted_effects',
+                 '_analyzer')
 
     def __init__(self, config: Config):
         self.config = config
@@ -72,6 +75,7 @@ class VoiceIO:
         self._admin_override = False
         self._last_effect: str | None = None
         self._refuted_effects: list[dict] = []
+        self._analyzer = VoiceAnalyzer()
 
     def _ensure_whisper(self):
         if self._whisper_model is None:
@@ -131,9 +135,10 @@ class VoiceIO:
             audio_flat = audio.flatten()
 
             voiceprint = self._extract_voiceprint(audio_flat, sample_rate)
+            emotion = self._analyzer.analyze_audio(audio_flat)
 
             if np.max(np.abs(audio_flat)) < 0.002:
-                return Heard(text="", voiceprint=voiceprint)
+                return Heard(text="", voiceprint=voiceprint, emotion=emotion)
 
             with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
                 tmp_path = f.name
@@ -151,12 +156,17 @@ class VoiceIO:
             )
             text = " ".join(s.text.strip() for s in segments).strip()
 
+            if emotion.confidence < 0.3:
+                text_emotion = self._analyzer.analyze_text_sentiment(text)
+                if text_emotion.confidence > emotion.confidence:
+                    emotion = text_emotion
+
             try:
                 os.unlink(tmp_path)
             except OSError:
                 pass
 
-            return Heard(text=text, voiceprint=voiceprint)
+            return Heard(text=text, voiceprint=voiceprint, emotion=emotion)
 
         except Exception as e:
             print(f"Listen error: {e}")
@@ -359,3 +369,19 @@ class VoiceIO:
                 self.speak(lyrics, mood=mood)
         else:
             self.speak(lyrics, mood=mood)
+
+    def get_analyzer(self) -> VoiceAnalyzer:
+        """Get the voice analyzer instance."""
+        return self._analyzer
+
+    def get_emotion_history(self) -> list[dict]:
+        """Get recent emotion detection history."""
+        return self._analyzer.get_emotion_history()
+
+    def get_emotional_state(self) -> str:
+        """Get current emotional state description."""
+        return self._analyzer.get_emotional_state()
+
+    def analyze_text_emotion(self, text: str) -> VoiceEmotion:
+        """Analyze text for emotional content."""
+        return self._analyzer.analyze_text_sentiment(text)
