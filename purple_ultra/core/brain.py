@@ -2216,8 +2216,12 @@ class OfflineBrain:
         # Exact key match first (longest multi-word keys have priority)
         matches = []
         for key, value in _KNOWLEDGE.items():
-            if key in text_lower:
-                matches.append((len(key), key, value))
+            if len(key) <= 3:
+                if re.search(r'\b' + re.escape(key) + r'\b', text_lower):
+                    matches.append((len(key), key, value))
+            else:
+                if key in text_lower:
+                    matches.append((len(key), key, value))
         if matches:
             matches.sort(key=lambda x: x[0], reverse=True)
             _, key, value = matches[0]
@@ -2227,6 +2231,7 @@ class OfflineBrain:
                 ("go", ["good job", "well done", "great job"]),
                 ("sql", ["hash table", "hash map", "hashing"]),
                 ("ai", ["docker", "container", "tcp", "udp", "http"]),
+                ("c", ["voice", "service", "device", "space", "face", "place", "race", "trace"]),
             ]
             skip = False
             for skip_key, skip_words in skip_pairs:
