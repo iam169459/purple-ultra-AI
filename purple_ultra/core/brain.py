@@ -2213,20 +2213,7 @@ class OfflineBrain:
         if text_lower in self._knowledge_cache:
             return self._knowledge_cache[text_lower]
 
-        # Check aliases first (with word boundary matching, prioritize longest alias)
-        alias_matches = []
-        for alias, key in _ALIASES.items():
-            if key in _KNOWLEDGE:
-                if re.search(r'\b' + re.escape(alias) + r'\b', text_lower):
-                    alias_matches.append((len(alias), alias, key))
-        if alias_matches:
-            alias_matches.sort(key=lambda x: x[0], reverse=True)
-            _, _, best_key = alias_matches[0]
-            result = _KNOWLEDGE[best_key]
-            self._knowledge_cache[text_lower] = result
-            return result
-
-        # Exact key match (longest first)
+        # Exact key match first (longest multi-word keys have priority)
         matches = []
         for key, value in _KNOWLEDGE.items():
             if key in text_lower:
@@ -2241,11 +2228,27 @@ class OfflineBrain:
                 ("sql", ["hash table", "hash map", "hashing"]),
                 ("ai", ["docker", "container", "tcp", "udp", "http"]),
             ]
+            skip = False
             for skip_key, skip_words in skip_pairs:
                 if key == skip_key and any(w in text_lower for w in skip_words):
-                    continue
-            self._knowledge_cache[text_lower] = value
-            return value
+                    skip = True
+                    break
+            if not skip:
+                self._knowledge_cache[text_lower] = value
+                return value
+
+        # Check aliases (with word boundary matching, prioritize longest alias)
+        alias_matches = []
+        for alias, key in _ALIASES.items():
+            if key in _KNOWLEDGE:
+                if re.search(r'\b' + re.escape(alias) + r'\b', text_lower):
+                    alias_matches.append((len(alias), alias, key))
+        if alias_matches:
+            alias_matches.sort(key=lambda x: x[0], reverse=True)
+            _, _, best_key = alias_matches[0]
+            result = _KNOWLEDGE[best_key]
+            self._knowledge_cache[text_lower] = result
+            return result
 
         # Intent-aware matching
         how_match = re.search(r"how (?:do|does|can|to|would) (?:i|you|we|one)?\s*(.+?)(?:\?|$)", text_lower)
