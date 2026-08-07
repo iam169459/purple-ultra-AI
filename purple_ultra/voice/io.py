@@ -76,8 +76,6 @@ BANGLA_STT_SETTINGS = {
     "beam_size": 5,
     "best_of": 5,
     "patience": 2.0,
-    "condition_without_timestamps": True,
-    "without_timestamps": True,
     "vad_filter": True,
     "vad_parameters": {
         "min_silence_duration_ms": 500,
@@ -234,10 +232,7 @@ class VoiceIO:
             transcribe_kwargs = {
                 "language": lang,
                 "beam_size": BANGLA_STT_SETTINGS["beam_size"],
-                "best_of": BANGLA_STT_SETTINGS["best_of"],
                 "patience": BANGLA_STT_SETTINGS["patience"],
-                "condition_without_timestamps": BANGLA_STT_SETTINGS["condition_without_timestamps"],
-                "without_timestamps": BANGLA_STT_SETTINGS["without_timestamps"],
                 "vad_filter": BANGLA_STT_SETTINGS["vad_filter"],
                 "vad_parameters": BANGLA_STT_SETTINGS["vad_parameters"],
             }
